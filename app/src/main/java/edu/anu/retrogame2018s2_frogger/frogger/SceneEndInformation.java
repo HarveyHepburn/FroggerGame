@@ -11,7 +11,7 @@ public class SceneEndInformation {
     }
 
     public String getBackgroudColor() {
-        return null;
+        return "#dbc5c5";//light red
     }
 
     public String getInformation() {

@@ -1,6 +1,6 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
-public class SceneEndInformation {
+public class SceneEndInformation { // implements  DialogInformation
 
     boolean win;
     String info;

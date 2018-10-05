@@ -15,7 +15,7 @@ public class Frog {
     private FrogPaint frogPaint = new FrogPaint();
 
     public void draw(FrogCanvas frogCanvas) {
-        frogCanvas.drawCircle(x, y, radius, frogPaint);
+//        frogCanvas.drawCircle(x, y, radius, frogPaint);
     }
 
     public void step() {

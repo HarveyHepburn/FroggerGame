@@ -8,5 +8,5 @@ public interface MovingParameters {
 
     int getY();
 
-    int calX(int x);
+    int calX(int width);
 }

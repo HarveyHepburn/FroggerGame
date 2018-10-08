@@ -11,7 +11,11 @@ public class SceneEndInformation { // implements  DialogInformation
     }
 
     public String getBackgroudColor() {
-        return "#dbc5c5";//light red
+        if (win) {
+            return "#AA000000";
+        } else {
+            return "#AA000000";
+        }
     }
 
     public String getInformation() {

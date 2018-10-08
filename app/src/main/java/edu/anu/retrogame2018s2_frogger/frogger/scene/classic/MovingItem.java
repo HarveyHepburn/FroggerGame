@@ -1,10 +1,10 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
-
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
+import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 
 public abstract class MovingItem implements Drawable {
     int width = 100;
@@ -12,18 +12,19 @@ public abstract class MovingItem implements Drawable {
     MovingParameters mp;
     FrogPaint frogPaint;
     int x;
-//    GameSetting gameSetting;
+    GameSetting gameSetting;
 
     public int getX() {
         return x;
     }
-//    MovingItem(MovingParameters mp, GameSetting gameSetting) {
-//        this.x=mp.calX(width);
-//        this.mp = mp;
-//        frogPaint = new FrogPaint();
-//        height = 50;
-//        this.gameSetting=gameSetting;
-//    }
+
+    MovingItem(MovingParameters mp, GameSetting gameSetting) {
+        this.x = mp.calX(width);
+        this.mp = mp;
+        frogPaint = new FrogPaint();
+        height = 50;
+        this.gameSetting = gameSetting;
+    }
 
     public void resetItem(MovingParameters movingParameters) {
         this.mp = movingParameters;
@@ -53,15 +54,15 @@ public abstract class MovingItem implements Drawable {
     }
 
     public boolean outOfMap() {
-//        if (mp.getDir()) {
-//            if (this.x > gameSetting.getWidth()) {
-//                return true;
-//            }
-//        } else {
-//            if (this.x + this.width < 0) {
-//                return true;
-//            }
-//        }
+        if (mp.getDir()) {
+            if (this.x > gameSetting.getWidth()) {
+                return true;
+            }
+        } else {
+            if (this.x + this.width < 0) {
+                return true;
+            }
+        }
         return false;
     }
 }

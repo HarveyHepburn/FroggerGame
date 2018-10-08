@@ -15,13 +15,13 @@ public class Lane extends ArrayList<ActiveItem> implements MovingParameters, Dra
 
     Scene scene;
 
-    public Lane(int speed, int gap, ItemManager itemManager, boolean direction, int y, Scene scene) {
+    Lane(boolean dir, int speed, int gap, ItemManager itemManager, int y,Scene scene) {
         this.speed = speed;
         this.gap = gap;
         this.itemManager = itemManager;
-        this.direction = direction;
         this.y = y;
-        this.scene = scene;
+        this.direction=dir;
+        this.scene=scene;
     }
 
     @Override

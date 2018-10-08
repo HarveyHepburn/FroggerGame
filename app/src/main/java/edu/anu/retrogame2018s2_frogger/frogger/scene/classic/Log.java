@@ -1,36 +1,41 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
-import android.transition.Scene;
-
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
-import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
+import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 
-public class Log extends MovingItem implements ActiveItem { //implements MoveAlong
-    private Scene scene;
-    private FrogPaint frogPaint;
-    int width = 100;
+public class Log extends MovingItem implements MoveAlong, ActiveItem {
+    Log(MovingParameters movingParameters,GameSetting gameSetting) {
+        super(movingParameters,gameSetting);
+        this.width = 200;
+        this.height=100;
+        frogPaint.setColor("#795548");
+    }
 
-//    public Log (MovingParameters mp, GameSetting gs){}
     public void draw(FrogCanvas frogCanvas) {
-        frogPaint = new FrogPaint();
-        frogPaint.setColor("#a75f09"); // wood color
-//        frogCanvas.drawRect(x, getGameSetting().get("riverBottom"), 10, frogPaint);
-       //not very sure about the position
-
+        super.draw(frogCanvas);
     }
 
     @Override
     public int getWidth() {
-        return this.width;
+        return width;
     }
 
     @Override
     public boolean activity(Frog frog) {
+        if (this.Collision(frog)) {
+            frog.logOn(this);
+        }
         return false;
     }
 
+    @Override
     public void moveAlong(Frog frog) {
-
+        if (frog.getX() > 0 && frog.getX() < gameSetting.getWidth())
+            if (mp.getDir()) {
+                frog.setX(frog.getX() + mp.getSpeed());
+            } else {
+                frog.setX(frog.getX() - mp.getSpeed());
+            }
     }
 }

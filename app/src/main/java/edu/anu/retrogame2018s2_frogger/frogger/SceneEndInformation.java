@@ -5,7 +5,7 @@ public class SceneEndInformation { // implements  DialogInformation
     boolean win;
     String info;
 
-    SceneEndInformation(boolean win, String info) {
+    public SceneEndInformation(boolean win, String info) {
         this.win = win;
         this.info = info;
     }

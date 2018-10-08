@@ -29,7 +29,7 @@ public class ControlPanel {
         return 0;
     }
 
-    enum Direction{
+    public enum Direction{
         SOUTH,WEST,NORTH,EAST
     }
 }

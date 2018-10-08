@@ -1,10 +1,11 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene;
 
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
+import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.SceneEndInformation;
 
-public interface Scene {
+public interface Scene extends Drawable {
     public void onEnterScene(FrogCanvas frogCanvas);
     public void onFinishScene(FrogCanvas frogCanvas);
     public void sceneOver(SceneEndInformation sceneEndInformation);

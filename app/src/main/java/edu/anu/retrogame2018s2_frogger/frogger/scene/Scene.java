@@ -17,7 +17,7 @@ public interface Scene extends Drawable {
 
     boolean isMoveble(int x, int y);//whether move is legel
 
-    Integer onTouch(float x, float y, boolean b);//b: is click down/up
+    Integer onTouch(float x, float y, boolean isDown);//isDown: is click down/up
 
     boolean isActive();//whether scence is in active status
 

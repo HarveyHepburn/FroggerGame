@@ -6,6 +6,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.Dialog;
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
+import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.SceneEndInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
@@ -35,7 +36,7 @@ public class ClassicFroggerScene implements Scene {
         cars = new Cars(this);
         logs = new Logs(this);
         this.frogHole = new FrogHole(this);
-        controlPanel = new ControlPanel(gameSetting.getWidth() - 300, gameSetting.getHeight() - 300, this);
+     //   controlPanel = new ControlPanel(gameSetting.getWidth() - 300, gameSetting.getHeight() - 300, this);
     }
 
     @Override

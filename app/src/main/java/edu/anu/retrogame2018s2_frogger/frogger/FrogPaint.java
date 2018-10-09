@@ -1,10 +1,10 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
 public class FrogPaint {
-   private TextAlign textAlign;
-   private String color;
-   private int textSize;
-   private Boolean styleFill;
+    private TextAlign textAlign;
+    private String color;
+    private Integer textSize;
+    private Boolean styleFill;
 
     public TextAlign getTextAlign() {
         return textAlign;
@@ -26,7 +26,7 @@ public class FrogPaint {
         this.textSize = textSize;
     }
 
-    public int getTextSize() {
+    public Integer getTextSize() {
         return textSize;
     }
 

@@ -72,9 +72,9 @@ public class Lane extends ArrayList<ActiveItem> implements MovingParameters, Dra
             this.add(getNewItem());
         } else {
             if (direction) {
-//                if (this.get(0).getX() > scnene.gameSetting) {
-//                    this.remove(this.get(0));
-//                }
+                if (this.get(0).getX() > scene.getGameSetting()) {
+                    this.remove(this.get(0));
+                }
             } else {
                 if (this.get(0).getX() < 0) {
                     this.remove(this.get(0));
@@ -85,7 +85,7 @@ public class Lane extends ArrayList<ActiveItem> implements MovingParameters, Dra
                     this.add(getNewItem());
                 }
             } else {
-                // if(this.get(this.size() - 1).getX()-scnene.gameSetting > gap){}
+                 if(this.get(this.size() - 1).getX()-scene.getGameSetting() > gap){}
             }
 
         }

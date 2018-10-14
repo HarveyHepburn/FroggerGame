@@ -3,6 +3,7 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
 import edu.anu.retrogame2018s2_frogger.frogger.ControlPanel;
 import edu.anu.retrogame2018s2_frogger.frogger.Dialog;
+import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;

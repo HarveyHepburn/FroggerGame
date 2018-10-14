@@ -34,7 +34,7 @@ public class ControlPanel {
         frogCanvas.drawPath(p4, frogPaint1);
     }
 
-    private static Path getTriangle(int[] p1, int width, Direction direction) {
+    public static Path getTriangle(int[] p1, int width, Direction direction) {
         int[] p2 = null, p3 = null;
 
         if (direction == Direction.NORTH) {
@@ -66,12 +66,14 @@ public class ControlPanel {
 
     public void onTouch(float x, float y, boolean isDown) {
         if(!isDown){
-            scene.move(null);;
+            scene.move(null);
             return;
         }
         if (x < this.x + 200 && x > this.x - 200 && y > this.y - 200 && y < this.y + 200) {
             x -= this.x;
             y -= this.y;
+            //divide into four area, up, right, down, left.
+            // Calculate the user touch on which area
             double angle = calculateAngle(0, 0, x, y);
             if (angle > 45 && angle < 135) {
                 scene.move(Direction.EAST);
@@ -85,7 +87,7 @@ public class ControlPanel {
         }
     }
 
-    private static double calculateAngle(double x1, double y1, double x2, double y2) {
+    public static double calculateAngle(double x1, double y1, double x2, double y2) {
         double angle = Math.toDegrees(Math.atan2(x2 - x1, y2 - y1));
         // Keep angle between 0 and 360
         angle = angle + Math.ceil(-angle / 360) * 360;

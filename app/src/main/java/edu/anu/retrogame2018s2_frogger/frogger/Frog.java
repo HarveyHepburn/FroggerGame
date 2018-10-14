@@ -71,6 +71,8 @@ public class Frog {
         }
 
         if(direction!=null){
+            //if user touch the direction will not be null
+            //loop to change the frog image to make the jumping animation
             this.currentStatusTimeLeft-=1;
             if(currentStatusTimeLeft<=0){
                 this.FrogStatus=(FrogStatus+1)%4;

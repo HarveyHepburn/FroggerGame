@@ -1,6 +1,7 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
-import com.frogger.anu.Animation.FadeInAndOutAnimation;
+
+import edu.anu.retrogame2018s2_frogger.frogger.animation.FadeInAndOutAnimation;
 
 public class Dialog implements Drawable {
 

@@ -1,4 +1,4 @@
-package edu.anu.retrogame2018s2_frogger;
+package edu.anu.retrogame2018s2_frogger.frogger;
 
 import java.lang.reflect.Constructor;
 

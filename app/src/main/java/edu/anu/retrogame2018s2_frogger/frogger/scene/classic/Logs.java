@@ -14,7 +14,7 @@ public class Logs extends Items implements ItemManager {
     }
 
     @Override
-    public ActiveItem generateNewItem(MovingParameters movingParameters) {
+    public ActiveItem getNewItem(MovingParameters movingParameters) {
         return new Log(movingParameters, scene.getGameSetting());
 
     }

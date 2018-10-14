@@ -26,7 +26,7 @@ public class TestControlPanel {
         assertEquals(180.0, ControlPanel.calculateAngle(0, 0, 0, -30), .5);
         assertEquals(0.0, ControlPanel.calculateAngle(0, 0, 0, 0), .5);
     }
-    
+
     @Test
     public void calculateAngle_isCorrect() {
         assertEquals(45.0, ControlPanel.calculateAngle(100, 200, 300, 400), .5);

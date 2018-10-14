@@ -10,7 +10,6 @@ import android.view.View;
 
 import edu.anu.retrogame2018s2_frogger.frogger.FroggerGame;
 
-
 public class GameView extends View implements View.OnTouchListener, Runnable {
     Handler timer = new Handler();
     FroggerGame froggerGame;
@@ -25,7 +24,7 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
         froggerGame = new FroggerGame(getWidth(), getHeight(), new Sounds(getContext()));
-        timer.postDelayed(this, 10);
+        timer.postDelayed(this, 30);
     }
 
     @Override
@@ -48,6 +47,6 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
     public void run() {
         froggerGame.step();
         invalidate();
-        timer.postDelayed(this, 10);
+        timer.postDelayed(this, 40);
     }
 }

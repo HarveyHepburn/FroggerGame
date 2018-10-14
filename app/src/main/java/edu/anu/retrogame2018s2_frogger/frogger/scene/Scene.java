@@ -8,7 +8,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.SceneEndInformation;
 
-public interface Scene extends Drawable {
+public interface Scene extends Drawable{
     void onEnterScene(FrogCanvas frogCanvas);
     void onFinishScene(FrogCanvas frogCanvas);
     void sceneOver(DialogInformation dialogInformation);

@@ -6,33 +6,97 @@ import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
-public class Lane extends ArrayList<ActiveItem> implements MovingParameters, Drawable {
-    int speed;
-    int gap;
-    ItemManager itemManager;
-    boolean direction;//true is to right;false is to left
-    int y;
+import java.util.ArrayList;
+import java.util.Iterator;
 
-    Scene scene;
+public class Lane extends ArrayList<ActiveItem> implements MovingParameters,Drawable {
+    private int speed;
+    private int gap;
+    private ItemManager itemManager;
+    private boolean dir;
+    private int y;
+    private Scene scene;
 
     Lane(boolean dir, int speed, int gap, ItemManager itemManager, int y,Scene scene) {
         this.speed = speed;
         this.gap = gap;
         this.itemManager = itemManager;
         this.y = y;
-        this.direction=dir;
+        this.dir=dir;
         this.scene=scene;
     }
 
     @Override
+    public void draw(FrogCanvas frogCanvas) {
+        for (ActiveItem activeItem : this) {
+            activeItem.draw(frogCanvas);
+        }
+    }
 
+    private ActiveItem getNewItem() {
+        ActiveItem activeItem = itemManager.getAvailableItem();
+        if (activeItem != null) {
+            activeItem.resetItem(this);
+        } else {
+            activeItem = itemManager.getNewItem(this);
+        }
+        return activeItem;
+    }
+
+    @Override
+    public void step() {
+        Iterator<ActiveItem> iter = this.iterator();
+        while (iter.hasNext()) {
+            ActiveItem activeItem = iter.next();
+            if (dir && activeItem.getX() > scene.getGameSetting().getWidth()) {
+                iter.remove();
+                itemManager.addToPool(activeItem);
+                continue;
+            }
+            if (!dir && activeItem.getX() + activeItem.getWidth() < 0) {
+                iter.remove();
+                itemManager.addToPool(activeItem);
+                continue;
+            }
+            activeItem.step();
+            if (activeItem.outOfMap()) {
+                iter.remove();
+                itemManager.addToPool(activeItem);
+                continue;
+            }
+            if (activeItem.activity(scene.getGameSetting().getFrog())) {
+                return;
+            }
+        }
+
+        if (dir) {
+            if (this.size() > 0) {
+                if (this.get(this.size() - 1).getX() > gap) {
+                    this.add(getNewItem());
+                }
+            } else {
+                this.add(getNewItem());
+            }
+
+        } else {
+            if (this.size() > 0) {
+                if (this.get(this.size() - 1).getX() < scene.getGameSetting().getWidth() - gap) {
+                    this.add(getNewItem());
+                }
+            }else {
+                this.add(getNewItem());
+            }
+        }
+    }
+
+    @Override
     public int getSpeed() {
         return speed;
     }
 
     @Override
     public boolean getDir() {
-        return direction;
+        return dir;
     }
 
     @Override
@@ -40,54 +104,8 @@ public class Lane extends ArrayList<ActiveItem> implements MovingParameters, Dra
         return y;
     }
 
-    // to be done
     @Override
-    public int calX(int x) {
-        if (direction) {
-            return -1;
-        } else {
-            return 0;
-        }
-
-    }
-
-    @Override
-    public void draw(FrogCanvas frogCanvas) {
-        for (ActiveItem item : this) {
-            item.draw(frogCanvas);
-        }
-    }
-
-    public ActiveItem getNewItem() {
-        ActiveItem activeItem = itemManager.getAvailableItem();
-        if (activeItem == null) {
-            return itemManager.generateNewItem(this);
-        } else activeItem.resetItem(this);
-        return activeItem;
-    }
-
-    @Override
-    public void step() {
-        if (this.size() == 0) {
-            this.add(getNewItem());
-        } else {
-            if (direction) {
-                if (this.get(0).getX() > scene.getGameSetting()) {
-                    this.remove(this.get(0));
-                }
-            } else {
-                if (this.get(0).getX() < 0) {
-                    this.remove(this.get(0));
-                }
-            }
-            if (direction) {
-                if (this.get(this.size() - 1).getX() > gap) {
-                    this.add(getNewItem());
-                }
-            } else {
-                 if(this.get(this.size() - 1).getX()-scene.getGameSetting() > gap){}
-            }
-
-        }
+    public int calX(int width) {
+        return dir ? (-1*width) : scene.getGameSetting().getWidth() + width;
     }
 }

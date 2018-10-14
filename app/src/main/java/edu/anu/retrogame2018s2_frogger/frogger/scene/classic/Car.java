@@ -1,9 +1,9 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
 
-import com.frogger.anu.DialogInformation;
-import com.frogger.anu.Frog;
-import com.frogger.anu.Scene;
+import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
+import edu.anu.retrogame2018s2_frogger.frogger.Frog;
+import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class Car extends MovingItem implements ActiveItem {
     public Car(MovingParameters movingParameters, Scene scene) {

@@ -1,5 +1,7 @@
+
 package edu.anu.retrogame2018s2_frogger;
 
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
@@ -10,9 +12,13 @@ import edu.anu.retrogame2018s2_frogger.frogger.Path;
 
 public class UsingCanvas implements FrogCanvas {
     Canvas canvas;
+    Resources res;
+    String thePackage;
 
-    public UsingCanvas(Canvas canvas) {
+    public UsingCanvas(Canvas canvas, Resources res, String thePackage) {
         this.canvas = canvas;
+        this.res = res;
+        this.thePackage = thePackage;
     }
 
     @Override
@@ -33,6 +39,17 @@ public class UsingCanvas implements FrogCanvas {
     @Override
     public void drawText(String text, float x, float y, FrogPaint frogPaint) {
         canvas.drawText(text, x, y, getPaint(frogPaint));
+    }
+
+    @Override
+    public void drawImage(String image, int left, int top, int right, int bottom, FrogPaint frogPaint) {
+        if(image.endsWith(".***")){
+            image=image.substring(0,image.length()-4);
+        }
+        int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
+        android.graphics.drawable.Drawable d = res.getDrawable(drawableResourceId);
+        d.setBounds(left,top,right,bottom);
+        d.draw(canvas);
     }
 
     @Override
@@ -58,17 +75,16 @@ public class UsingCanvas implements FrogCanvas {
                     break;
             }
         }
+//        paint.setTextAlign(Paint.Align.CENTER);
         return paint;
     }
-//Path是啥 安卓Canvas管理路径的？
+
     static android.graphics.Path getPath(Path path) {
         android.graphics.Path p = new android.graphics.Path();
         if (path.size() >= 1) {
-            //ArrayList中存的是坐标[x1,y1],[x2,y2]吧,这是更改起始点坐标？
             p.moveTo(path.get(0)[0], path.get(0)[1]);
         }
         for (int i = 1; i < path.size(); i++) {
-            //这些坐标是在哪里加进去的呢
             p.lineTo(path.get(i)[0], path.get(i)[1]);
         }
         return p;

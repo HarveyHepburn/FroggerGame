@@ -11,6 +11,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
 public class Sounds extends SoundControl {
     Context context;
     static MediaPlayer mediaPlayer;
+    static MediaPlayer mediaPlayerSoundEffect;
 
     public Sounds(Context context) {
         this.context = context;
@@ -37,11 +38,44 @@ public class Sounds extends SoundControl {
             e.printStackTrace();
         }
     }
+    @Override
+    public void playSound(String musicName) {
+        if (mediaPlayerSoundEffect != null) {
+            mediaPlayerSoundEffect.stop();
+            mediaPlayerSoundEffect.release();
+        }
+        mediaPlayerSoundEffect = new MediaPlayer();
+        System.out.println(mediaPlayerSoundEffect.isPlaying());
+        try {
+            AssetFileDescriptor afd = null;
+            afd = context.getAssets().openFd(musicName);
+            mediaPlayerSoundEffect.setDataSource(afd.getFileDescriptor(), afd.getStartOffset(), afd.getLength());
+            afd.close();
+            mediaPlayerSoundEffect.prepare();
+            mediaPlayerSoundEffect.setLooping(true);
+            super.currentPlaying = musicName;
+            mediaPlayerSoundEffect.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     @Override
     public void stopMusic() {
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.stop();
         }
+    }
+    @Override
+    public void stopSound() {
+        if (mediaPlayerSoundEffect != null && mediaPlayerSoundEffect.isPlaying()) {
+            mediaPlayerSoundEffect.stop();
+        }
+    }
+
+    @Override
+    public boolean isSoundPlaying() {
+        return mediaPlayerSoundEffect != null&&mediaPlayerSoundEffect.isPlaying();
     }
 }

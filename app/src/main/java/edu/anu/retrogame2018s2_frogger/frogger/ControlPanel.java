@@ -60,9 +60,6 @@ public class ControlPanel {
         return path;
     }
 
-    public enum Direction {
-        NORTH, SOUTH, EAST, WEST;
-    }
 
     public void onTouch(float x, float y, boolean isDown) {
         if(!isDown){

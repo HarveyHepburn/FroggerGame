@@ -8,8 +8,10 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.RotateDrawable;
 
+import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.Path;
@@ -28,6 +30,21 @@ public class UsingCanvas implements FrogCanvas {
     android.graphics.drawable.Drawable frog_2;
     android.graphics.drawable.Drawable frog_3;
 
+    android.graphics.drawable.Drawable frog_left_0;
+    android.graphics.drawable.Drawable frog_left_1;
+    android.graphics.drawable.Drawable frog_left_2;
+    android.graphics.drawable.Drawable frog_left_3;
+
+    android.graphics.drawable.Drawable frog_right_0;
+    android.graphics.drawable.Drawable frog_right_1;
+    android.graphics.drawable.Drawable frog_right_2;
+    android.graphics.drawable.Drawable frog_right_3;
+
+    android.graphics.drawable.Drawable frog_down_0;
+    android.graphics.drawable.Drawable frog_down_1;
+    android.graphics.drawable.Drawable frog_down_2;
+    android.graphics.drawable.Drawable frog_down_3;
+
     public UsingCanvas(Canvas canvas, Resources res, String thePackage) {
         this.canvas = canvas;
         this.res = res;
@@ -37,11 +54,25 @@ public class UsingCanvas implements FrogCanvas {
         this.car_yellow = createImageDrawble("car_yellow");
         this.car_green = createImageDrawble("car_green");
         this.log = createImageDrawble("log");
-        this.frog_0 = createImageDrawble("frog_static");
-        this.frog_1 = createImageDrawble("frog_jump_1");
-        this.frog_2 = createImageDrawble("frog_jump_2");
-        this.frog_3 = createImageDrawble("frog_jump_3");
-        RotateDrawable rotateDrawable=new RotateDrawable();
+//        this.frog_0 = createImageDrawble("frog_static");
+//        this.frog_1 = createImageDrawble("frog_jump_1");
+//        this.frog_2 = createImageDrawble("frog_jump_2");
+//        this.frog_3 = createImageDrawble("frog_jump_3");
+//
+//        this.frog_left_0 = createImageDrawble("frog_static_left");
+//        this.frog_left_1 = createImageDrawble("frog_jump_1_left");
+//        this.frog_left_2 = createImageDrawble("frog_jump_2_left");
+//        this.frog_left_3 = createImageDrawble("frog_jump_3_left");
+//
+//        this.frog_right_0 = createImageDrawble("frog_static_right");
+//        this.frog_right_1 = createImageDrawble("frog_jump_1_right");
+//        this.frog_right_2 = createImageDrawble("frog_jump_2_right");
+//        this.frog_right_3 = createImageDrawble("frog_jump_3_right");
+//
+//        this.frog_down_0 = createImageDrawble("frog_static_down");
+//        this.frog_down_1 = createImageDrawble("frog_jump_1_down");
+//        this.frog_down_2 = createImageDrawble("frog_jump_2_down");
+//        this.frog_down_3 = createImageDrawble("frog_jump_3_down");
     }
 
     Bitmap bitmap;
@@ -83,16 +114,16 @@ public class UsingCanvas implements FrogCanvas {
                 d = this.car_green;
                 break;
             case "frog_static":
-                d = this.frog_0;
+                d=getFrogDrawable(image,frogPaint.getDirection());
                 break;
             case "frog_jump_1":
-                d = this.frog_1;
+                d=getFrogDrawable(image,frogPaint.getDirection());
                 break;
             case "frog_jump_2":
-                d = this.frog_2;
+                d=getFrogDrawable(image,frogPaint.getDirection());
                 break;
             case "frog_jump_3":
-                d = this.frog_3;
+                d=getFrogDrawable(image,frogPaint.getDirection());
                 break;
             case "log":
                 d = this.log;
@@ -115,6 +146,27 @@ public class UsingCanvas implements FrogCanvas {
         android.graphics.drawable.Drawable d = res.getDrawable(drawableResourceId);
         return d;
     }
+
+    private android.graphics.drawable.Drawable getFrogDrawable(String image, Direction direction) {
+        String s="";
+        if(direction!=null)
+        switch (direction){
+            case NORTH:
+                s="_down";
+                break;
+            case WEST:
+                s="_left";
+                break;
+            case EAST:
+                s="_right";
+                break;
+        }
+        int drawableResourceId = res.getIdentifier(image+s, "drawable", thePackage);
+        android.graphics.drawable.Drawable d = res.getDrawable(drawableResourceId);
+        return d;
+    }
+
+
 
     @Override
     public void drawRoundRect(float left, float top, float right, float bottom, float rx, float ry, FrogPaint paint) {

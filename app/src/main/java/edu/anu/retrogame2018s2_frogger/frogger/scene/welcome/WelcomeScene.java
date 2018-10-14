@@ -4,8 +4,8 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.welcome;
 import java.util.HashMap;
 import java.util.Map;
 
-import edu.anu.retrogame2018s2_frogger.frogger.ControlPanel;
 import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
+import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
@@ -41,7 +41,7 @@ public class WelcomeScene implements Scene {
 
 
     @Override
-    public void move(ControlPanel.Direction direction) {
+    public void move(Direction direction) {
 
     }
 

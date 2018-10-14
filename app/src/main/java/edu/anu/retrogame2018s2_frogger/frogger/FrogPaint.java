@@ -5,6 +5,17 @@ public class FrogPaint {
     private Boolean StyleFill = null;
     private Integer TextSize = null;
     private TextAlign textAlign;
+    private Direction direction=null;
+
+    public void setDirection(Direction direction) {
+        this.direction = direction;
+    }
+
+    public Direction getDirection() {
+
+        return direction;
+    }
+
     public enum TextAlign {
         Center
     }

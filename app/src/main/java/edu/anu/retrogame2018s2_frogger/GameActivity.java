@@ -1,6 +1,7 @@
 package edu.anu.retrogame2018s2_frogger;
 
 import android.content.pm.ActivityInfo;
+import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;

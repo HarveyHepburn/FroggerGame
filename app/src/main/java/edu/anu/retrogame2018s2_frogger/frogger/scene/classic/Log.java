@@ -7,14 +7,14 @@ import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 public class Log extends MovingItem implements MoveAlong, ActiveItem {
     Log(MovingParameters movingParameters, GameSetting gameSetting) {
         super(movingParameters, gameSetting);
-        this.width = 200;
+        this.width = 250;
         this.height = 100;
         frogPaint.setColor("#795548");
     }
 
     @Override
     public void draw(FrogCanvas frogCanvas) {
-        frogCanvas.drawImage("log", x, mp.getY(), x + width, mp.getY() + height, frogPaint);
+        frogCanvas.drawImage("log", x,mp.getY(), x + width, (mp.getY() + height), frogPaint);
     }
 
     @Override

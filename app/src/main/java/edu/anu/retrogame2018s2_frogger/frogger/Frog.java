@@ -21,13 +21,14 @@ public class Frog {
     private Scene scene;
     private int radius = 80;
     private Log log = null;
-    private ControlPanel.Direction direction = null;
+    private Direction direction = null;
     private FrogPaint frogPaint = new FrogPaint();
 
     private int FrogStatus=0;
     private int currentStatusTimeLeft=5;
 
     public void draw(FrogCanvas frogCanvas) {
+        frogPaint.setDirection(direction);
         switch (FrogStatus){
             case 0:
                 frogCanvas.drawImage("frog_static",x-radius/2,y-radius/2,x+radius/2,y+radius/2,frogPaint);
@@ -46,17 +47,16 @@ public class Frog {
     }
 
     public void step() {
-
         if (this.direction != null) {
-            if (direction == ControlPanel.Direction.EAST) {
+            if (direction == Direction.EAST) {
                 if (this.scene.isMoveble(x + 6, this.y))
                     this.x += 6;
-            } else if (direction == ControlPanel.Direction.SOUTH) {
+            } else if (direction == Direction.SOUTH) {
                 if (this.scene.isMoveble(x, this.y - 6))
                     this.y -= 6;
-            } else if (direction == ControlPanel.Direction.NORTH) {
+            } else if (direction == Direction.NORTH) {
                 this.y += 6;
-            } else if (direction == ControlPanel.Direction.WEST) {
+            } else if (direction == Direction.WEST) {
                 if (this.scene.isMoveble(x - 6, this.y))
                     this.x -= 6;
             }
@@ -76,8 +76,12 @@ public class Frog {
                 this.FrogStatus=(FrogStatus+1)%4;
                 currentStatusTimeLeft=5;
             }
+            if(!this.scene.getGameSetting().getSoundControl().isSoundPlaying())
+                this.scene.getGameSetting().getSoundControl().playSound("jump_music.mp3");
         }else {
             this.FrogStatus=0;
+            if(this.scene.getGameSetting().getSoundControl().isSoundPlaying())
+                this.scene.getGameSetting().getSoundControl().stopSound();
         }
 
     }
@@ -86,8 +90,9 @@ public class Frog {
         return log;
     }
 
-    public void move(ControlPanel.Direction direction) {
+    public void move(Direction direction) {
         this.direction = direction;
+
     }
 
     public void setX(int x) {

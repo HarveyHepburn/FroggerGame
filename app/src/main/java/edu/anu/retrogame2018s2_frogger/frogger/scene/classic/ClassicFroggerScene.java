@@ -95,7 +95,7 @@ public class ClassicFroggerScene implements Scene {
         return gameSetting;
     }
 
-    public void move(ControlPanel.Direction direction) {
+    public void move(Direction direction) {
         this.frog.move(direction);
     }
 

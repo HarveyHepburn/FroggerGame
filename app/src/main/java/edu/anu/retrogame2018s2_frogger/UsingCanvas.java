@@ -2,9 +2,13 @@
 package edu.anu.retrogame2018s2_frogger;
 
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.RotateDrawable;
 
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
@@ -24,7 +28,6 @@ public class UsingCanvas implements FrogCanvas {
     android.graphics.drawable.Drawable frog_2;
     android.graphics.drawable.Drawable frog_3;
 
-
     public UsingCanvas(Canvas canvas, Resources res, String thePackage) {
         this.canvas = canvas;
         this.res = res;
@@ -38,7 +41,10 @@ public class UsingCanvas implements FrogCanvas {
         this.frog_1 = createImageDrawble("frog_jump_1");
         this.frog_2 = createImageDrawble("frog_jump_2");
         this.frog_3 = createImageDrawble("frog_jump_3");
+        RotateDrawable rotateDrawable=new RotateDrawable();
     }
+
+    Bitmap bitmap;
 
     @Override
     public void drawRect(float left, float top, float right, float bottom, FrogPaint frogPaint) {
@@ -62,10 +68,6 @@ public class UsingCanvas implements FrogCanvas {
 
     @Override
     public void drawImage(String image, int left, int top, int right, int bottom, FrogPaint frogPaint) {
-//        if(image.endsWith(".***")){
-//            image=image.substring(0,image.length()-4);
-//        }
-//        int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
         android.graphics.drawable.Drawable d;
         switch (image) {
             case "car_blue":
@@ -92,6 +94,9 @@ public class UsingCanvas implements FrogCanvas {
             case "frog_jump_3":
                 d = this.frog_3;
                 break;
+            case "log":
+                d = this.log;
+                break;
             default:
                 if (image.endsWith(".***")) {
                     image = image.substring(0, image.length() - 4);
@@ -102,7 +107,6 @@ public class UsingCanvas implements FrogCanvas {
 
         }
         d.setBounds(left, top, right, bottom);
-
         d.draw(canvas);
     }
 

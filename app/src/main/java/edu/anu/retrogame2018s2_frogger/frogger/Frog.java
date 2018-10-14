@@ -61,6 +61,7 @@ public class Frog {
                     this.x -= 6;
             }
         }
+
         if (this.log != null) {
             if (!this.log.Collision(this)) {
                 this.log = null;
@@ -69,11 +70,16 @@ public class Frog {
             log.moveAlong(this);
         }
 
-        this.currentStatusTimeLeft-=1;
-        if(currentStatusTimeLeft<=0){
-            this.FrogStatus=(FrogStatus+1)%4;
-            currentStatusTimeLeft=5;
+        if(direction!=null){
+            this.currentStatusTimeLeft-=1;
+            if(currentStatusTimeLeft<=0){
+                this.FrogStatus=(FrogStatus+1)%4;
+                currentStatusTimeLeft=5;
+            }
+        }else {
+            this.FrogStatus=0;
         }
+
     }
 
     public Log getLog() {

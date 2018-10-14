@@ -19,13 +19,30 @@ public class Frog {
 
     int y, x;
     private Scene scene;
-    private int radius = 50;
+    private int radius = 80;
     private Log log = null;
     private ControlPanel.Direction direction = null;
     private FrogPaint frogPaint = new FrogPaint();
 
+    private int FrogStatus=0;
+    private int currentStatusTimeLeft=5;
+
     public void draw(FrogCanvas frogCanvas) {
-        frogCanvas.drawCircle(x, y, radius, frogPaint);
+        switch (FrogStatus){
+            case 0:
+                frogCanvas.drawImage("frog_static",x-radius/2,y-radius/2,x+radius/2,y+radius/2,frogPaint);
+                break;
+            case 1:
+                frogCanvas.drawImage("frog_jump_1",x-radius/2,y-radius/2,x+radius/2,y+radius/2,frogPaint);
+                break;
+            case 2:
+                frogCanvas.drawImage("frog_jump_2",x-radius/2,y-radius/2,x+radius/2,y+radius/2,frogPaint);
+                break;
+            case 3:
+                frogCanvas.drawImage("frog_jump_3",x-radius/2,y-radius/2,x+radius/2,y+radius/2,frogPaint);
+                break;
+        }
+
     }
 
     public void step() {
@@ -52,6 +69,11 @@ public class Frog {
             log.moveAlong(this);
         }
 
+        this.currentStatusTimeLeft-=1;
+        if(currentStatusTimeLeft<=0){
+            this.FrogStatus=(FrogStatus+1)%4;
+            currentStatusTimeLeft=5;
+        }
     }
 
     public Log getLog() {

@@ -19,6 +19,10 @@ public class UsingCanvas implements FrogCanvas {
     android.graphics.drawable.Drawable car_yellow;
     android.graphics.drawable.Drawable car_green;
     android.graphics.drawable.Drawable log;
+    android.graphics.drawable.Drawable frog_0;
+    android.graphics.drawable.Drawable frog_1;
+    android.graphics.drawable.Drawable frog_2;
+    android.graphics.drawable.Drawable frog_3;
 
 
     public UsingCanvas(Canvas canvas, Resources res, String thePackage) {
@@ -30,6 +34,10 @@ public class UsingCanvas implements FrogCanvas {
         this.car_yellow = createImageDrawble("car_yellow");
         this.car_green = createImageDrawble("car_green");
         this.log = createImageDrawble("log");
+        this.frog_0 = createImageDrawble("frog_static");
+        this.frog_1 = createImageDrawble("frog_jump_1");
+        this.frog_2 = createImageDrawble("frog_jump_2");
+        this.frog_3 = createImageDrawble("frog_jump_3");
     }
 
     @Override
@@ -72,8 +80,17 @@ public class UsingCanvas implements FrogCanvas {
             case "car_green":
                 d = this.car_green;
                 break;
-            case "log":
-                d = this.log;
+            case "frog_static":
+                d = this.frog_0;
+                break;
+            case "frog_jump_1":
+                d = this.frog_1;
+                break;
+            case "frog_jump_2":
+                d = this.frog_2;
+                break;
+            case "frog_jump_3":
+                d = this.frog_3;
                 break;
             default:
                 if (image.endsWith(".***")) {
@@ -118,7 +135,6 @@ public class UsingCanvas implements FrogCanvas {
                     break;
             }
         }
-//        paint.setTextAlign(Paint.Align.CENTER);
         return paint;
     }
 

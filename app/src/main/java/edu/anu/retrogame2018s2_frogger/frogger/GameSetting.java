@@ -2,6 +2,8 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 
 import java.util.HashMap;
 
+import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
+
 public class GameSetting extends HashMap<String,Integer> {
 
     private Frog frog;

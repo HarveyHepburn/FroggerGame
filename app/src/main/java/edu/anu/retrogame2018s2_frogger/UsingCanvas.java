@@ -14,11 +14,22 @@ public class UsingCanvas implements FrogCanvas {
     Canvas canvas;
     Resources res;
     String thePackage;
+    android.graphics.drawable.Drawable car_blue;
+    android.graphics.drawable.Drawable car_red;
+    android.graphics.drawable.Drawable car_yellow;
+    android.graphics.drawable.Drawable car_green;
+    android.graphics.drawable.Drawable log;
+
 
     public UsingCanvas(Canvas canvas, Resources res, String thePackage) {
         this.canvas = canvas;
         this.res = res;
         this.thePackage = thePackage;
+        this.car_blue = createImageDrawble("car_blue");
+        this.car_red = createImageDrawble("car_red");
+        this.car_yellow = createImageDrawble("car_yellow");
+        this.car_green = createImageDrawble("car_green");
+        this.log = createImageDrawble("log");
     }
 
     @Override
@@ -43,13 +54,45 @@ public class UsingCanvas implements FrogCanvas {
 
     @Override
     public void drawImage(String image, int left, int top, int right, int bottom, FrogPaint frogPaint) {
-        if(image.endsWith(".***")){
-            image=image.substring(0,image.length()-4);
+//        if(image.endsWith(".***")){
+//            image=image.substring(0,image.length()-4);
+//        }
+//        int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
+        android.graphics.drawable.Drawable d;
+        switch (image) {
+            case "car_blue":
+                d = this.car_blue;
+                break;
+            case "car_red":
+                d = this.car_red;
+                break;
+            case "car_yellow":
+                d = this.car_yellow;
+                break;
+            case "car_green":
+                d = this.car_green;
+                break;
+            case "log":
+                d = this.log;
+                break;
+            default:
+                if (image.endsWith(".***")) {
+                    image = image.substring(0, image.length() - 4);
+                }
+                int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
+                d = res.getDrawable(drawableResourceId);
+                break;
+
         }
+        d.setBounds(left, top, right, bottom);
+
+        d.draw(canvas);
+    }
+
+    private android.graphics.drawable.Drawable createImageDrawble(String image) {
         int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
         android.graphics.drawable.Drawable d = res.getDrawable(drawableResourceId);
-        d.setBounds(left,top,right,bottom);
-        d.draw(canvas);
+        return d;
     }
 
     @Override

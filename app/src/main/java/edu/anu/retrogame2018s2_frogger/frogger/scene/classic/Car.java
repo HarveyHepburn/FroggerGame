@@ -13,7 +13,10 @@ public class Car extends MovingItem implements ActiveItem {
         super(movingParameters, scene.getGameSetting());
         frogPaint.setColor("#ff5252");
         this.scene = scene;
+        Random random = new Random();
+        this.color = random.nextInt(4);
     }
+    int color;
 
     Scene scene;
 
@@ -22,14 +25,10 @@ public class Car extends MovingItem implements ActiveItem {
         return width;
     }
 
-
-    
     @Override
     public void draw(FrogCanvas frogCanvas) {
-        Random random = new Random(1);
-        int res = random.nextInt(4);
         String pic = "";
-        switch (res) {
+        switch (color) {
             case 0:
                 pic = "car_blue";
                 break;
@@ -42,8 +41,6 @@ public class Car extends MovingItem implements ActiveItem {
             case 3:
                 pic = "car_yellow";
                 break;
-
-
         }
         frogCanvas.drawImage(pic,x,mp.getY(),x+getWidth(),mp.getY()+height,frogPaint);
     }

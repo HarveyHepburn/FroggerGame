@@ -2,15 +2,25 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 
 import java.util.HashMap;
 
-public class GameSetting extends HashMap<String, Integer> {
+public class GameSetting extends HashMap<String,Integer> {
 
     private Frog frog;
 
+    private SoundControl soundControl;
+
+    public SoundControl getSoundControl() {
+        return soundControl;
+    }
+
+    public void setSoundControl(SoundControl soundControl) {
+        this.soundControl = soundControl;
+    }
+
     public GameSetting(int width, int height) {
-        this.put("width", width);
-        this.put("height", height);
-        this.put("riverTop", 100);
-        this.put("riverBottom", 500);
+        this.put("width",width);
+        this.put("height",height);
+        this.put("riverTop",100);
+        this.put("riverBottom",500);
     }
 
     public void setFrog(Frog frog) {

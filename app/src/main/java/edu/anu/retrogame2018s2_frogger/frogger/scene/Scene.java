@@ -6,20 +6,14 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.SceneEndInformation;
 
-public interface Scene extends Drawable {
+public interface Scene extends Drawable{
     void onEnterScene(FrogCanvas frogCanvas);
-
     void onFinishScene(FrogCanvas frogCanvas);
-
-    void sceneOver(SceneEndInformation sceneEndInformation);
-
-    void move(Direction direction);
-
-    boolean isMoveble(int x, int y);//whether move is legel
-
-    Integer onTouch(float x, float y, boolean isDown);//isDown: is click down/up
-
-    boolean isActive();//whether scence is in active status
-
+    void sceneOver(DialogInformation dialogInformation);
+    void move(ControlPanel.Direction direction);
+    String onBackPressed();
+    boolean isMoveble(int x,int y);
+    String onTouch(float x, float y, boolean isDown);
+    boolean isActive();
     GameSetting getGameSetting();
 }

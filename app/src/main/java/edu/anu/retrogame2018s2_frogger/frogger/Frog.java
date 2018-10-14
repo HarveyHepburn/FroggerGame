@@ -1,8 +1,7 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
 
-import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
-import edu.anu.retrogame2018s2_frogger.frogger.scene.classic.Log;
+import com.frogger.anu.level.classic.Log;
 
 public class Frog {
     public Frog(Scene scene) {

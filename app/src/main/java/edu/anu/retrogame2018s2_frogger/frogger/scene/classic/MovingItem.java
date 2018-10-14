@@ -17,13 +17,12 @@ public abstract class MovingItem implements Drawable {
     public int getX() {
         return x;
     }
-
-    MovingItem(MovingParameters mp, GameSetting gameSetting) {
-        this.x = mp.calX(width);
+    MovingItem(MovingParameters mp,GameSetting gameSetting) {
+        this.x=mp.calX(width);
         this.mp = mp;
         frogPaint = new FrogPaint();
         height = 50;
-        this.gameSetting = gameSetting;
+        this.gameSetting=gameSetting;
     }
 
     public void resetItem(MovingParameters movingParameters) {

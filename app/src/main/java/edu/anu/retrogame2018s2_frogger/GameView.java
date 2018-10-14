@@ -24,14 +24,14 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        froggerGame = new FroggerGame(getWidth(), getHeight());
+        froggerGame = new FroggerGame(getWidth(), getHeight(), new Sounds(getContext()));
         timer.postDelayed(this, 10);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        froggerGame.draw(new UsingCanvas(canvas));
+        froggerGame.draw(new UsingCanvas(canvas, getResources(), BuildConfig.APPLICATION_ID));
     }
 
     @Override

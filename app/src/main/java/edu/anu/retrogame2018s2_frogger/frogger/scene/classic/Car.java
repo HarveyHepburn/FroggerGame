@@ -22,6 +22,8 @@ public class Car extends MovingItem implements ActiveItem {
         return width;
     }
 
+
+    
     @Override
     public void draw(FrogCanvas frogCanvas) {
         Random random = new Random(1);

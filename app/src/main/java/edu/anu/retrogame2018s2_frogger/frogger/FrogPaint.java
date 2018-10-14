@@ -1,40 +1,43 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
 public class FrogPaint {
+    private String Color = null;
+    private Boolean StyleFill = null;
+    private Integer TextSize = null;
     private TextAlign textAlign;
-    private String color;
-    private Integer textSize;
-    private Boolean styleFill;
+    public enum TextAlign {
+        Center
+    }
+    public void setTextAlign(TextAlign textAlign) {
+        this.textAlign = textAlign;
+    }
 
     public TextAlign getTextAlign() {
         return textAlign;
     }
 
-    public void setTextAlign(TextAlign textAlign) {
-        this.textAlign = textAlign;
-    }
-
-    public String getColor() {
-        return color;
-    }
 
     public void setColor(String color) {
-        this.color = color;
-    }
-
-    public void setTextSize(int textSize) {
-        this.textSize = textSize;
+        Color = color;
     }
 
     public Integer getTextSize() {
-        return textSize;
+        return TextSize;
+    }
+
+    public void setTextSize(int textSize) {
+        TextSize = textSize;
     }
 
     public void setStyleFill(Boolean styleFill) {
-        this.styleFill = styleFill;
+        StyleFill = styleFill;
+    }
+
+    public String getColor() {
+        return Color;
     }
 
     public Boolean getStyleFill() {
-        return styleFill;
+        return StyleFill;
     }
 }

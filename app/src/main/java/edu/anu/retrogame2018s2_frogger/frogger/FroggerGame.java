@@ -6,6 +6,8 @@ import edu.anu.retrogame2018s2_frogger.SceneFactory;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.classic.ClassicFroggerScene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.level.LevelScene;
+import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
+
 public class FroggerGame implements Drawable {
     GameSetting gameSetting;
     Scene currentScene;

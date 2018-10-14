@@ -5,6 +5,8 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.level;
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
+import edu.anu.retrogame2018s2_frogger.frogger.animation.ScalingAnimation;
+import edu.anu.retrogame2018s2_frogger.frogger.widget.FrogButton;
 
 public class LevelButton extends FrogButton {
     int level;

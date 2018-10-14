@@ -15,7 +15,7 @@ public class Cars extends Items implements ItemManager {
     }
 
     @Override
-    public ActiveItem generateNewItem(MovingParameters movingParameters) {
+    public ActiveItem getNewItem(MovingParameters movingParameters) {
         return new Car(movingParameters, scene);
     }
 }

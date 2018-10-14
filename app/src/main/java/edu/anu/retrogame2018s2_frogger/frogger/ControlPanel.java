@@ -1,6 +1,7 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
-import android.transition.Scene;
+
+import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class ControlPanel {
     public ControlPanel(int x, int y, Scene scene) {

@@ -7,11 +7,10 @@ import java.util.List;
 import java.util.Random;
 
 import edu.anu.retrogame2018s2_frogger.frogger.ControlPanel;
+import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
-import edu.anu.retrogame2018s2_frogger.frogger.SceneEndInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
-
 
 public class LevelScene implements Scene {
     List<LevelButton> levelButtons;

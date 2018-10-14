@@ -36,7 +36,7 @@ public class ClassicFroggerScene implements Scene {
         cars = new Cars(this);
         logs = new Logs(this);
         this.frogHole = new FrogHole(this);
-     //   controlPanel = new ControlPanel(gameSetting.getWidth() - 300, gameSetting.getHeight() - 300, this);
+        controlPanel = new ControlPanel(gameSetting.getWidth() - 300, gameSetting.getHeight() - 300, this);
     }
 
     @Override
@@ -49,7 +49,7 @@ public class ClassicFroggerScene implements Scene {
         controlPanel.draw(frogCanvas);
         if (isActive && this.frogHole.inHole(frog)) {
             if (this.frogHole.isFinished()) {
-                sceneOver(new SceneEndInformation(true, "Mission Accomplished !"));
+                sceneOver(new DialogInformation("Mission Accomplished !"));
             } else {
                 this.frog.resetFrog();
             }
@@ -61,7 +61,7 @@ public class ClassicFroggerScene implements Scene {
         if (isActive) {
             cars.step();
             if (this.frog.getLog() == null && this.frog.getY() >= gameSetting.get("riverTop") && frog.getY() <= gameSetting.get("riverBottom")) {
-                sceneOver(new SceneEndInformation(false, "You dropped into the river !"));
+                sceneOver(new DialogInformation("You dropped into the river !"));
             }
             frog.step();
             logs.step();
@@ -84,14 +84,9 @@ public class ClassicFroggerScene implements Scene {
     }
 
     @Override
-    public void sceneOver(SceneEndInformation sceneEndInformation) {
+    public void sceneOver(DialogInformation sceneEndInformation) {
         isActive = false;
         this.dialog = new Dialog(sceneEndInformation, gameSetting);
-    }
-
-    @Override
-    public void move(Direction direction) {
-
     }
 
     @Override
@@ -99,9 +94,17 @@ public class ClassicFroggerScene implements Scene {
         return gameSetting;
     }
 
-
     public void move(ControlPanel.Direction direction) {
         this.frog.move(direction);
+    }
+
+    @Override
+    public String onBackPressed() {
+        if(isActive){
+            isActive=false;
+            this.dialog=new Dialog(new DialogInformation("Paused"),gameSetting);
+        }
+        return null;
     }
 
     @Override
@@ -110,12 +113,16 @@ public class ClassicFroggerScene implements Scene {
     }
 
     @Override
-    public Integer onTouch(float x, float y, boolean isDown) {
+    public String onTouch(float x, float y, boolean isDown) {
         if (isActive) {
             this.controlPanel.onTouch(x, y, isDown);
         } else if (this.dialog != null) {
             if (this.dialog.gotClick(x, y)) {
-                return 0;
+                if(this.dialog.dialogInformation.getInformation().equals("Paused")){
+                    this.isActive=true;
+                    return null;
+                }
+                return "levels";
             }
         }
         return null;

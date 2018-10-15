@@ -6,7 +6,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 
-public abstract class MovingItem implements Drawable {
+public abstract class MovingItem extends Collision implements Drawable {
     int width = 100;
     int height;
     MovingParameters mp;
@@ -43,13 +43,14 @@ public abstract class MovingItem implements Drawable {
         frogCanvas.drawRect(x, mp.getY(), x + width, mp.getY() + height, frogPaint);
     }
 
-    public boolean Collision(Frog frog) {
-        if (frog.getY() < mp.getY() + this.height && frog.getY() >= mp.getY()) {
-            if (frog.getX() + frog.getRadius() >= this.x && frog.getX() - frog.getRadius() <= this.x + this.width) {
-                return true;
-            }
-        }
-        return false;
+    public boolean Collision(Spirit spirit) {
+//        if (spirit.getY() < mp.getY() + this.height && spirit.getY() >= mp.getY()) {
+//            if (spirit.getX() + spirit.getRadius() >= this.x && spirit.getX() - spirit.getRadius() <= this.x + this.width) {
+//                return true;
+//            }
+//        }
+//        return false;
+        return collision(spirit,this.x,mp.getY(),this.height,width);
     }
 
     public boolean outOfMap() {

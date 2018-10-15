@@ -3,8 +3,9 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.classic.Log;
+import edu.anu.retrogame2018s2_frogger.frogger.scene.classic.Spirit;
 
-public class Frog {
+public class Frog implements Spirit {
     public Frog(Scene scene) {
         this.x = scene.getGameSetting().getWidth() / 2;
         this.y = scene.getGameSetting().getHeight() - radius;

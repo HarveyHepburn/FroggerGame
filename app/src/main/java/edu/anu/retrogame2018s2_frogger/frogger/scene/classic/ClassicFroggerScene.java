@@ -8,7 +8,6 @@ import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
-import edu.anu.retrogame2018s2_frogger.frogger.SceneEndInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class ClassicFroggerScene implements Scene {
@@ -64,11 +63,14 @@ public class ClassicFroggerScene implements Scene {
             if (this.frog.getLog() == null && this.frog.getY() >= gameSetting.get("riverTop") && frog.getY() <= gameSetting.get("riverBottom")) {
                 sceneOver(new DialogInformation("You dropped into the river !"));
             }
+
             frog.step();
             logs.step();
         } else {
             if (dialog != null)
                 dialog.step();
+            this.getGameSetting().getSoundControl().stopSound();
+
         }
     }
 
@@ -101,9 +103,9 @@ public class ClassicFroggerScene implements Scene {
 
     @Override
     public String onBackPressed() {
-        if(isActive){
-            isActive=false;
-            this.dialog=new Dialog(new DialogInformation("Paused"),gameSetting);
+        if (isActive) {
+            isActive = false;
+            this.dialog = new Dialog(new DialogInformation("Paused"), gameSetting);
         }
         return null;
     }
@@ -119,8 +121,8 @@ public class ClassicFroggerScene implements Scene {
             this.controlPanel.onTouch(x, y, isDown);
         } else if (this.dialog != null) {
             if (this.dialog.gotClick(x, y)) {
-                if(this.dialog.dialogInformation.getInformation().equals("Paused")){
-                    this.isActive=true;
+                if (this.dialog.dialogInformation.getInformation().equals("Paused")) {
+                    this.isActive = true;
                     return null;
                 }
                 return "levels";

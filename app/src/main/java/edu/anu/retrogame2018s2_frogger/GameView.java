@@ -19,7 +19,6 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
         this.setOnTouchListener(this);
 
     }
-
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
@@ -49,4 +48,5 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
         invalidate();
         timer.postDelayed(this, 30);
     }
+    
 }

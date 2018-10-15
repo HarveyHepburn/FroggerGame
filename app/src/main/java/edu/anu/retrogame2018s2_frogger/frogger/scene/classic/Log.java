@@ -31,12 +31,12 @@ public class Log extends MovingItem implements MoveAlong, ActiveItem {
     }
 
     @Override
-    public void moveAlong(Frog frog) {
-        if (frog.getX() > 0 && frog.getX() < gameSetting.getWidth())
+    public void moveAlong(Spirit spirit) {
+        if (spirit.getX() > 0 && spirit.getX() < gameSetting.getWidth())
             if (mp.getDir()) {
-                frog.setX(frog.getX() + mp.getSpeed());
+                spirit.setX(spirit.getX() + mp.getSpeed());
             } else {
-                frog.setX(frog.getX() - mp.getSpeed());
+                spirit.setX(spirit.getX() - mp.getSpeed());
             }
     }
 }

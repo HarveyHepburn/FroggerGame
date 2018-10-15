@@ -18,6 +18,8 @@ public class ClassicFroggerScene implements Scene {
     private Cars cars;
     private Background background;
     private ControlPanel controlPanel;
+    private Timer timer;
+    private Star star;
 
     public Dialog getDialog() {
         return dialog;
@@ -32,6 +34,8 @@ public class ClassicFroggerScene implements Scene {
         this.gameSetting.setFrog(frog);
         this.frog = new Frog(this);
         this.gameSetting.setFrog(this.frog);
+        this.timer = new Timer(this);
+        this.star=new Star(this,timer);
 
         background = new Background(this);
         cars = new Cars(this);
@@ -48,6 +52,8 @@ public class ClassicFroggerScene implements Scene {
         frog.draw(frogCanvas);
         cars.draw(frogCanvas);
         controlPanel.draw(frogCanvas);
+        timer.draw(frogCanvas);
+        star.draw(frogCanvas);
         if (isActive && this.frogHole.inHole(frog)) {
             if (this.frogHole.isFinished()) {
                 sceneOver(new DialogInformation("Mission Accomplished !"));
@@ -66,6 +72,8 @@ public class ClassicFroggerScene implements Scene {
             }
             frog.step();
             logs.step();
+            timer.step();
+            star.step();
         } else {
             if (dialog != null)
                 dialog.step();
@@ -101,9 +109,9 @@ public class ClassicFroggerScene implements Scene {
 
     @Override
     public String onBackPressed() {
-        if(isActive){
-            isActive=false;
-            this.dialog=new Dialog(new DialogInformation("Paused"),gameSetting);
+        if (isActive) {
+            isActive = false;
+            this.dialog = new Dialog(new DialogInformation("Paused"), gameSetting);
         }
         return null;
     }
@@ -119,8 +127,8 @@ public class ClassicFroggerScene implements Scene {
             this.controlPanel.onTouch(x, y, isDown);
         } else if (this.dialog != null) {
             if (this.dialog.gotClick(x, y)) {
-                if(this.dialog.dialogInformation.getInformation().equals("Paused")){
-                    this.isActive=true;
+                if (this.dialog.dialogInformation.getInformation().equals("Paused")) {
+                    this.isActive = true;
                     return null;
                 }
                 return "levels";

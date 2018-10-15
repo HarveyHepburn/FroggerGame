@@ -114,16 +114,16 @@ public class UsingCanvas implements FrogCanvas {
                 d = this.car_green;
                 break;
             case "frog_static":
-                d=getFrogDrawable(image,frogPaint.getDirection());
+                d = getFrogDrawable(image, frogPaint.getDirection());
                 break;
             case "frog_jump_1":
-                d=getFrogDrawable(image,frogPaint.getDirection());
+                d = getFrogDrawable(image, frogPaint.getDirection());
                 break;
             case "frog_jump_2":
-                d=getFrogDrawable(image,frogPaint.getDirection());
+                d = getFrogDrawable(image, frogPaint.getDirection());
                 break;
             case "frog_jump_3":
-                d=getFrogDrawable(image,frogPaint.getDirection());
+                d = getFrogDrawable(image, frogPaint.getDirection());
                 break;
             case "log":
                 d = this.log;
@@ -148,24 +148,23 @@ public class UsingCanvas implements FrogCanvas {
     }
 
     private android.graphics.drawable.Drawable getFrogDrawable(String image, Direction direction) {
-        String s="";
-        if(direction!=null)
-        switch (direction){
-            case NORTH:
-                s="_down";
-                break;
-            case WEST:
-                s="_left";
-                break;
-            case EAST:
-                s="_right";
-                break;
-        }
-        int drawableResourceId = res.getIdentifier(image+s, "drawable", thePackage);
+        String s = "";
+        if (direction != null)
+            switch (direction) {
+                case NORTH:
+                    s = "_down";
+                    break;
+                case WEST:
+                    s = "_left";
+                    break;
+                case EAST:
+                    s = "_right";
+                    break;
+            }
+        int drawableResourceId = res.getIdentifier(image + s, "drawable", thePackage);
         android.graphics.drawable.Drawable d = res.getDrawable(drawableResourceId);
         return d;
     }
-
 
 
     @Override
@@ -174,7 +173,11 @@ public class UsingCanvas implements FrogCanvas {
     }
 
     static android.graphics.Paint getPaint(FrogPaint frogPaint) {
+
         android.graphics.Paint paint = new android.graphics.Paint();
+        if (frogPaint == null) {
+            return null;
+        }
         if (frogPaint.getColor() != null) {
             paint.setColor(Color.parseColor(frogPaint.getColor()));
         }

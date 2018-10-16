@@ -7,7 +7,10 @@ import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
+import edu.anu.retrogame2018s2_frogger.frogger.FroggerGame;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
+import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
+import edu.anu.retrogame2018s2_frogger.frogger.SceneFactory;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class ClassicFroggerScene implements Scene {
@@ -19,6 +22,7 @@ public class ClassicFroggerScene implements Scene {
     private ControlPanel controlPanel;
     private Timer timer;
     private Star star;
+    private int pressCount = 0;
 
     public Dialog getDialog() {
         return dialog;
@@ -34,7 +38,7 @@ public class ClassicFroggerScene implements Scene {
         this.frog = new Frog(this);
         this.gameSetting.setFrog(this.frog);
         this.timer = new Timer(this);
-        this.star=new Star(this,timer);
+        this.star = new Star(this, timer);
 
         background = new Background(this);
         cars = new Cars(this);
@@ -113,8 +117,11 @@ public class ClassicFroggerScene implements Scene {
     public String onBackPressed() {
         if (isActive) {
             isActive = false;
-            this.dialog = new Dialog(new DialogInformation("Paused"), gameSetting);
+            this.dialog = new Dialog(new DialogInformation("Paused, press back again to quit"), gameSetting);
+        } else {
+            return "levels";
         }
+
         return null;
     }
 
@@ -129,9 +136,13 @@ public class ClassicFroggerScene implements Scene {
             this.controlPanel.onTouch(x, y, isDown);
         } else if (this.dialog != null) {
             if (this.dialog.gotClick(x, y)) {
-                if (this.dialog.dialogInformation.getInformation().equals("Paused")) {
+                if (this.dialog.dialogInformation.getInformation().equals("Paused, press back again to quit")) {
                     this.isActive = true;
                     return null;
+                } else if (this.dialog.dialogInformation.getInformation().equals("Mission Accomplished !")) {
+                    RecordInfo record = new RecordInfo("DFDF", frogHole.holeNumber, timer.getTime());
+                    gameSetting.getDbManager().addData(record);
+                    return "ranking";
                 }
                 return "levels";
             }

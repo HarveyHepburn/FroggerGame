@@ -7,6 +7,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
+import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
+
+import java.util.prefs.Preferences;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -17,13 +21,51 @@ public class WelcomeActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        DataProcess dataProcess = new DataProcess();
+        if (dataProcess.load() == "") {
+            setContentView(R.layout.activity_sign_up);
+        } else {
+            setContentView(R.layout.activity_welcome);
+        }
+
+
         setContentView(R.layout.activity_welcome);
     }
 
-    public void startGame(View view) {
+
+    public void submit(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+        EditText editText = (EditText) findViewById(R.id.name);
+        String name = editText.getText().toString();
+        RankDatabaseHelper rankDatabaseHelper=new RankDatabaseHelper();
+        rankDatabaseHelper.playerExist()
+        DataProcess dataProcess = new DataProcess();
+        dataProcess.save(name);
+    }
+    public void login(View view) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
+        String
+        EditText editText = (EditText) findViewById(R.id.name);
+        String name = editText.getText().toString();
+        DataProcess dataProcess = new DataProcess();
+        dataProcess.save(name);
     }
+    public void logout(View view) {
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
+        EditText editText = (EditText) findViewById(R.id.name);
+        String name = editText.getText().toString();
+        DataProcess dataProcess = new DataProcess();
+        dataProcess.save(name);
+    }
+
+    public void cancel(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
+        startActivity(intent);
+    }
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

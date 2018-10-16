@@ -21,6 +21,7 @@ public class WelcomeScene implements Scene {
         this.gameSetting = gameSetting;
         buttons.put("levels", new WelcomeButton(gameSetting.getWidth() - 200, gameSetting.getHeight() - 200, "Start Game"));
         buttons.put("setting", new WelcomeButton(200, 200, "Game Setting"));
+        buttons.put("ranking", new WelcomeButton(200, 800, "Ranking"));
         gameSetting.getSoundControl().playMusic("welcome_music.mp3");
     }
 

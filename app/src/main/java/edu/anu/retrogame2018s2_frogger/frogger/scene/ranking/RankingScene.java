@@ -1,31 +1,19 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.ranking;
 
-import android.content.ContentValues;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
-import android.widget.TextView;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-import edu.anu.retrogame2018s2_frogger.MyApplication;
-import edu.anu.retrogame2018s2_frogger.RankDatabaseHelper;
+
 import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
-import edu.anu.retrogame2018s2_frogger.frogger.PlayerInfo;
+import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class RankingScene implements Scene {
     GameSetting gameSetting;
-    private RankDatabaseHelper dbHelper;
-    String name;
-    int level;
-    int time;
-    ArrayList<PlayerInfo> playersData = new ArrayList<>();
 
     public RankingScene(GameSetting gameSetting) {
         this.gameSetting = gameSetting;
@@ -33,50 +21,7 @@ public class RankingScene implements Scene {
 
     @Override
     public void onEnterScene(FrogCanvas frogCanvas) {
-        dbHelper = new RankDatabaseHelper(MyApplication.getContext(), "RankStore.db", null, 1);
-        dbHelper.getWritableDatabase();//if there is no database, it will create
-        addToDB();
-        getFromDB();
-    }
 
-    public void addToDB() {
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        ContentValues values = new ContentValues();
-
-        values.put("name", name);
-        values.put("level", level);
-        values.put("time", time);
-        db.insert("Rank", null, values);
-    }
-
-    public void getFromDB() {
-
-        StringBuilder sb = new StringBuilder();
-
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
-        Cursor cursor = db.query("Rank", null, null, null, null, null, null);
-        if (cursor.moveToFirst()) {
-
-            do {
-                String name = cursor.getString(cursor.getColumnIndex("name"));
-                int level = cursor.getInt(cursor.getColumnIndex("level"));
-                int time = cursor.getInt(cursor.getColumnIndex("time"));
-
-                PlayerInfo pi = new PlayerInfo(name, level, time);
-
-                playersData.add(pi);
-
-            } while (cursor.moveToNext());
-        }
-        cursor.close();
-        Collections.sort(playersData);
-        //get finished, now to sort and display the data
-
-        for (PlayerInfo p : playersData) {
-            String str = p.getName() + "   Level: " + p.getLevel() + "   Time: " + p.getTime() + "s" + "\n";
-            Log.d("aaaa", str);
-            sb.append(str);
-        }
     }
 
     @Override
@@ -96,7 +41,7 @@ public class RankingScene implements Scene {
 
     @Override
     public String onBackPressed() {
-        return null;
+        return "welcome";
     }
 
     @Override
@@ -121,21 +66,48 @@ public class RankingScene implements Scene {
 
     @Override
     public void draw(FrogCanvas frogCanvas) {
-        playersData.add(new PlayerInfo("Jinwei", 3, 10));
-        playersData.add(new PlayerInfo("Jinwei", 4, 10));
-        drawReal(frogCanvas, playersData);
+        frogCanvas.drawImage("levelchoose_background", 0, 0, gameSetting.getWidth(), gameSetting.getHeight(), null);
+
+
+        ArrayList<RecordInfo> recordInfos = gameSetting.getDbManager().getData();
+        drawReal(frogCanvas, recordInfos);
 
     }
 
-    public void drawReal(FrogCanvas frogCanvas, ArrayList<PlayerInfo> playerInfos) {
-        int x = 20;
-        int y = 100;
+    public void drawReal(FrogCanvas frogCanvas, ArrayList<RecordInfo> recordInfos) {
+        double x = 0.2 * gameSetting.getWidth();
+        int y = 200;
+        FrogPaint frogPaintGold = new FrogPaint();
+        frogPaintGold.setColor("#ffff00");
+        frogPaintGold.setTextSize(100);
+
+        FrogPaint frogPaintSilver = new FrogPaint();
+        frogPaintSilver.setColor("#e0e0e0");
+        frogPaintSilver.setTextSize(100);
+
+        FrogPaint frogPaintBrownzen = new FrogPaint();
+        frogPaintBrownzen.setColor("#ffab00");
+        frogPaintBrownzen.setTextSize(100);
+
         FrogPaint frogPaint = new FrogPaint();
         frogPaint.setTextSize(100);
-        for (PlayerInfo i : playerInfos) {
-            frogCanvas.drawText(i.getName() + " " + i.getLevel() + " " + i.getTime(), x, y, frogPaint);
-            x += 40;
-            y += 100;
+        frogPaint.setColor("#ffffff");
+
+        for (int i = 0; i < recordInfos.size(); i++) {
+            if (i == 0) {
+                frogCanvas.drawText("Name" + "  " + "Level" + "   " + "Time" + "                  RANKING", (int) x - 70, y - 100, frogPaint);
+                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime()+"s", (int) x, y, frogPaintGold);
+                y += 100;
+            } else if (i == 1) {
+                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime()+"s", (int) x, y, frogPaintSilver);
+                y += 100;
+            } else if (i == 2) {
+                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime()+"s", (int) x, y, frogPaintBrownzen);
+                y += 100;
+            } else {
+                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime()+"s", (int) x, y, frogPaint);
+                y += 100;
+            }
         }
 
     }

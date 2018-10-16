@@ -4,7 +4,6 @@ import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
-import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class Timer implements Drawable {
@@ -15,7 +14,7 @@ public class Timer implements Drawable {
 
 
     Timer(Scene scene) {
-        this.scene=scene;
+        this.scene = scene;
         frogPaint = new FrogPaint();
         frogPaint.setColor("#ffffff");
         frogPaint.setTextSize(60);
@@ -30,16 +29,21 @@ public class Timer implements Drawable {
 
     @Override
     public void step() {
-        long currentTime=System.currentTimeMillis();
-        if ( currentTime- startTime >= 1000) {
+        long currentTime = System.currentTimeMillis();
+        if (currentTime - startTime >= 1000) {
             time -= 1;
-            startTime=currentTime;
+            startTime = currentTime;
         }
-        if(time<=0){
+        if (time <= 0) {
             scene.sceneOver(new DialogInformation("Time out"));
         }
     }
-    public void addTime(int add){
-        time+=add;
+
+    public void addTime(int add) {
+        time += add;
+    }
+
+    public int getTime() {
+        return time;
     }
 }

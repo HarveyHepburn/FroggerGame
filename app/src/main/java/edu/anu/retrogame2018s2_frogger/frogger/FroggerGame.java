@@ -5,6 +5,7 @@ import java.util.HashMap;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.classic.ClassicFroggerScene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.level.LevelScene;
+import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.RankingScene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.welcome.WelcomeScene;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
 
@@ -21,6 +22,7 @@ public class FroggerGame implements Drawable {
         scenes.put("level_3", ClassicFroggerScene.class);
         scenes.put("level_4", ClassicFroggerScene.class);
         scenes.put("level_5", ClassicFroggerScene.class);
+        scenes.put("ranking", RankingScene.class);
         gameSetting = new GameSetting(width, height);
         gameSetting.setSoundControl(soundControl);
         gameSetting.put("levels", 5);

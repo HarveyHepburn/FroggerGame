@@ -56,7 +56,7 @@ public class Star extends Collision implements Spirit, Drawable {
 
         if (display&&this.collision(scene.getGameSetting().getFrog(), x, y, radius, radius)) {
             display = false;
-            timer.addTime(2);
+            timer.addTime(10);
         }
     }
 }

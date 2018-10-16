@@ -1,11 +1,11 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
-public class PlayerInfo implements Comparable<PlayerInfo> {
+public class RecordInfo implements Comparable<RecordInfo> {
     private String name;
     private int level;
     private int time;
 
-    public PlayerInfo(String name, int level, int time) {
+    public RecordInfo(String name, int level, int time) {
         this.name = name;
         this.level = level;
         this.time = time;
@@ -24,7 +24,7 @@ public class PlayerInfo implements Comparable<PlayerInfo> {
     }
 
     @Override
-    public int compareTo(PlayerInfo o) {
+    public int compareTo(RecordInfo o) {
         if (this.getLevel() < o.getLevel()) {
             return 1;
         } else if (this.getLevel() > o.getLevel()) {

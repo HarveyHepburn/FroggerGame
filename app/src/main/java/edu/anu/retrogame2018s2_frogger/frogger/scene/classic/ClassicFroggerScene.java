@@ -7,7 +7,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
+import edu.anu.retrogame2018s2_frogger.frogger.FroggerGame;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
+import edu.anu.retrogame2018s2_frogger.frogger.SceneFactory;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class ClassicFroggerScene implements Scene {
@@ -34,7 +36,7 @@ public class ClassicFroggerScene implements Scene {
         this.frog = new Frog(this);
         this.gameSetting.setFrog(this.frog);
         this.timer = new Timer(this);
-        this.star=new Star(this,timer);
+        this.star = new Star(this, timer);
 
         background = new Background(this);
         cars = new Cars(this);
@@ -68,6 +70,7 @@ public class ClassicFroggerScene implements Scene {
             cars.step();
             if (this.frog.getLog() == null && this.frog.getY() >= gameSetting.get("riverTop") && frog.getY() <= gameSetting.get("riverBottom")) {
                 sceneOver(new DialogInformation("You dropped into the river !"));
+
             }
 
             frog.step();
@@ -132,7 +135,7 @@ public class ClassicFroggerScene implements Scene {
                 if (this.dialog.dialogInformation.getInformation().equals("Paused")) {
                     this.isActive = true;
                     return null;
-                }
+                } else if (this.dialog.dialogInformation.getInformation().equals("Mission Accomplished !"))return "ranking";
                 return "levels";
             }
         }

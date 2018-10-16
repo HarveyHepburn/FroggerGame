@@ -25,25 +25,6 @@ public class UsingCanvas implements FrogCanvas {
     android.graphics.drawable.Drawable car_yellow;
     android.graphics.drawable.Drawable car_green;
     android.graphics.drawable.Drawable log;
-    android.graphics.drawable.Drawable frog_0;
-    android.graphics.drawable.Drawable frog_1;
-    android.graphics.drawable.Drawable frog_2;
-    android.graphics.drawable.Drawable frog_3;
-
-    android.graphics.drawable.Drawable frog_left_0;
-    android.graphics.drawable.Drawable frog_left_1;
-    android.graphics.drawable.Drawable frog_left_2;
-    android.graphics.drawable.Drawable frog_left_3;
-
-    android.graphics.drawable.Drawable frog_right_0;
-    android.graphics.drawable.Drawable frog_right_1;
-    android.graphics.drawable.Drawable frog_right_2;
-    android.graphics.drawable.Drawable frog_right_3;
-
-    android.graphics.drawable.Drawable frog_down_0;
-    android.graphics.drawable.Drawable frog_down_1;
-    android.graphics.drawable.Drawable frog_down_2;
-    android.graphics.drawable.Drawable frog_down_3;
 
     public UsingCanvas(Canvas canvas, Resources res, String thePackage) {
         this.canvas = canvas;
@@ -54,25 +35,7 @@ public class UsingCanvas implements FrogCanvas {
         this.car_yellow = createImageDrawble("car_yellow");
         this.car_green = createImageDrawble("car_green");
         this.log = createImageDrawble("log");
-//        this.frog_0 = createImageDrawble("frog_static");
-//        this.frog_1 = createImageDrawble("frog_jump_1");
-//        this.frog_2 = createImageDrawble("frog_jump_2");
-//        this.frog_3 = createImageDrawble("frog_jump_3");
-//
-//        this.frog_left_0 = createImageDrawble("frog_static_left");
-//        this.frog_left_1 = createImageDrawble("frog_jump_1_left");
-//        this.frog_left_2 = createImageDrawble("frog_jump_2_left");
-//        this.frog_left_3 = createImageDrawble("frog_jump_3_left");
-//
-//        this.frog_right_0 = createImageDrawble("frog_static_right");
-//        this.frog_right_1 = createImageDrawble("frog_jump_1_right");
-//        this.frog_right_2 = createImageDrawble("frog_jump_2_right");
-//        this.frog_right_3 = createImageDrawble("frog_jump_3_right");
-//
-//        this.frog_down_0 = createImageDrawble("frog_static_down");
-//        this.frog_down_1 = createImageDrawble("frog_jump_1_down");
-//        this.frog_down_2 = createImageDrawble("frog_jump_2_down");
-//        this.frog_down_3 = createImageDrawble("frog_jump_3_down");
+
     }
 
     Bitmap bitmap;

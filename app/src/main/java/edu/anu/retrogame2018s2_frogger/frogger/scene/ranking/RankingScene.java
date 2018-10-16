@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import edu.anu.retrogame2018s2_frogger.MyApplication;
-import edu.anu.retrogame2018s2_frogger.R;
 import edu.anu.retrogame2018s2_frogger.RankDatabaseHelper;
 import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;

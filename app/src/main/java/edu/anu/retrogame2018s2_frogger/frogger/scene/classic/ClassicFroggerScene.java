@@ -22,6 +22,7 @@ public class ClassicFroggerScene implements Scene {
     private ControlPanel controlPanel;
     private Timer timer;
     private Star star;
+    private int pressCount = 0;
 
     public Dialog getDialog() {
         return dialog;
@@ -116,8 +117,11 @@ public class ClassicFroggerScene implements Scene {
     public String onBackPressed() {
         if (isActive) {
             isActive = false;
-            this.dialog = new Dialog(new DialogInformation("Paused"), gameSetting);
+            this.dialog = new Dialog(new DialogInformation("Paused, press back again to quit"), gameSetting);
+        } else {
+            return "levels";
         }
+
         return null;
     }
 
@@ -132,7 +136,7 @@ public class ClassicFroggerScene implements Scene {
             this.controlPanel.onTouch(x, y, isDown);
         } else if (this.dialog != null) {
             if (this.dialog.gotClick(x, y)) {
-                if (this.dialog.dialogInformation.getInformation().equals("Paused")) {
+                if (this.dialog.dialogInformation.getInformation().equals("Paused, press back again to quit")) {
                     this.isActive = true;
                     return null;
                 } else if (this.dialog.dialogInformation.getInformation().equals("Mission Accomplished !")) {

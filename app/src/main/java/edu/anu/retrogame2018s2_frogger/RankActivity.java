@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
@@ -37,11 +38,12 @@ public class RankActivity extends AppCompatActivity {
         dbHelper = new RankDatabaseHelper(this, "RankStore.db", null, 1);
         dbHelper.getWritableDatabase();//if there is no database, it will create
         addToDB();
+        System.out.println("Add to DB!!!!!!!");
+
         getFromDB();
     }
 
     public void addToDB() {
-
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
 
@@ -75,8 +77,10 @@ public class RankActivity extends AppCompatActivity {
         cursor.close();
         Collections.sort(playersData);
         //get finished, now to sort and display the data
+
         for (PlayerInfo p : playersData) {
             String str = p.getName() + "   Level: " + p.getLevel() + "   Time: " + p.getTime() + "s" + "\n";
+            Log.d("aaaa", str);
             sb.append(str);
             showData.setText(sb.toString());
         }

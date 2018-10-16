@@ -5,7 +5,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.widget.Toast;
 
-public class RankDatabaseHelper extends SQLiteOpenHelper {
+import java.util.ArrayList;
+
+import edu.anu.retrogame2018s2_frogger.frogger.PlayerInfo;
+import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.SQLiteDataBase;
+
+public class RankDatabaseHelper extends SQLiteOpenHelper implements SQLiteDataBase {
 
     public static final String CREATE_RANK = "create table Rank ("
             + "id integer primary key autoincrement, "
@@ -29,5 +34,15 @@ public class RankDatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
+    }
+
+    @Override
+    public void addData(PlayerInfo playerInfo) {
+
+    }
+
+    @Override
+    public ArrayList<PlayerInfo> getData() {
+        return null;
     }
 }

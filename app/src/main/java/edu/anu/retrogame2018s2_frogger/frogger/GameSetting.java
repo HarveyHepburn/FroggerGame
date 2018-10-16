@@ -2,6 +2,7 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 
 import java.util.HashMap;
 
+import edu.anu.retrogame2018s2_frogger.frogger.Player.Player;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.DBManager;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
 

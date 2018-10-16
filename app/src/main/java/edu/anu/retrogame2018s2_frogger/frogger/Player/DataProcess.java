@@ -5,9 +5,8 @@ import java.util.prefs.Preferences;
 public class DataProcess {
     Preferences preferences = Preferences.userNodeForPackage(DataProcess.class);
 
-    public void load() {
-        preferences.get("NAME", "");
-
+    public String load() {
+        return preferences.get("NAME", "");
     }
 
     public void save(String name) {

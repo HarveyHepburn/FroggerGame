@@ -9,6 +9,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FroggerGame;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
+import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.SceneFactory;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
@@ -58,7 +59,6 @@ public class ClassicFroggerScene implements Scene {
         if (isActive && this.frogHole.inHole(frog)) {
             if (this.frogHole.isFinished()) {
                 sceneOver(new DialogInformation("Mission Accomplished !"));
-                //
             } else {
                 this.frog.resetFrog();
             }
@@ -71,7 +71,6 @@ public class ClassicFroggerScene implements Scene {
             cars.step();
             if (this.frog.getLog() == null && this.frog.getY() >= gameSetting.get("riverTop") && frog.getY() <= gameSetting.get("riverBottom")) {
                 sceneOver(new DialogInformation("You dropped into the river !"));
-
             }
 
             frog.step();
@@ -136,7 +135,11 @@ public class ClassicFroggerScene implements Scene {
                 if (this.dialog.dialogInformation.getInformation().equals("Paused")) {
                     this.isActive = true;
                     return null;
-                } else if (this.dialog.dialogInformation.getInformation().equals("Mission Accomplished !"))return "ranking";
+                } else if (this.dialog.dialogInformation.getInformation().equals("Mission Accomplished !")) {
+                    RecordInfo record = new RecordInfo("DFDF", frogHole.holeNumber, timer.getTime());
+                    gameSetting.getDbManager().addData(record);
+                    return "ranking";
+                }
                 return "levels";
             }
         }

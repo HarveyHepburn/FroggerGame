@@ -1,4 +1,4 @@
-package edu.anu.retrogame2018s2_frogger.frogger.Player;
+package edu.anu.retrogame2018s2_frogger.frogger.player;
 
 import java.util.prefs.Preferences;
 

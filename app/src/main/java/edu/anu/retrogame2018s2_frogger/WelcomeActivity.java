@@ -8,10 +8,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
 
 import java.util.prefs.Preferences;
-
-import edu.anu.retrogame2018s2_frogger.frogger.Player.DataProcess;
 
 public class WelcomeActivity extends AppCompatActivity {
 

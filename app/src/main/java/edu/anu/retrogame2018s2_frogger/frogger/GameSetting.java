@@ -2,7 +2,7 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 
 import java.util.HashMap;
 
-import edu.anu.retrogame2018s2_frogger.frogger.Player.Player;
+import edu.anu.retrogame2018s2_frogger.frogger.player.Player;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.DBManager;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
 
@@ -18,6 +18,14 @@ public class GameSetting extends HashMap<String, Integer> {
 
     public SoundControl getSoundControl() {
         return soundControl;
+    }
+
+    public void setPlayer(Player player) {
+        this.player = player;
+    }
+
+    public Player getPlayer() {
+        return player;
     }
 
     public void setDbManager(DBManager dbManager) {

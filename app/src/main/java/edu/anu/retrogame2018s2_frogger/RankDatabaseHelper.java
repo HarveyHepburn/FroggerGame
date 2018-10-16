@@ -14,7 +14,6 @@ import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.DBManager;
 
 public class RankDatabaseHelper extends SQLiteOpenHelper implements DBManager {
-    private RankDatabaseHelper dbHelper;
 
     public static final String CREATE_RANK = "create table Rank ("
             + "id integer primary key autoincrement, "
@@ -24,9 +23,9 @@ public class RankDatabaseHelper extends SQLiteOpenHelper implements DBManager {
 
     private Context mContext;
 
-    public RankDatabaseHelper(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
-        mContext = context;
+    public RankDatabaseHelper() {
+        super(MyApplication.getContext(), "RankStore.db", null, 1);
+        mContext = MyApplication.getContext();
     }
 
     @Override
@@ -42,9 +41,7 @@ public class RankDatabaseHelper extends SQLiteOpenHelper implements DBManager {
 
     @Override
     public void addData(RecordInfo playerInfo) {
-        dbHelper = new RankDatabaseHelper(MyApplication.getContext(), "RankStore.db", null, 1);
-
-        SQLiteDatabase db = dbHelper.getWritableDatabase();//if there is no database, it will create
+        SQLiteDatabase db = getWritableDatabase();//if there is no database, it will create
         ContentValues values = new ContentValues();
 
         values.put("name", playerInfo.getName());
@@ -57,8 +54,7 @@ public class RankDatabaseHelper extends SQLiteOpenHelper implements DBManager {
     public ArrayList<RecordInfo> getData() {
         ArrayList<RecordInfo> playersData = new ArrayList<>();
 
-        dbHelper = new RankDatabaseHelper(MyApplication.getContext(), "RankStore.db", null, 1);
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = getWritableDatabase();
         Cursor cursor = db.query("Rank", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
 

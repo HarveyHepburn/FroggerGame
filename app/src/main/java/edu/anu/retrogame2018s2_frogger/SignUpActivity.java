@@ -8,9 +8,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
-import android.widget.TextView;
 
-import edu.anu.retrogame2018s2_frogger.frogger.Player.DataProcess;
+import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
 
 public class SignUpActivity extends AppCompatActivity {
 

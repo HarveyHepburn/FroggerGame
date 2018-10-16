@@ -7,13 +7,14 @@ import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
-import edu.anu.retrogame2018s2_frogger.frogger.PlayerInfo;
+import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class RankingScene implements Scene {
     GameSetting gameSetting;
+
     public RankingScene(GameSetting gameSetting) {
-        this.gameSetting=gameSetting;
+        this.gameSetting = gameSetting;
     }
 
     @Override
@@ -63,22 +64,49 @@ public class RankingScene implements Scene {
 
     @Override
     public void draw(FrogCanvas frogCanvas) {
-        ArrayList<PlayerInfo> playerInfos = new ArrayList<PlayerInfo>();
-        playerInfos.add(new PlayerInfo("Jinwei",3,10));
-        playerInfos.add(new PlayerInfo("Jinwei",4,10));
-        drawReal(frogCanvas,playerInfos );
+        frogCanvas.drawImage("levelchoose_background", 0, 0, gameSetting.getWidth(), gameSetting.getHeight(), null);
+        ArrayList<RecordInfo> recordInfos = new ArrayList<RecordInfo>();
+        recordInfos.add(new RecordInfo("Jinwei", 3, 10));
+        recordInfos.add(new RecordInfo("Jinwei", 4, 20));
+        recordInfos.add(new RecordInfo("Jinwei", 5, 30));
+        drawReal(frogCanvas, recordInfos);
 
     }
 
-    public void drawReal(FrogCanvas frogCanvas, ArrayList<PlayerInfo> playerInfos) {
-        int x = 20;
+    public void drawReal(FrogCanvas frogCanvas, ArrayList<RecordInfo> recordInfos) {
+        double x = 0.2 * gameSetting.getWidth();
         int y = 100;
-        FrogPaint frogPaint=new FrogPaint();
+        FrogPaint frogPaintGold = new FrogPaint();
+        frogPaintGold.setColor("#ffff00");
+        frogPaintGold.setTextSize(100);
+
+        FrogPaint frogPaintSilver = new FrogPaint();
+        frogPaintSilver.setColor("#e0e0e0");
+        frogPaintSilver.setTextSize(100);
+
+        FrogPaint frogPaintBrownzen = new FrogPaint();
+        frogPaintBrownzen.setColor("#ffab00");
+        frogPaintBrownzen.setTextSize(100);
+
+        FrogPaint frogPaint = new FrogPaint();
         frogPaint.setTextSize(100);
-        for (PlayerInfo i : playerInfos) {
-            frogCanvas.drawText(i.getName() +" "+ i.getLevel() +" " + i.getTime(), x, y, frogPaint);
-            x += 40;
-            y += 100;
+        frogPaint.setColor("#ffffff");
+        for (int i = 0; i < recordInfos.size(); i++) {
+            if (i == 0) {
+                frogCanvas.drawText(recordInfos.get(i).getName() + "    " + recordInfos.get(i).getLevel() + "     " + recordInfos.get(i).getTime(), (int) x, y, frogPaintGold);
+                y += 100;
+            }
+            else if (i == 1) {
+                frogCanvas.drawText(recordInfos.get(i).getName() + "    " + recordInfos.get(i).getLevel() + "     " + recordInfos.get(i).getTime(), (int) x, y, frogPaintSilver);
+                y += 100;
+            }
+            else if (i == 2) {
+                frogCanvas.drawText(recordInfos.get(i).getName() + "    " + recordInfos.get(i).getLevel() + "     " + recordInfos.get(i).getTime(), (int) x, y, frogPaintBrownzen);
+                y += 100;
+            } else {
+                frogCanvas.drawText(recordInfos.get(i).getName() + "    " + recordInfos.get(i).getLevel() + "     " + recordInfos.get(i).getTime(), (int) x, y, frogPaint);
+                y += 100;
+            }
         }
 
     }

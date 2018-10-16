@@ -10,6 +10,8 @@ public class GameSetting extends HashMap<String,Integer> {
 
     private SoundControl soundControl;
 
+    private Player player;
+
     public SoundControl getSoundControl() {
         return soundControl;
     }

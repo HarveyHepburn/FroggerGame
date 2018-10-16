@@ -15,7 +15,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import edu.anu.retrogame2018s2_frogger.frogger.PlayerInfo;
+import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 
 public class RankActivity extends AppCompatActivity {
     private RankDatabaseHelper dbHelper;
@@ -57,7 +57,7 @@ public class RankActivity extends AppCompatActivity {
 
         TextView showData = findViewById(R.id.showData);
         StringBuilder sb = new StringBuilder();
-        ArrayList<PlayerInfo> playersData = new ArrayList<>();
+        ArrayList<RecordInfo> playersData = new ArrayList<>();
 
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor cursor = db.query("Rank", null, null, null, null, null, null);
@@ -68,7 +68,7 @@ public class RankActivity extends AppCompatActivity {
                 int level = cursor.getInt(cursor.getColumnIndex("level"));
                 int time = cursor.getInt(cursor.getColumnIndex("time"));
 
-                PlayerInfo pi = new PlayerInfo(name, level, time);
+                RecordInfo pi = new RecordInfo(name, level, time);
 
                 playersData.add(pi);
 
@@ -78,7 +78,7 @@ public class RankActivity extends AppCompatActivity {
         Collections.sort(playersData);
         //get finished, now to sort and display the data
 
-        for (PlayerInfo p : playersData) {
+        for (RecordInfo p : playersData) {
             String str = p.getName() + "   Level: " + p.getLevel() + "   Time: " + p.getTime() + "s" + "\n";
             Log.d("aaaa", str);
             sb.append(str);

@@ -2,9 +2,10 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.ranking;
 
 import java.util.ArrayList;
 
-import edu.anu.retrogame2018s2_frogger.frogger.PlayerInfo;
+import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 
 public interface SQLiteDataBase {
-    void addData(PlayerInfo playerInfo);
-    ArrayList<PlayerInfo> getData();
+    void addData(RecordInfo playerInfo);
+
+    ArrayList<RecordInfo> getData();
 }

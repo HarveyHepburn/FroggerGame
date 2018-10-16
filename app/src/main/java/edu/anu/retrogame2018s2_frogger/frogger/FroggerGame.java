@@ -6,14 +6,14 @@ import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.classic.ClassicFroggerScene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.level.LevelScene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.RankingScene;
+import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.DBManager;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.welcome.WelcomeScene;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
 
 public class FroggerGame implements Drawable {
     GameSetting gameSetting;
     Scene currentScene;
-
-    public FroggerGame(int width, int height, SoundControl soundControl) {
+    public FroggerGame(int width, int height, SoundControl soundControl,DBManager dbManager) {
         scenes = new HashMap<>();
         scenes.put("welcome", WelcomeScene.class);
         scenes.put("levels", LevelScene.class);
@@ -26,6 +26,7 @@ public class FroggerGame implements Drawable {
         gameSetting = new GameSetting(width, height);
         gameSetting.setSoundControl(soundControl);
         gameSetting.put("levels", 5);
+        gameSetting.setDbManager(dbManager);
         currentScene = SceneFactory.getScene(scenes.get("welcome"), gameSetting);
 
     }

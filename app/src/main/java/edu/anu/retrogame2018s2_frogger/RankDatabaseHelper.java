@@ -11,9 +11,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
-import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.SQLiteDataBase;
+import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.DBManager;
 
-public class RankDatabaseHelper extends SQLiteOpenHelper implements SQLiteDataBase {
+public class RankDatabaseHelper extends SQLiteOpenHelper implements DBManager {
     private RankDatabaseHelper dbHelper;
 
     public static final String CREATE_RANK = "create table Rank ("
@@ -43,9 +43,8 @@ public class RankDatabaseHelper extends SQLiteOpenHelper implements SQLiteDataBa
     @Override
     public void addData(RecordInfo playerInfo) {
         dbHelper = new RankDatabaseHelper(MyApplication.getContext(), "RankStore.db", null, 1);
-        dbHelper.getWritableDatabase();//if there is no database, it will create
 
-        SQLiteDatabase db = dbHelper.getWritableDatabase();
+        SQLiteDatabase db = dbHelper.getWritableDatabase();//if there is no database, it will create
         ContentValues values = new ContentValues();
 
         values.put("name", playerInfo.getName());
@@ -56,11 +55,9 @@ public class RankDatabaseHelper extends SQLiteOpenHelper implements SQLiteDataBa
 
     @Override
     public ArrayList<RecordInfo> getData() {
-        dbHelper = new RankDatabaseHelper(MyApplication.getContext(), "RankStore.db", null, 1);
-        dbHelper.getWritableDatabase();//if there is no database, it will create
-        StringBuilder sb = new StringBuilder();
         ArrayList<RecordInfo> playersData = new ArrayList<>();
 
+        dbHelper = new RankDatabaseHelper(MyApplication.getContext(), "RankStore.db", null, 1);
         SQLiteDatabase db = dbHelper.getWritableDatabase();
         Cursor cursor = db.query("Rank", null, null, null, null, null, null);
         if (cursor.moveToFirst()) {
@@ -81,5 +78,14 @@ public class RankDatabaseHelper extends SQLiteOpenHelper implements SQLiteDataBa
         //get finished, now to sort and display the data
 
         return playersData;
+    }
+
+    @Override
+    public Boolean playerExist(String name) {
+        ArrayList<RecordInfo> playersData = getData();
+        for (RecordInfo i : playersData) {
+            if (i.getName().equals(name)) return true;
+        }
+        return false;
     }
 }

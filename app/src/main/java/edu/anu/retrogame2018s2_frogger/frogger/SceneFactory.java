@@ -2,7 +2,6 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 
 import java.lang.reflect.Constructor;
 
-import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class SceneFactory {

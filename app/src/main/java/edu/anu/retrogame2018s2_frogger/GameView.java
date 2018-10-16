@@ -19,10 +19,12 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
         this.setOnTouchListener(this);
 
     }
+
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
-        froggerGame = new FroggerGame(getWidth(), getHeight(), new Sounds(getContext()));
+        froggerGame = new FroggerGame(getWidth(), getHeight(), new Sounds(getContext()),
+                new RankDatabaseHelper(getContext(), null, null, 1));
         timer.postDelayed(this, 30);
     }
 
@@ -48,5 +50,5 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
         invalidate();
         timer.postDelayed(this, 30);
     }
-    
+
 }

@@ -2,9 +2,10 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 
 import java.util.HashMap;
 
+import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.DBManager;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
 
-public class GameSetting extends HashMap<String,Integer> {
+public class GameSetting extends HashMap<String, Integer> {
 
     private Frog frog;
 
@@ -12,8 +13,18 @@ public class GameSetting extends HashMap<String,Integer> {
 
     private Player player;
 
+    private DBManager dbManager;
+
     public SoundControl getSoundControl() {
         return soundControl;
+    }
+
+    public void setDbManager(DBManager dbManager) {
+        this.dbManager = dbManager;
+    }
+
+    public DBManager getDbManager() {
+        return dbManager;
     }
 
     public void setSoundControl(SoundControl soundControl) {
@@ -21,10 +32,10 @@ public class GameSetting extends HashMap<String,Integer> {
     }
 
     public GameSetting(int width, int height) {
-        this.put("width",width);
-        this.put("height",height);
-        this.put("riverTop",100);
-        this.put("riverBottom",500);
+        this.put("width", width);
+        this.put("height", height);
+        this.put("riverTop", 100);
+        this.put("riverBottom", 500);
     }
 
     public void setFrog(Frog frog) {

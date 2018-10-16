@@ -56,6 +56,7 @@ public class ClassicFroggerScene implements Scene {
         if (isActive && this.frogHole.inHole(frog)) {
             if (this.frogHole.isFinished()) {
                 sceneOver(new DialogInformation("Mission Accomplished !"));
+                //
             } else {
                 this.frog.resetFrog();
             }

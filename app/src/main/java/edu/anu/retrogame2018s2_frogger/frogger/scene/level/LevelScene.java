@@ -15,8 +15,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class LevelScene implements Scene {
     List<LevelButton> levelButtons;
-
+    GameSetting gameSetting;
     public LevelScene(GameSetting gameSetting) {
+        this.gameSetting=gameSetting;
         levelButtons = new ArrayList<>();
         Random random = new Random();
         int gap = gameSetting.getWidth() / (gameSetting.get("levels") + 1);
@@ -42,7 +43,6 @@ public class LevelScene implements Scene {
     public void sceneOver(DialogInformation dialogInformation) {
 
     }
-
 
     @Override
     public void move(Direction direction) {
@@ -75,11 +75,12 @@ public class LevelScene implements Scene {
 
     @Override
     public GameSetting getGameSetting() {
-        return null;
+        return this.gameSetting;
     }
 
     @Override
     public void draw(FrogCanvas frogCanvas) {
+        frogCanvas.drawImage("levelchoose_background",0,0,getGameSetting().getWidth(),getGameSetting().getHeight(),null);
         for (LevelButton levelButton : this.levelButtons) {
             levelButton.draw(frogCanvas);
         }

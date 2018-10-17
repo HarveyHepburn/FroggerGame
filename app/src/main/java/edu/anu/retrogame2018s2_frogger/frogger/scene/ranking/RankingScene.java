@@ -94,18 +94,20 @@ public class RankingScene implements Scene {
         frogPaint.setColor("#ffffff");
 
         for (int i = 0; i < recordInfos.size(); i++) {
+            if (recordInfos.get(i).getLevel() == -1 || recordInfos.get(i).getTime() == -1)
+                continue;//-1 means there is no player records
             if (i == 0) {
                 frogCanvas.drawText("Name" + "  " + "Level" + "   " + "Time" + "                  RANKING", (int) x - 70, y - 100, frogPaint);
-                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime()+"s", (int) x, y, frogPaintGold);
+                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime() + "s", (int) x, y, frogPaintGold);
                 y += 100;
             } else if (i == 1) {
-                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime()+"s", (int) x, y, frogPaintSilver);
+                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime() + "s", (int) x, y, frogPaintSilver);
                 y += 100;
             } else if (i == 2) {
-                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime()+"s", (int) x, y, frogPaintBrownzen);
+                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime() + "s", (int) x, y, frogPaintBrownzen);
                 y += 100;
             } else {
-                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime()+"s", (int) x, y, frogPaint);
+                frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime() + "s", (int) x, y, frogPaint);
                 y += 100;
             }
         }

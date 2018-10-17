@@ -8,10 +8,10 @@ import edu.anu.retrogame2018s2_frogger.frogger.scene.classic.Spirit;
 public class Frog implements Spirit {
     public Frog(Scene scene) {
         this.x = scene.getGameSetting().getWidth() / 2;
-        this.y = scene.getGameSetting().getHeight() - radius;
         frogPaint.setColor("#1b5e20");
         this.scene = scene;
-        radius=(int)(scene.getGameSetting().getHeight()*0.05);
+        radius = (int) (scene.getGameSetting().getHeight() * 0.05);
+        this.y = scene.getGameSetting().getHeight() - radius;
     }
 
     public void resetFrog() {
@@ -26,23 +26,23 @@ public class Frog implements Spirit {
     private Direction direction = null;
     private FrogPaint frogPaint = new FrogPaint();
 
-    private int FrogStatus=0;
-    private int currentStatusTimeLeft=5;
+    private int FrogStatus = 0;
+    private int currentStatusTimeLeft = 5;
 
     public void draw(FrogCanvas frogCanvas) {
         frogPaint.setDirection(direction);
-        switch (FrogStatus){
+        switch (FrogStatus) {
             case 0:
-                frogCanvas.drawImage("frog_static",x-radius/2,y-radius/2,x+radius/2,y+radius/2,frogPaint);
+                frogCanvas.drawImage("frog_static", x - radius / 2, y - radius / 2, x + radius / 2, y + radius / 2, frogPaint);
                 break;
             case 1:
-                frogCanvas.drawImage("frog_jump_1",x-radius/2,y-radius/2,x+radius/2,y+radius/2,frogPaint);
+                frogCanvas.drawImage("frog_jump_1", x - radius / 2, y - radius / 2, x + radius / 2, y + radius / 2, frogPaint);
                 break;
             case 2:
-                frogCanvas.drawImage("frog_jump_2",x-radius/2,y-radius/2,x+radius/2,y+radius/2,frogPaint);
+                frogCanvas.drawImage("frog_jump_2", x - radius / 2, y - radius / 2, x + radius / 2, y + radius / 2, frogPaint);
                 break;
             case 3:
-                frogCanvas.drawImage("frog_jump_3",x-radius/2,y-radius/2,x+radius/2,y+radius/2,frogPaint);
+                frogCanvas.drawImage("frog_jump_3", x - radius / 2, y - radius / 2, x + radius / 2, y + radius / 2, frogPaint);
                 break;
         }
 
@@ -57,7 +57,8 @@ public class Frog implements Spirit {
                 if (this.scene.isMoveble(x, this.y - 6))
                     this.y -= 6;
             } else if (direction == Direction.NORTH) {
-                this.y += 6;
+                if (this.scene.isMoveble(x, this.y + 6))
+                    this.y += 6;
             } else if (direction == Direction.WEST) {
                 if (this.scene.isMoveble(x - 6, this.y))
                     this.x -= 6;
@@ -72,19 +73,19 @@ public class Frog implements Spirit {
             log.moveAlong(this);
         }
 
-        if(direction!=null){
+        if (direction != null) {
             //if user touch the direction will not be null
             //loop to change the frog image to make the jumping animation
-            this.currentStatusTimeLeft-=1;
-            if(currentStatusTimeLeft<=0){
-                this.FrogStatus=(FrogStatus+1)%4;
-                currentStatusTimeLeft=5;
+            this.currentStatusTimeLeft -= 1;
+            if (currentStatusTimeLeft <= 0) {
+                this.FrogStatus = (FrogStatus + 1) % 4;
+                currentStatusTimeLeft = 5;
             }
-            if(!this.scene.getGameSetting().getSoundControl().isSoundPlaying())
+            if (!this.scene.getGameSetting().getSoundControl().isSoundPlaying())
                 this.scene.getGameSetting().getSoundControl().playSound("jump_music.mp3");
-        }else {
-            this.FrogStatus=0;
-            if(this.scene.getGameSetting().getSoundControl().isSoundPlaying())
+        } else {
+            this.FrogStatus = 0;
+            if (this.scene.getGameSetting().getSoundControl().isSoundPlaying())
                 this.scene.getGameSetting().getSoundControl().stopSound();
         }
     }

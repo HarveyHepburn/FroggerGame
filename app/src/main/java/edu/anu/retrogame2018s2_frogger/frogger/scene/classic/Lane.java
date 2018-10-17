@@ -46,6 +46,7 @@ public class Lane extends ArrayList<ActiveItem> implements MovingParameters,Draw
     @Override
     public void step() {
         Iterator<ActiveItem> iter = this.iterator();
+        int oldSize=this.size();
         while (iter.hasNext()) {
             ActiveItem activeItem = iter.next();
             if (dir && activeItem.getX() > scene.getGameSetting().getWidth()) {

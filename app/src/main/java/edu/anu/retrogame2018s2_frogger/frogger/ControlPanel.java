@@ -9,10 +9,10 @@ public class ControlPanel {
     FrogPaint frogPaint3 = new FrogPaint();
     FrogPaint frogPaint4 = new FrogPaint();
 
-    Boolean onTouchN;
-    Boolean onTouchS;
-    Boolean onTouchE;
-    Boolean onTouchW;
+    boolean onTouchN;
+    boolean onTouchS;
+    boolean onTouchE;
+    boolean onTouchW;
 
     public ControlPanel(int x, int y, Scene scene) {
         this.x = x;

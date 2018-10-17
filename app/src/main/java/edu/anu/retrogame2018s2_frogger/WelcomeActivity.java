@@ -26,11 +26,12 @@ public class WelcomeActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         DataProcess dataProcess = new DataProcess();
-        if (dataProcess.load() == "") {
+        if (dataProcess.load().equals("")) {
             setContentView(R.layout.activity_sign_up);
-        } if(dataProcess.load() == ""){
+        } else {
             setContentView(R.layout.activity_welcome);
             String res = dataProcess.load();
+            System.out.println(res);
             TextView textView = (TextView) findViewById(R.id.toast);
             textView.setText("Welcome " + res);
         }
@@ -43,8 +44,9 @@ public class WelcomeActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.name);
         String name = editText.getText().toString();
         RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
-
+        System.out.println(rankDatabaseHelper.playerExist(name));
         if (rankDatabaseHelper.playerExist(name)) {
+
             Toast.makeText(getApplicationContext(), "Already exits!Please change another one!", Toast.LENGTH_LONG).show();
         } else if (name == "") {
             Toast.makeText(getApplicationContext(), "Can't sign up! Please change another one!", Toast.LENGTH_LONG).show();

@@ -26,9 +26,12 @@ import java.util.prefs.Preferences;
 
 public class WelcomeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String currentName;
-    private Spinner spinner1, spinner2;
+    private Spinner spinner2;
     private Button btnSubmit;
     Player currentPlayer;
+    boolean canLogIn;
+    RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
+    List<String> list = rankDatabaseHelper.getPlayer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +48,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     public void addItemsOnSpinner2() {
 
         spinner2 = (Spinner) findViewById(R.id.spinner2);
-        RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
-        List<String> list = rankDatabaseHelper.getPlayer();
+
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -54,31 +56,40 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     }
 
     public void submit(View view) {
-        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-        startActivity(intent);
         EditText editText = (EditText) findViewById(R.id.name);
         String name = editText.getText().toString();
         RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
-        // System.out.println(rankDatabaseHelper.playerExist(name));
         if (rankDatabaseHelper.playerExist(name)) {
             Toast.makeText(getApplicationContext(), "Already exits!Please change another one!", Toast.LENGTH_LONG).show();
-        } else if (name == "") {
+        } else if (name.equals("") ) {
             Toast.makeText(getApplicationContext(), "Can't sign up! Please change another one!", Toast.LENGTH_LONG).show();
         } else {
+
             //add to database
             rankDatabaseHelper.addData(new RecordInfo(name, -1, -1));//-1 means no record
             //give to player the current player name
             currentName = name;
             currentPlayer=new Player(currentName);
+            list.add(0,currentName);
+
+
+            addItemsOnSpinner2();
+
             Toast.makeText(getApplicationContext(), "successful sign up!Log in please!", Toast.LENGTH_LONG).show();
         }
 
     }
 
     public void login(View view) {
+        EditText editText = (EditText) findViewById(R.id.name);
+        String name = editText.getText().toString();
+        if(name.equals("")){
+
+        }
         Intent intent = new Intent(getApplicationContext(), GameActivity.class);
         startActivity(intent);
         currentPlayer=new Player(currentName);
+
 //        String res = dataProcess.load();
 //        TextView textView = (TextView) findViewById(R.id.toast);
 //        textView.setText("Welcome " + res);
@@ -87,7 +98,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     // get the selected dropdown list value
     public void addListenerOnButton() {
         spinner2 = (Spinner) findViewById(R.id.spinner2);
-        btnSubmit = (Button) findViewById(R.id.btnSubmit);
+        btnSubmit = (Button) findViewById(R.id.login);
 
         btnSubmit.setOnClickListener(new View.OnClickListener() {
 
@@ -100,25 +111,6 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
                                 "\nSpinner 2 : " + String.valueOf(spinner2.getSelectedItem()),
                         Toast.LENGTH_SHORT).show();
             }
-
-
-//                DataProcess dataProcess = new DataProcess();
-//
-//
-//
-//
-//                if (dataProcess.load().equals("")) {
-//            setContentView(R.layout.activity_sign_up);
-//        } else {
-//            setContentView(R.layout.activity_welcome);
-//            String res = dataProcess.load();
-//            System.out.println(res);
-//            TextView textView = (TextView) findViewById(R.id.toast);
-//            textView.setText("Welcome " + res);
-//        }
-//    }
-
-
 
 //
 //    public void logout(View view) {
@@ -142,6 +134,5 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
-        // TODO Auto-generated method stub
     }
 }

@@ -24,10 +24,6 @@ public abstract class FrogButton implements Drawable {
         frogPaint.setColor(getBgColor());
         frogPaint.setStyleFill(true);
         this.textPaint = getTextPaint();
-//        this.textPaint=new FrogPaint();
-//        textPaint.setColor(getTextColor());
-//        textPaint.setTextAlign(FrogPaint.TextAlign.Center);
-//        textPaint.setTextSize(80);
     }
 
     @Override

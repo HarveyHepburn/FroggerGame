@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
+import static edu.anu.retrogame2018s2_frogger.Sounds.mediaPlayer;
+
 public class GameActivity extends AppCompatActivity {
     GameView gameView;
 
@@ -26,9 +28,21 @@ public class GameActivity extends AppCompatActivity {
     }
 
     @Override
+    public void onStop() {
+        super.onStop();
+        Sounds.pauseMusic();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Sounds.continuePlay();
+    }
+
+    @Override
     public void onBackPressed() {
 //        super.onBackPressed();
-        gameView.froggerGame.onBackPressed(()->{
+        gameView.froggerGame.onBackPressed(() -> {
             super.onBackPressed();
         });
     }
@@ -37,7 +51,6 @@ public class GameActivity extends AppCompatActivity {
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);
     }
-
 
 
     // Shows the system bars by removing all the flags

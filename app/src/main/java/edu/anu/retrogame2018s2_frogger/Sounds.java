@@ -38,6 +38,7 @@ public class Sounds extends SoundControl {
             e.printStackTrace();
         }
     }
+
     @Override
     public void playSound(String musicName) {
         if (mediaPlayerSoundEffect != null) {
@@ -67,6 +68,7 @@ public class Sounds extends SoundControl {
             mediaPlayer.stop();
         }
     }
+
     @Override
     public void stopSound() {
         if (mediaPlayerSoundEffect != null && mediaPlayerSoundEffect.isPlaying()) {
@@ -76,6 +78,16 @@ public class Sounds extends SoundControl {
 
     @Override
     public boolean isSoundPlaying() {
-        return mediaPlayerSoundEffect != null&&mediaPlayerSoundEffect.isPlaying();
+        return mediaPlayerSoundEffect != null && mediaPlayerSoundEffect.isPlaying();
+    }
+
+
+    static public void pauseMusic() {
+        if (mediaPlayer != null) mediaPlayer.pause();
+    }
+
+    static public void continuePlay() {
+        if (mediaPlayer != null) mediaPlayer.start();
+
     }
 }

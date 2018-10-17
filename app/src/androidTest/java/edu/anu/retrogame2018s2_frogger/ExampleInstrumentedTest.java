@@ -22,5 +22,8 @@ public class ExampleInstrumentedTest {
         Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("edu.anu.retrogame2018s2_frogger", appContext.getPackageName());
+
+        InstrumentationRegistry.getInstrumentation();
+
     }
 }

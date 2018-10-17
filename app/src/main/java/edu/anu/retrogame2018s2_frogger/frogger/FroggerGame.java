@@ -2,6 +2,7 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 
 import java.util.HashMap;
 
+import edu.anu.retrogame2018s2_frogger.frogger.scene.HelpScene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.classic.ClassicFroggerScene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.level.LevelScene;
@@ -23,6 +24,7 @@ public class FroggerGame implements Drawable {
         scenes.put("level_4", ClassicFroggerScene.class);
         scenes.put("level_5", ClassicFroggerScene.class);
         scenes.put("ranking", RankingScene.class);
+        scenes.put("help", HelpScene.class);
         gameSetting = new GameSetting(width, height);
         gameSetting.setSoundControl(soundControl);
         gameSetting.put("levels", 5);
@@ -58,7 +60,6 @@ public class FroggerGame implements Drawable {
     public void onTouch(float x, float y, boolean isDown) {
         if (this.currentScene != null) {
             String next = currentScene.onTouch(x, y, isDown);
-            System.out.println(next + "???");
             if (isDown) {
                 changeScene(next);
             }

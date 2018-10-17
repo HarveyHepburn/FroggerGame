@@ -19,10 +19,12 @@ public class WelcomeScene implements Scene {
 
     public WelcomeScene(GameSetting gameSetting) {
         this.gameSetting = gameSetting;
-        buttons.put("levels", new WelcomeButton(gameSetting.getWidth() - 200, gameSetting.getHeight() - 200, "Start Game"));
-        buttons.put("setting", new WelcomeButton(200, 200, "Game Setting"));
-        buttons.put("ranking", new WelcomeButton(200, 800, "Ranking"));
-        gameSetting.getSoundControl().playMusic("welcome_music.mp3");
+        buttons.put("levels", new WelcomeButton((int) (getGameSetting().getWidth() * 0.8), (int) (getGameSetting().getHeight() * 0.8), "start_game"));
+        buttons.put("help", new WelcomeButton((int) (getGameSetting().getWidth() * 0.15), (int) (getGameSetting().getHeight() * 0.2),"questionmark"));
+        buttons.put("ranking", new WelcomeButton((int) (getGameSetting().getWidth() * 0.2), (int) (getGameSetting().getHeight() * 0.8), "ranking"));
+        if (!gameSetting.getSoundControl().isMusicPlaying()) {
+            gameSetting.getSoundControl().playMusic("welcome_music.mp3");
+        }
     }
 
     @Override

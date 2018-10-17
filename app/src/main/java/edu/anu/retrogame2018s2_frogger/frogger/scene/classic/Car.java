@@ -6,18 +6,23 @@ import java.util.Random;
 import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
+import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class Car extends MovingItem implements ActiveItem {
+    static Random random = new Random();
     public Car(MovingParameters movingParameters, Scene scene) {
-        super(movingParameters, scene.getGameSetting());
+        super(movingParameters, scene.getGameSetting(),(int) ((calHeight(scene.getGameSetting()))*2));
         frogPaint.setColor("#ff5252");
         this.scene = scene;
-        Random random = new Random();
         this.color = random.nextInt(4);
         height = ((gameSetting.get("roadBottom")-gameSetting.get("roadTop"))/5);
-        width = (int) (height*2);
     }
+
+    private static int calHeight(GameSetting gameSetting){
+        return ((gameSetting.get("roadBottom")-gameSetting.get("roadTop"))/5);
+    }
+
 
     int color;
 

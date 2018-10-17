@@ -75,9 +75,17 @@ public class FroggerGame implements Drawable {
         }
     }
 
-    public void onBackPressed() {
+    public void onBackPressed(BackLanbda backLanbda) {
         String next = currentScene.onBackPressed();
+        if(next!=null&&next=="welcome_activity"){
+            backLanbda.back();
+            return;
+        }
         changeScene(next);
+    }
+
+    public interface BackLanbda{
+        void back();
     }
 
 }

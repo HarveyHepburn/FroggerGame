@@ -28,7 +28,9 @@ public class GameActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
 //        super.onBackPressed();
-        gameView.froggerGame.onBackPressed();
+        gameView.froggerGame.onBackPressed(()->{
+            super.onBackPressed();
+        });
     }
 
     @Override

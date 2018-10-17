@@ -48,7 +48,7 @@ public class WelcomeScene implements Scene {
 
     @Override
     public String onBackPressed() {
-        return null;
+        return "welcome_activity";
     }
 
     @Override

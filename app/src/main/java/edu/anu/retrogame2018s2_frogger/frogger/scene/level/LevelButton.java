@@ -1,6 +1,5 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.level;
 
-import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
@@ -18,7 +17,8 @@ public class LevelButton extends FrogButton {
 
     @Override
     public void draw(FrogCanvas frogCanvas){
-        frogCanvas.drawImage("cloud_l"+level,x-getSize(),y-getSize()/2,x+getSize(),y+getSize()/2,null);
+        int size=animation.scaling(getSize());
+        frogCanvas.drawImage("cloud_l"+level,x-size,y-size/2,x+size,y+size/2,null);
     }
 
     @Override

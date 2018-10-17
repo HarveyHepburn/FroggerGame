@@ -9,5 +9,8 @@ public interface DBManager {
 
     ArrayList<RecordInfo> getData();
 
+    ArrayList<String> getPlayer();
+
     Boolean playerExist(String name);
+
 }

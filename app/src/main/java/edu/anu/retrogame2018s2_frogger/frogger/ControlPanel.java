@@ -4,6 +4,16 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class ControlPanel {
+    FrogPaint frogPaint1 = new FrogPaint();
+    FrogPaint frogPaint2 = new FrogPaint();
+    FrogPaint frogPaint3 = new FrogPaint();
+    FrogPaint frogPaint4 = new FrogPaint();
+
+    Boolean onTouchN;
+    Boolean onTouchS;
+    Boolean onTouchE;
+    Boolean onTouchW;
+
     public ControlPanel(int x, int y, Scene scene) {
         this.x = x;
         this.y = y;
@@ -23,15 +33,36 @@ public class ControlPanel {
         Path p3 = getTriangle(new int[]{x - 50, y + 50}, 100, Direction.SOUTH);
         Path p4 = getTriangle(new int[]{x + 50, y - 50}, 100, Direction.WEST);
 
-        FrogPaint frogPaint1 = new FrogPaint();
 
         frogPaint1.setColor("#4db6ac");
         frogPaint1.setStyleFill(true);
+        frogPaint2.setColor("#4db6ac");
+        frogPaint2.setStyleFill(true);
+        frogPaint3.setColor("#4db6ac");
+        frogPaint3.setStyleFill(true);
+        frogPaint4.setColor("#4db6ac");
+        frogPaint4.setStyleFill(true);
 
         frogCanvas.drawPath(p1, frogPaint1);
-        frogCanvas.drawPath(p2, frogPaint1);
-        frogCanvas.drawPath(p3, frogPaint1);
-        frogCanvas.drawPath(p4, frogPaint1);
+        frogCanvas.drawPath(p2, frogPaint2);
+        frogCanvas.drawPath(p3, frogPaint3);
+        frogCanvas.drawPath(p4, frogPaint4);
+        if (onTouchW) {
+            frogPaint1.setColor("#e68a00");
+            frogCanvas.drawPath(p1, frogPaint1);
+        }
+        if (onTouchS) {
+            frogPaint2.setColor("#e68a00");
+            frogCanvas.drawPath(p2, frogPaint2);
+        }
+        if (onTouchN) {
+            frogPaint3.setColor("#e68a00");
+            frogCanvas.drawPath(p3, frogPaint3);
+        }
+        if (onTouchE) {
+            frogPaint4.setColor("#e68a00");
+            frogCanvas.drawPath(p4, frogPaint4);
+        }
     }
 
     public static Path getTriangle(int[] p1, int width, Direction direction) {
@@ -62,7 +93,16 @@ public class ControlPanel {
 
 
     public void onTouch(float x, float y, boolean isDown) {
-        if(!isDown){
+
+        if (!isDown) {
+            onTouchN = false;
+            onTouchS = false;
+            onTouchE = false;
+            onTouchW = false;
+            frogPaint1.setColor("#4db6ac");
+            frogPaint2.setColor("#4db6ac");
+            frogPaint3.setColor("#4db6ac");
+            frogPaint4.setColor("#4db6ac");
             scene.move(null);
             return;
         }
@@ -74,12 +114,17 @@ public class ControlPanel {
             double angle = calculateAngle(0, 0, x, y);
             if (angle > 45 && angle < 135) {
                 scene.move(Direction.EAST);
+                onTouchE = true;
             } else if (angle > 135 && angle < 225) {
                 scene.move(Direction.SOUTH);
+                onTouchS = true;
             } else if (angle > 225 && angle < 315) {
                 scene.move(Direction.WEST);
+                onTouchW = true;
+
             } else {
                 scene.move(Direction.NORTH);
+                onTouchN = true;
             }
         }
     }
@@ -91,4 +136,5 @@ public class ControlPanel {
 
         return angle;
     }
+
 }

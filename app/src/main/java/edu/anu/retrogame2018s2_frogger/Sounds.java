@@ -81,6 +81,11 @@ public class Sounds extends SoundControl {
         return mediaPlayerSoundEffect != null && mediaPlayerSoundEffect.isPlaying();
     }
 
+    @Override
+    public boolean isMusicPlaying() {
+        return mediaPlayer != null && mediaPlayer.isPlaying();
+    }
+
 
     static public void pauseMusic() {
         if (mediaPlayer != null) mediaPlayer.pause();

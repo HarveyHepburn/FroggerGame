@@ -26,7 +26,6 @@ public class LevelScene implements Scene {
             y += random.nextBoolean() ? 60 : 0;
             levelButtons.add(new LevelButton(gap * (i + 1), y, i + 1,gameSetting));
         }
-        gameSetting.getSoundControl().playMusic("levels.mp3");
     }
 
     @Override

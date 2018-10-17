@@ -47,7 +47,6 @@ public class GameSetting extends HashMap<String, Integer> {
         int roadBottom=(int)(height*0.4);
         int a=(roadBottom-this.get("riverTop"))%4;
         this.put("riverBottom", roadBottom-a);
-        System.out.println((roadBottom-a-this.get("riverTop"))+"-------------------------------------------");
         this.put("roadTop", (int)(height*0.46));
         this.put("roadBottom", (int)(height*0.76));
     }

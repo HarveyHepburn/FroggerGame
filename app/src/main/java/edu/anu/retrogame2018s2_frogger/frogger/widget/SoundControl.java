@@ -13,4 +13,6 @@ public abstract class SoundControl {
 
     public abstract boolean isSoundPlaying();
 
+    public abstract boolean isMusicPlaying();
+
 }

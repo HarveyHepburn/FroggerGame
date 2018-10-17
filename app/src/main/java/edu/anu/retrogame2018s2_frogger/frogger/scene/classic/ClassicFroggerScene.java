@@ -7,10 +7,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
-import edu.anu.retrogame2018s2_frogger.frogger.FroggerGame;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
-import edu.anu.retrogame2018s2_frogger.frogger.SceneFactory;
+import edu.anu.retrogame2018s2_frogger.frogger.player.PlayerStore;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class ClassicFroggerScene implements Scene {
@@ -45,7 +44,9 @@ public class ClassicFroggerScene implements Scene {
         this.frogHole = new FrogHole(this);
         controlPanel = new ControlPanel(gameSetting.getWidth() - 300, gameSetting.getHeight() - 300, this);
 
-        for (int i=0;i<200;i++){step();}
+        for (int i = 0; i < 200; i++) {
+            step();
+        }
     }
 
     @Override
@@ -128,7 +129,7 @@ public class ClassicFroggerScene implements Scene {
 
     @Override
     public boolean isMoveble(int x, int y) {
-        if(x<=0||x>=gameSetting.getWidth()||y<=0||y>=gameSetting.getHeight()){
+        if (x <= 0 || x >= gameSetting.getWidth() || y <= 0 || y >= gameSetting.getHeight()) {
             return false;
         }
         return this.frogHole.isOkToMove(x, y);
@@ -144,7 +145,8 @@ public class ClassicFroggerScene implements Scene {
                     this.isActive = true;
                     return null;
                 } else if (this.dialog.dialogInformation.getInformation().equals("Mission Accomplished !")) {
-                    RecordInfo record = new RecordInfo(gameSetting.getPlayer().getName(), frogHole.holeNumber, timer.getTime());
+                    String name = PlayerStore.load();
+                    RecordInfo record = new RecordInfo(name, frogHole.holeNumber, timer.getTime());
                     gameSetting.getDbManager().addData(record);
                     return "ranking";
                 }

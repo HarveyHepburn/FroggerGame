@@ -10,6 +10,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
+import edu.anu.retrogame2018s2_frogger.frogger.player.PlayerStore;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.FrogButton;
 
@@ -20,7 +21,7 @@ public class WelcomeScene implements Scene {
     public WelcomeScene(GameSetting gameSetting) {
         this.gameSetting = gameSetting;
         buttons.put("levels", new WelcomeButton((int) (getGameSetting().getWidth() * 0.8), (int) (getGameSetting().getHeight() * 0.8), "start_game"));
-        buttons.put("help", new WelcomeButton((int) (getGameSetting().getWidth() * 0.15), (int) (getGameSetting().getHeight() * 0.2),"questionmark"));
+        buttons.put("help", new WelcomeButton((int) (getGameSetting().getWidth() * 0.15), (int) (getGameSetting().getHeight() * 0.2), "questionmark"));
         buttons.put("ranking", new WelcomeButton((int) (getGameSetting().getWidth() * 0.2), (int) (getGameSetting().getHeight() * 0.8), "ranking"));
         if (!gameSetting.getSoundControl().isMusicPlaying()) {
             gameSetting.getSoundControl().playMusic("welcome_music.mp3");
@@ -96,6 +97,16 @@ public class WelcomeScene implements Scene {
         for (Drawable drawable : buttons.values()) {
             drawable.draw(frogCanvas);
         }
+
+        //draw player name text in the center
+        FrogPaint frogPaint;
+        frogPaint = new FrogPaint();
+        frogPaint.setColor("#56a341");
+        frogPaint.setTextSize(100);
+        frogPaint.setTextAlign(FrogPaint.TextAlign.Center);
+
+        String name = PlayerStore.load();
+        frogCanvas.drawText(name, getGameSetting().getWidth() * 0.5f, getGameSetting().getHeight() * 0.8f, frogPaint);
     }
 
     @Override

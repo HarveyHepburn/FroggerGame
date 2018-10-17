@@ -3,11 +3,9 @@ package edu.anu.retrogame2018s2_frogger;
 import android.content.pm.ActivityInfo;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 
-import static edu.anu.retrogame2018s2_frogger.Sounds.mediaPlayer;
 
 public class GameActivity extends AppCompatActivity {
     GameView gameView;
@@ -25,6 +23,7 @@ public class GameActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_game);
         gameView = findViewById(R.id.gamer);
+
     }
 
     @Override

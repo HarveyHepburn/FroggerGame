@@ -9,7 +9,7 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
 
-import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
+import edu.anu.retrogame2018s2_frogger.frogger.player.PlayerStore;
 
 public class SignUpActivity extends AppCompatActivity {
 
@@ -31,8 +31,8 @@ public class SignUpActivity extends AppCompatActivity {
         startActivity(intent);
         EditText editText=(EditText) findViewById(R.id.name);
         String name=editText.getText().toString();
-        DataProcess dataProcess=new DataProcess();
-        dataProcess.save(name);
+        PlayerStore playerStore =new PlayerStore();
+        playerStore.save(name);
 
     }
     public void cancel(View view) {

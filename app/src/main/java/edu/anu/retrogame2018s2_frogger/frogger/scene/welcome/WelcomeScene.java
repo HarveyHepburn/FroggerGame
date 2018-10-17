@@ -75,7 +75,7 @@ public class WelcomeScene implements Scene {
 
     @Override
     public GameSetting getGameSetting() {
-        return null;
+        return gameSetting;
     }
 
     @Override

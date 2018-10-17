@@ -14,7 +14,8 @@ import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
 public class FroggerGame implements Drawable {
     GameSetting gameSetting;
     Scene currentScene;
-    public FroggerGame(int width, int height, SoundControl soundControl,DBManager dbManager) {
+
+    public FroggerGame(int width, int height, SoundControl soundControl, DBManager dbManager) {
         scenes = new HashMap<>();
         scenes.put("welcome", WelcomeScene.class);
         scenes.put("levels", LevelScene.class);
@@ -78,14 +79,14 @@ public class FroggerGame implements Drawable {
 
     public void onBackPressed(BackLanbda backLanbda) {
         String next = currentScene.onBackPressed();
-        if(next!=null&&next=="welcome_activity"){
+        if (next != null && next == "welcome_activity") {
             backLanbda.back();
             return;
         }
         changeScene(next);
     }
 
-    public interface BackLanbda{
+    public interface BackLanbda {
         void back();
     }
 

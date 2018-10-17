@@ -1,6 +1,5 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
-
 public interface FrogCanvas {
     void drawRect(float left, float top, float right, float bottom, FrogPaint frogPaint);
 

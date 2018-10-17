@@ -3,7 +3,7 @@ package edu.anu.retrogame2018s2_frogger.frogger.animation;
 public class ScalingAnimation extends Animation {
 
     public ScalingAnimation(float speed, float max, float min) {
-        super(speed,max,min);
+        super(speed, max, min);
     }
 
     @Override
@@ -11,8 +11,8 @@ public class ScalingAnimation extends Animation {
         super.step();
     }
 
-    public int scaling(int original){
-        return original+=current;
+    public int scaling(int original) {
+        return original += current;
     }
 
 }

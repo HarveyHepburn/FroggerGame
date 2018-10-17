@@ -1,6 +1,5 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
-
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class ControlPanel {

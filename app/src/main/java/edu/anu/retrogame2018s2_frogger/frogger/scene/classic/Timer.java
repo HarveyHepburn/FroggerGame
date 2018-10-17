@@ -18,7 +18,7 @@ public class Timer implements Drawable {
         frogPaint.setColor("#ffffff");
         frogPaint.setTextSize(60);
         frogPaint.setTextAlign(FrogPaint.TextAlign.Center);
-        time = 60 *scene.getGameSetting().get("holeNumber");
+        time = 60 * scene.getGameSetting().get("holeNumber");
     }
 
     @Override

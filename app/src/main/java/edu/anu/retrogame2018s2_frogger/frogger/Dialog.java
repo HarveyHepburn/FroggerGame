@@ -1,6 +1,5 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
-
 import edu.anu.retrogame2018s2_frogger.frogger.animation.FadeInAndOutAnimation;
 
 public class Dialog implements Drawable {
@@ -17,7 +16,7 @@ public class Dialog implements Drawable {
     public Dialog(DialogInformation dialogInformation, GameSetting gameSetting) {
         this.dialogInformation = dialogInformation;
         this.gameSetting = gameSetting;
-        animation=new FadeInAndOutAnimation(6);
+        animation = new FadeInAndOutAnimation(6);
 
         bgPaint = new FrogPaint();
         bgPaint.setColor(dialogInformation.getBackgroudColor());
@@ -43,7 +42,7 @@ public class Dialog implements Drawable {
         int top = (gameSetting.getHeight() - height) / 2;
         frogCanvas.drawRoundRect(left, top, left + width, top + height, 20, 20, bgPaint);
         frogCanvas.drawText(dialogInformation.getInformation(), gameSetting.getWidth() / 2, gameSetting.getHeight() / 2, infoPaint);
-        frogCanvas.drawText("Click to continue",gameSetting.getWidth() / 2, gameSetting.getHeight() / 2+200,animation.makePaint(textPaint));
+        frogCanvas.drawText("Click to continue", gameSetting.getWidth() / 2, gameSetting.getHeight() / 2 + 200, animation.makePaint(textPaint));
     }
 
     @Override
@@ -51,11 +50,11 @@ public class Dialog implements Drawable {
         animation.step();
     }
 
-    public boolean gotClick(float x,float y){
+    public boolean gotClick(float x, float y) {
         int left = (gameSetting.getWidth() - width) / 2;
         int top = (gameSetting.getHeight() - height) / 2;
-        if(x>left&&x<left+width){
-            if(y>top&&left<top+height){
+        if (x > left && x < left + width) {
+            if (y > top && left < top + height) {
                 return true;
             }
         }

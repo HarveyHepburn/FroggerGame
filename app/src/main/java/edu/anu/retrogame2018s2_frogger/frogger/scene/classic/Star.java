@@ -3,7 +3,6 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 import java.util.Random;
 
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
-import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
@@ -16,13 +15,13 @@ public class Star extends Collision implements Spirit, Drawable {
     Timer timer;
 
 
-    Star(Scene scene,Timer timer) {
+    Star(Scene scene, Timer timer) {
         Random random = new Random();
         this.x = random.nextInt(scene.getGameSetting().getWidth());
         this.y = random.nextInt(scene.getGameSetting().getHeight());
         this.radius = 30;
         this.scene = scene;
-        this.timer=timer;
+        this.timer = timer;
     }
 
     @Override
@@ -54,7 +53,7 @@ public class Star extends Collision implements Spirit, Drawable {
     @Override
     public void step() {
 
-        if (display&&this.collision(scene.getGameSetting().getFrog(), x, y, radius, radius)) {
+        if (display && this.collision(scene.getGameSetting().getFrog(), x, y, radius, radius)) {
             display = false;
             timer.addTime(10);
         }

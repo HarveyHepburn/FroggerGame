@@ -17,7 +17,7 @@ public class FrogHole implements Drawable {
     private Scene scene;
     int holeNumber = 1;
     Set<Integer> inHoleNum = new HashSet<>();
-    int wallHeight ;
+    int wallHeight;
     int holeWidth;
 
     public FrogHole(Scene scene) {
@@ -32,8 +32,8 @@ public class FrogHole implements Drawable {
         frogPaintHoleIn.setColor("#33691e");
         frogPaintHoleIn.setStyleFill(true);
         this.holeNumber = scene.getGameSetting().get("holeNumber");
-        this.wallHeight=(int) (scene.getGameSetting().getHeight()*0.07);
-        this.holeWidth=wallHeight;
+        this.wallHeight = (int) (scene.getGameSetting().getHeight() * 0.07);
+        this.holeWidth = wallHeight;
     }
 
     @Override

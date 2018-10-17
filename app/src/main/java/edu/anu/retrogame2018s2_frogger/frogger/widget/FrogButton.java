@@ -1,7 +1,5 @@
 package edu.anu.retrogame2018s2_frogger.frogger.widget;
 
-
-
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;

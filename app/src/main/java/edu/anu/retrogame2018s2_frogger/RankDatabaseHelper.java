@@ -85,7 +85,7 @@ public class RankDatabaseHelper extends SQLiteOpenHelper implements DBManager {
         return false;
     }
 
-    @Override
+//    @Override
     public ArrayList<String> getPlayer() {
         ArrayList<RecordInfo> playerData = getData();
         ArrayList<String> playerName = new ArrayList<>();

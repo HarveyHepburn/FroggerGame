@@ -15,16 +15,20 @@ import android.widget.Spinner;
 import android.widget.Toast;
 import android.view.View.OnClickListener;
 
+import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
+import edu.anu.retrogame2018s2_frogger.frogger.player.Player;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.prefs.Preferences;
 
 public class WelcomeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+    String currentName;
     private Spinner spinner1, spinner2;
     private Button btnSubmit;
+    Player currentPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,27 +39,53 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_welcome);
         addItemsOnSpinner2();
+
     }
 
     public void addItemsOnSpinner2() {
 
         spinner2 = (Spinner) findViewById(R.id.spinner2);
-        List<String> list = new ArrayList<String>();
-        
-        list.add("list 1");
-        list.add("list 2");
-        list.add("list 3");
+        RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
+        List<String> list = rankDatabaseHelper.getPlayer();
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner2.setAdapter(dataAdapter);
     }
 
+    public void submit(View view) {
+        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+        startActivity(intent);
+        EditText editText = (EditText) findViewById(R.id.name);
+        String name = editText.getText().toString();
+        RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
+        // System.out.println(rankDatabaseHelper.playerExist(name));
+        if (rankDatabaseHelper.playerExist(name)) {
+            Toast.makeText(getApplicationContext(), "Already exits!Please change another one!", Toast.LENGTH_LONG).show();
+        } else if (name == "") {
+            Toast.makeText(getApplicationContext(), "Can't sign up! Please change another one!", Toast.LENGTH_LONG).show();
+        } else {
+            //add to database
+            rankDatabaseHelper.addData(new RecordInfo(name, -1, -1));//-1 means no record
+            //give to player the current player name
+            currentName = name;
+            currentPlayer=new Player(currentName);
+            Toast.makeText(getApplicationContext(), "successful sign up!Log in please!", Toast.LENGTH_LONG).show();
+        }
 
+    }
 
+    public void login(View view) {
+        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+        startActivity(intent);
+        currentPlayer=new Player(currentName);
+//        String res = dataProcess.load();
+//        TextView textView = (TextView) findViewById(R.id.toast);
+//        textView.setText("Welcome " + res);
+
+    }
     // get the selected dropdown list value
     public void addListenerOnButton() {
-
         spinner2 = (Spinner) findViewById(R.id.spinner2);
         btnSubmit = (Button) findViewById(R.id.btnSubmit);
 
@@ -63,10 +93,10 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
 
             @Override
             public void onClick(View v) {
-
+                String name = String.valueOf(spinner2.getSelectedItem());
+                currentName = name;
                 Toast.makeText(WelcomeActivity.this,
                         "OnClickListener : " +
-                                "\nSpinner 1 : " + String.valueOf(spinner1.getSelectedItem()) +
                                 "\nSpinner 2 : " + String.valueOf(spinner2.getSelectedItem()),
                         Toast.LENGTH_SHORT).show();
             }
@@ -89,36 +119,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
 //    }
 
 
-//    public void submit(View view) {
-//        Intent intent = new Intent(this, WelcomeActivity.class);
-//        startActivity(intent);
-//        EditText editText = (EditText) findViewById(R.id.name);
-//        String name = editText.getText().toString();
-//        RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
-//       // System.out.println(rankDatabaseHelper.playerExist(name));
-//        if (rankDatabaseHelper.playerExist(name)) {
-//
-//            Toast.makeText(getApplicationContext(), "Already exits!Please change another one!", Toast.LENGTH_LONG).show();
-//        } else if (name == "") {
-//            Toast.makeText(getApplicationContext(), "Can't sign up! Please change another one!", Toast.LENGTH_LONG).show();
-//        } else {
-//            //add to database
-//            rankDatabaseHelper.addData(new RecordInfo(name, -1, -1));//-1 means no record
-//            DataProcess dataProcess = new DataProcess();
-//            dataProcess.save(name);
-//        }
-//
-//    }
-//
-//    public void login(View view) {
-//        Intent intent = new Intent(this, GameActivity.class);
-//        startActivity(intent);
-//        DataProcess dataProcess = new DataProcess();
-//        String res = dataProcess.load();
-//        TextView textView = (TextView) findViewById(R.id.toast);
-//        textView.setText("Welcome " + res);
-//
-//    }
+
 //
 //    public void logout(View view) {
 //        Intent intent = new Intent(this, SignUpActivity.class);
@@ -126,20 +127,13 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
 //        DataProcess dataProcess = new DataProcess();
 //        dataProcess.save("");
 //    }
-
-//    @Override
-//    public void onWindowFocusChanged(boolean hasFocus) {
-//        super.onWindowFocusChanged(hasFocus);
-
-
-//        if (hasFocus) {
-//            hideSystemUI();
 //        }
         });
-        }
+    }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+
 //        Toast.makeText(parent.getContext(),
 //                "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
 //                Toast.LENGTH_SHORT).show();

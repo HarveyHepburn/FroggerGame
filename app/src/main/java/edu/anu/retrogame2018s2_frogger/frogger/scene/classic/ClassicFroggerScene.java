@@ -45,6 +45,8 @@ public class ClassicFroggerScene implements Scene {
         logs = new Logs(this);
         this.frogHole = new FrogHole(this);
         controlPanel = new ControlPanel(gameSetting.getWidth() - 300, gameSetting.getHeight() - 300, this);
+
+        for (int i=0;i<200;i++){step();}
     }
 
     @Override

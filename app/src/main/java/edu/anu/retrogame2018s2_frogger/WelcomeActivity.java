@@ -11,28 +11,34 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
 
-import java.util.prefs.Preferences;
 
 public class WelcomeActivity extends AppCompatActivity {
+    private DataProcess dataProcess = new DataProcess();
+    private GameSetting gameSetting;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        DataProcess dataProcess = new DataProcess();
-        if (dataProcess.load() == "") {
-            setContentView(R.layout.activity_sign_up);
-        } if(dataProcess.load() == ""){
-            setContentView(R.layout.activity_welcome);
-            String res = dataProcess.load();
-            TextView textView = (TextView) findViewById(R.id.toast);
-            textView.setText("Welcome " + res);
+        setContentView(R.layout.activity_welcome);
+
+        TextView textView = (TextView) findViewById(R.id.toast);
+        if (dataProcess.load().equals("")) {
+            String text = "Welcome, please sign up";
+            textView.setText(text);
+        } else {
+            String name = dataProcess.load();
+            String text = "Welcome back, " + name;
+            textView.setText(text);
+
         }
     }
 
@@ -58,13 +64,14 @@ public class WelcomeActivity extends AppCompatActivity {
     }
 
     public void login(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
-        startActivity(intent);
-        DataProcess dataProcess = new DataProcess();
-        String res = dataProcess.load();
-        TextView textView = (TextView) findViewById(R.id.toast);
-        textView.setText("Welcome " + res);
-
+        if (dataProcess.load().equals("")) {
+            Toast.makeText(getApplicationContext(), "You haven't sign up yet", Toast.LENGTH_SHORT).show();
+        } else {
+            Intent intent = new Intent(this, GameActivity.class);
+            startActivity(intent);
+            String name = dataProcess.load();
+            gameSetting.getPlayer().setName(name);
+        }
     }
 
     public void logout(View view) {

@@ -7,11 +7,10 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 public class Timer implements Drawable {
-    int time = 60;
     FrogPaint frogPaint;
     long startTime = System.currentTimeMillis();
     Scene scene;
-
+    int time;
 
     Timer(Scene scene) {
         this.scene = scene;
@@ -19,12 +18,13 @@ public class Timer implements Drawable {
         frogPaint.setColor("#ffffff");
         frogPaint.setTextSize(60);
         frogPaint.setTextAlign(FrogPaint.TextAlign.Center);
-
+        time = 60 *scene.getGameSetting().get("holeNumber");
     }
 
     @Override
     public void draw(FrogCanvas frogCanvas) {
-        frogCanvas.drawText(time + "", scene.getGameSetting().getWidth() * 0.97f, scene.getGameSetting().getHeight() * 0.07f, frogPaint);
+        if (time < 10) frogPaint.setColor("#FF0000");
+        frogCanvas.drawText("Time Left: " + time + "s", scene.getGameSetting().getWidth() * 0.9f, scene.getGameSetting().getHeight() * 0.05f, frogPaint);
     }
 
     @Override

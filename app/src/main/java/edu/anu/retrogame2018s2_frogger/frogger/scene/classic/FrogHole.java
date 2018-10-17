@@ -87,4 +87,5 @@ public class FrogHole implements Drawable {
     public void step() {
 
     }
+
 }

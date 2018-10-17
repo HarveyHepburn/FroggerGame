@@ -160,4 +160,5 @@ public class ClassicFroggerScene implements Scene {
     public boolean isActive() {
         return isActive;
     }
+
 }

@@ -140,7 +140,7 @@ public class ClassicFroggerScene implements Scene {
                     this.isActive = true;
                     return null;
                 } else if (this.dialog.dialogInformation.getInformation().equals("Mission Accomplished !")) {
-                    RecordInfo record = new RecordInfo("DFDF", frogHole.holeNumber, timer.getTime());
+                    RecordInfo record = new RecordInfo(gameSetting.getPlayer().getName(), frogHole.holeNumber, timer.getTime());
                     gameSetting.getDbManager().addData(record);
                     return "ranking";
                 }

@@ -35,7 +35,7 @@ public class RankActivity extends AppCompatActivity {
         level = intent.getIntExtra("level", 0);
         time = intent.getIntExtra("time", 0);
 
-        dbHelper = new RankDatabaseHelper(this, "RankStore.db", null, 1);
+        dbHelper = new RankDatabaseHelper();
         dbHelper.getWritableDatabase();//if there is no database, it will create
         addToDB();
         System.out.println("Add to DB!!!!!!!");

@@ -7,7 +7,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 
 public abstract class MovingItem extends Collision implements Drawable {
-    int width = 100;
+    int width;
     int height;
     MovingParameters mp;
     FrogPaint frogPaint;
@@ -17,12 +17,12 @@ public abstract class MovingItem extends Collision implements Drawable {
     public int getX() {
         return x;
     }
-    MovingItem(MovingParameters mp,GameSetting gameSetting) {
-        this.x=mp.calX(width);
+
+    MovingItem(MovingParameters mp, GameSetting gameSetting) {
+        this.x = mp.calX(width);
         this.mp = mp;
         frogPaint = new FrogPaint();
-        height = 50;
-        this.gameSetting=gameSetting;
+        this.gameSetting = gameSetting;
     }
 
     public void resetItem(MovingParameters movingParameters) {
@@ -50,7 +50,7 @@ public abstract class MovingItem extends Collision implements Drawable {
 //            }
 //        }
 //        return false;
-        return collision(spirit,this.x,mp.getY(),this.height,width);
+        return collision(spirit, this.x, mp.getY(), this.height, width);
     }
 
     public boolean outOfMap() {

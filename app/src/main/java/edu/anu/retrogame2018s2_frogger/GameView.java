@@ -48,7 +48,7 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
     public void run() {
         froggerGame.step();
         invalidate();
-        timer.postDelayed(this, 30);
+        timer.postDelayed(this, 10);
     }
 
 }

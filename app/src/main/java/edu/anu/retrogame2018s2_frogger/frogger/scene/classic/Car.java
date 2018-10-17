@@ -15,7 +15,10 @@ public class Car extends MovingItem implements ActiveItem {
         this.scene = scene;
         Random random = new Random();
         this.color = random.nextInt(4);
+        height = ((gameSetting.get("roadBottom")-gameSetting.get("roadTop"))/5);
+        width = (int) (height*2);
     }
+
     int color;
 
     Scene scene;
@@ -42,7 +45,7 @@ public class Car extends MovingItem implements ActiveItem {
                 pic = "car_yellow";
                 break;
         }
-        frogCanvas.drawImage(pic,x,mp.getY(),x+getWidth(),mp.getY()+height,frogPaint);
+        frogCanvas.drawImage(pic, x, mp.getY(), x + getWidth(), mp.getY() + height, frogPaint);
     }
 
 

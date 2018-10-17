@@ -11,6 +11,7 @@ public class Frog implements Spirit {
         this.y = scene.getGameSetting().getHeight() - radius;
         frogPaint.setColor("#1b5e20");
         this.scene = scene;
+        radius=(int)(scene.getGameSetting().getHeight()*0.05);
     }
 
     public void resetFrog() {
@@ -20,7 +21,7 @@ public class Frog implements Spirit {
 
     int y, x;
     private Scene scene;
-    private int radius = 80;
+    private int radius;
     private Log log = null;
     private Direction direction = null;
     private FrogPaint frogPaint = new FrogPaint();
@@ -86,7 +87,6 @@ public class Frog implements Spirit {
             if(this.scene.getGameSetting().getSoundControl().isSoundPlaying())
                 this.scene.getGameSetting().getSoundControl().stopSound();
         }
-
     }
 
     public Log getLog() {

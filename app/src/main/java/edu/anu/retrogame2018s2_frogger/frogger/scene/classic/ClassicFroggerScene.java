@@ -22,7 +22,6 @@ public class ClassicFroggerScene implements Scene {
     private ControlPanel controlPanel;
     private Timer timer;
     private Star star;
-    private int pressCount = 0;
 
     public Dialog getDialog() {
         return dialog;
@@ -72,7 +71,7 @@ public class ClassicFroggerScene implements Scene {
     public void step() {
         if (isActive) {
             cars.step();
-            if (this.frog.getLog() == null && this.frog.getY() >= gameSetting.get("riverTop") && frog.getY() <= gameSetting.get("riverBottom")) {
+            if (this.frog.getLog() == null && this.frog.getY() >= gameSetting.get("riverTop") && frog.getY() < gameSetting.get("riverBottom")) {
                 sceneOver(new DialogInformation("You dropped into the river !"));
             }
 

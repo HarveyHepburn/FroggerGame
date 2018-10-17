@@ -128,6 +128,9 @@ public class ClassicFroggerScene implements Scene {
 
     @Override
     public boolean isMoveble(int x, int y) {
+        if(x<=0||x>=gameSetting.getWidth()||y<=0||y>=gameSetting.getHeight()){
+            return false;
+        }
         return this.frogHole.isOkToMove(x, y);
     }
 

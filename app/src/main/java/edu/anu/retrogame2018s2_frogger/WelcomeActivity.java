@@ -28,7 +28,7 @@ public class WelcomeActivity extends AppCompatActivity {
         DataProcess dataProcess = new DataProcess();
         if (dataProcess.load() == "") {
             setContentView(R.layout.activity_sign_up);
-        } else {
+        } if(dataProcess.load() == ""){
             setContentView(R.layout.activity_welcome);
             String res = dataProcess.load();
             TextView textView = (TextView) findViewById(R.id.toast);
@@ -45,7 +45,9 @@ public class WelcomeActivity extends AppCompatActivity {
         RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
 
         if (rankDatabaseHelper.playerExist(name)) {
-            Toast.makeText(getApplicationContext(), "Already exits", Toast.LENGTH_SHORT);
+            Toast.makeText(getApplicationContext(), "Already exits!Please change another one!", Toast.LENGTH_LONG).show();
+        } else if (name == "") {
+            Toast.makeText(getApplicationContext(), "Can't sign up! Please change another one!", Toast.LENGTH_LONG).show();
         } else {
             //add to database
             rankDatabaseHelper.addData(new RecordInfo(name, -1, -1));//-1 means no player

@@ -16,6 +16,6 @@ public class Background {
 
     public void draw(FrogCanvas frogCanvas) {
         frogCanvas.drawImage("background_river",0, scene.getGameSetting().get("riverTop"), scene.getGameSetting().getWidth(), scene.getGameSetting().get("riverBottom"),frogPaint);
-//        frogCanvas.drawRect(0, scene.getGameSetting().get("riverTop"), scene.getGameSetting().getWidth(), scene.getGameSetting().get("riverBottom"), frogPaint);
+        frogCanvas.drawImage("background_road",0, scene.getGameSetting().get("roadTop"), scene.getGameSetting().getWidth(), scene.getGameSetting().get("roadBottom"),frogPaint);
     }
 }

@@ -7,6 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
+import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
+
+import java.util.prefs.Preferences;
 
 public class WelcomeActivity extends AppCompatActivity {
 
@@ -17,22 +25,52 @@ public class WelcomeActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-
-        setContentView(R.layout.activity_welcome);
+        DataProcess dataProcess = new DataProcess();
+        if (dataProcess.load() == "") {
+            setContentView(R.layout.activity_sign_up);
+        } else {
+            setContentView(R.layout.activity_welcome);
+            String res = dataProcess.load();
+            TextView textView = (TextView) findViewById(R.id.toast);
+            textView.setText("Welcome " + res);
+        }
     }
 
-    public void startGame(View view) {
-        Intent intent = new Intent(this, GameActivity.class);
+
+    public void submit(View view) {
+        Intent intent = new Intent(this, WelcomeActivity.class);
         startActivity(intent);
+        EditText editText = (EditText) findViewById(R.id.name);
+        String name = editText.getText().toString();
+        RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
+        if (rankDatabaseHelper.playerExist(name)) {
+            Toast.makeText(getApplicationContext(), "Already exits", Toast.LENGTH_SHORT);
+        } else {
+            //add to database
+            rankDatabaseHelper.addData(new RecordInfo(name, -1, -1));//-1 means no player
+            DataProcess dataProcess = new DataProcess();
+            dataProcess.save(name);
+        }
+
     }
-    public void sign(View view) {
-        Intent intent = new Intent(this, SignUpActivity.class);
-        startActivity(intent);
-    }
+
     public void login(View view) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
+        DataProcess dataProcess = new DataProcess();
+        String res = dataProcess.load();
+        TextView textView = (TextView) findViewById(R.id.toast);
+        textView.setText("Welcome " + res);
+
     }
+
+    public void logout(View view) {
+        Intent intent = new Intent(this, SignUpActivity.class);
+        startActivity(intent);
+        DataProcess dataProcess = new DataProcess();
+        dataProcess.save("");
+    }
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         super.onWindowFocusChanged(hasFocus);

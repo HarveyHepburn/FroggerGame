@@ -22,19 +22,12 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="167dp"
+        android:layout_marginBottom="62dp"
         android:orientation="horizontal"
         android:padding="20dp">
-
-        <Button
-            android:id="@+id/sign"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_centerVertical="true"
-            android:onClick="sign"
-            android:text="Sign up"
-            tools:layout_editor_absoluteX="232dp"
-            tools:layout_editor_absoluteY="299dp" />
 
         <Button
             android:id="@+id/login"
@@ -46,6 +39,27 @@
             tools:layout_editor_absoluteY="299dp" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/toast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="287dp"
+        android:layout_marginTop="148dp"
+        />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="128dp"
+        android:layout_marginBottom="79dp"
+        android:onClick="logout"
+        android:text="Log out" />
 
 
 </RelativeLayout>

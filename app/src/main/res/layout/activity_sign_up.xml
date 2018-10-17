@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUpActivity">
+    tools:context=".WelcomeActivity">
 
     <EditText
         android:id="@+id/name"
@@ -14,11 +14,11 @@
         tools:layout_editor_absoluteX="108dp"
         tools:layout_editor_absoluteY="115dp" />
 
-    <Button
+    <ImageButton
         android:id="@+id/Submit"
+        android:src="@drawable/sign_up"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Submit"
         android:onClick="submit"
         tools:layout_editor_absoluteX="125dp"
         tools:layout_editor_absoluteY="442dp" />
@@ -27,7 +27,10 @@
         android:id="@+id/Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
+        android:text="Cancel"
         android:onClick="cancel"
-        android:text="Cancel" />
+        tools:layout_editor_absoluteX="125dp"
+        tools:layout_editor_absoluteY="442dp" />
+
+
 </LinearLayout>

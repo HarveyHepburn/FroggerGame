@@ -60,11 +60,6 @@ public class FroggerGame implements Drawable {
             String next = currentScene.onTouch(x, y, isDown);
             System.out.println(next + "???");
             if (isDown) {
-//                String[] strings = next.split("_");
-//                if (strings.length > 1) {
-//                    gameSetting.put("holeNumber", Integer.parseInt(strings[1]));
-//                }
-//                currentScene = SceneFactory.getScene(scenes.get(next), gameSetting);
                 changeScene(next);
             }
         }

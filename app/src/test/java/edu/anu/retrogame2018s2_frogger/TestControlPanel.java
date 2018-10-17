@@ -5,6 +5,7 @@ import org.junit.Test;
 import java.util.ArrayList;
 
 import edu.anu.retrogame2018s2_frogger.frogger.ControlPanel;
+import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 
 import static org.junit.Assert.*;
 
@@ -38,7 +39,7 @@ public class TestControlPanel {
     @Test
     public void getTriangle_isCorrect() {
         ArrayList<int[]> res;
-        res = ControlPanel.getTriangle(new int[]{50, 30}, 100, ControlPanel.Direction.EAST);
+        res = ControlPanel.getTriangle(new int[]{50, 30}, 100, Direction.EAST);
         assertEquals(50, res.get(0)[0], .9);
         assertEquals(30, res.get(0)[1], .9);
         assertEquals(50, res.get(1)[0], .9);

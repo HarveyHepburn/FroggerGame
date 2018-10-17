@@ -24,7 +24,7 @@ public class LevelScene implements Scene {
         for (int i = 0; i < gameSetting.get("levels"); i++) {
             int y = i % 2 == 0 ? 300 : 700;
             y += random.nextBoolean() ? 60 : 0;
-            levelButtons.add(new LevelButton(gap * (i + 1), y, i + 1));
+            levelButtons.add(new LevelButton(gap * (i + 1), y, i + 1,gameSetting));
         }
         gameSetting.getSoundControl().playMusic("levels.mp3");
     }

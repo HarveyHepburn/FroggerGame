@@ -43,8 +43,13 @@ public class GameSetting extends HashMap<String, Integer> {
     public GameSetting(int width, int height) {
         this.put("width", width);
         this.put("height", height);
-        this.put("riverTop", 100);
-        this.put("riverBottom", 500);
+        this.put("riverTop", (int)(height*0.07));
+        int roadBottom=(int)(height*0.4);
+        int a=(roadBottom-this.get("riverTop"))%4;
+        this.put("riverBottom", roadBottom-a);
+        System.out.println((roadBottom-a-this.get("riverTop"))+"-------------------------------------------");
+        this.put("roadTop", (int)(height*0.46));
+        this.put("roadBottom", (int)(height*0.76));
     }
 
     public void setFrog(Frog frog) {

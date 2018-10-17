@@ -7,8 +7,8 @@ import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 public class Log extends MovingItem implements MoveAlong, ActiveItem {
     Log(MovingParameters movingParameters, GameSetting gameSetting) {
         super(movingParameters, gameSetting);
-        this.width = 250;
-        this.height = 100;
+        this.height = (gameSetting.get("riverBottom")-gameSetting.get("riverTop"))/4;
+        this.width = (int)(height*2.5);
         frogPaint.setColor("#795548");
     }
 

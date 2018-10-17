@@ -43,6 +43,7 @@ public class WelcomeActivity extends AppCompatActivity {
         EditText editText = (EditText) findViewById(R.id.name);
         String name = editText.getText().toString();
         RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
+
         if (rankDatabaseHelper.playerExist(name)) {
             Toast.makeText(getApplicationContext(), "Already exits", Toast.LENGTH_SHORT);
         } else {

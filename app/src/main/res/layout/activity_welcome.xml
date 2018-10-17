@@ -37,7 +37,6 @@
             android:text="Log in"
             tools:layout_editor_absoluteX="63dp"
             tools:layout_editor_absoluteY="299dp" />
-
     </LinearLayout>
 
     <TextView
@@ -60,7 +59,5 @@
         android:layout_marginBottom="79dp"
         android:onClick="logout"
         android:text="logout" />
-
-
 </RelativeLayout>
 

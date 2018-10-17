@@ -18,10 +18,10 @@ public class Cars extends Items implements ItemManager {
         int forthLane=thirdLane+verticalGap*2+carHeight;
 
 
-        this.add(new Lane(false, 4, carHeight*4, this, firstLane, scene));
-        this.add(new Lane(true, 6, carHeight*6, this, secondLane, scene));
-        this.add(new Lane(false, 3, carHeight*3, this, thirdLane, scene));
-        this.add(new Lane(true, 2, carHeight*5, this, forthLane, scene));
+        this.add(new Lane(false, (int)(verticalGap*0.7), carHeight*9, this, firstLane, scene));
+        this.add(new Lane(true, (int)(verticalGap), carHeight*8, this, secondLane, scene));
+        this.add(new Lane(false, (int)(verticalGap*0.9), carHeight*15, this, thirdLane, scene));
+        this.add(new Lane(true, (int)(verticalGap*0.4), carHeight*13, this, forthLane, scene));
     }
 
     @Override

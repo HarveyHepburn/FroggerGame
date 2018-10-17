@@ -60,7 +60,6 @@ public class WelcomeActivity extends AppCompatActivity {
             DataProcess dataProcess = new DataProcess();
             dataProcess.save(name);
         }
-
     }
 
     public void login(View view) {

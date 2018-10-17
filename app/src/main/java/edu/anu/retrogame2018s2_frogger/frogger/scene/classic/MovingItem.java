@@ -18,16 +18,17 @@ public abstract class MovingItem extends Collision implements Drawable {
         return x;
     }
 
-    MovingItem(MovingParameters mp, GameSetting gameSetting) {
-        this.x = mp.calX(width);
+    MovingItem(MovingParameters mp, GameSetting gameSetting, int width) {
+        this.width=width;
         this.mp = mp;
+        this.x = mp.calX(width);
         frogPaint = new FrogPaint();
         this.gameSetting = gameSetting;
     }
 
     public void resetItem(MovingParameters movingParameters) {
         this.mp = movingParameters;
-        this.x = x;
+        this.x = mp.calX(width);
     }
 
     @Override

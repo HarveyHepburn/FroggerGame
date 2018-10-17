@@ -8,6 +8,10 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
 
 import java.util.prefs.Preferences;
@@ -26,10 +30,10 @@ public class WelcomeActivity extends AppCompatActivity {
             setContentView(R.layout.activity_sign_up);
         } else {
             setContentView(R.layout.activity_welcome);
+            String res = dataProcess.load();
+            TextView textView = (TextView) findViewById(R.id.toast);
+            textView.setText("Welcome " + res);
         }
-
-
-        setContentView(R.layout.activity_welcome);
     }
 
 
@@ -38,32 +42,33 @@ public class WelcomeActivity extends AppCompatActivity {
         startActivity(intent);
         EditText editText = (EditText) findViewById(R.id.name);
         String name = editText.getText().toString();
-        RankDatabaseHelper rankDatabaseHelper=new RankDatabaseHelper();
-        rankDatabaseHelper.playerExist()
-        DataProcess dataProcess = new DataProcess();
-        dataProcess.save(name);
+        RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
+        if (rankDatabaseHelper.playerExist(name)) {
+            Toast.makeText(getApplicationContext(), "Already exits", Toast.LENGTH_SHORT);
+        } else {
+            //add to database
+            rankDatabaseHelper.addData(new RecordInfo(name, -1, -1));//-1 means no player
+            DataProcess dataProcess = new DataProcess();
+            dataProcess.save(name);
+        }
+
     }
+
     public void login(View view) {
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
-        String
-        EditText editText = (EditText) findViewById(R.id.name);
-        String name = editText.getText().toString();
         DataProcess dataProcess = new DataProcess();
-        dataProcess.save(name);
+        String res = dataProcess.load();
+        TextView textView = (TextView) findViewById(R.id.toast);
+        textView.setText("Welcome " + res);
+
     }
+
     public void logout(View view) {
         Intent intent = new Intent(this, SignUpActivity.class);
         startActivity(intent);
-        EditText editText = (EditText) findViewById(R.id.name);
-        String name = editText.getText().toString();
         DataProcess dataProcess = new DataProcess();
-        dataProcess.save(name);
-    }
-
-    public void cancel(View view) {
-        Intent intent = new Intent(this, WelcomeActivity.class);
-        startActivity(intent);
+        dataProcess.save("");
     }
 
     @Override

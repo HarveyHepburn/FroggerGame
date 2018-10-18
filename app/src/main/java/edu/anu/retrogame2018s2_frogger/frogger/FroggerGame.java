@@ -2,6 +2,8 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 
 import java.util.HashMap;
 
+import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
+import edu.anu.retrogame2018s2_frogger.frogger.player.Player;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.HelpScene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.classic.ClassicFroggerScene;
@@ -12,6 +14,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.scene.welcome.WelcomeScene;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
 
 public class FroggerGame implements Drawable {
+    DataProcess dataProcess=new DataProcess();
     GameSetting gameSetting;
     Scene currentScene;
 
@@ -27,6 +30,9 @@ public class FroggerGame implements Drawable {
         scenes.put("ranking", RankingScene.class);
         scenes.put("help", HelpScene.class);
         gameSetting = new GameSetting(width, height);
+
+        gameSetting.setPlayer(new Player(dataProcess.load()));
+
         gameSetting.setSoundControl(soundControl);
         gameSetting.put("levels", 5);
         gameSetting.setDbManager(dbManager);

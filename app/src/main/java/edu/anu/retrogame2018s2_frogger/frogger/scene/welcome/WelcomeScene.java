@@ -10,12 +10,12 @@ import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
-import edu.anu.retrogame2018s2_frogger.frogger.player.PlayerStore;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.FrogButton;
 
 public class WelcomeScene implements Scene {
     GameSetting gameSetting;
+
     Map<String, FrogButton> buttons = new HashMap<>();
 
     public WelcomeScene(GameSetting gameSetting) {

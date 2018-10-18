@@ -50,6 +50,9 @@ public class Car extends MovingItem implements ActiveItem {
                 pic = "car_yellow";
                 break;
         }
+        if(!mp.getDir()){
+            pic+="_reverse";
+        }
         frogCanvas.drawImage(pic, x, mp.getY(), x + getWidth(), mp.getY() + height, frogPaint);
     }
 

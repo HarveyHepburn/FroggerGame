@@ -20,9 +20,11 @@ import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
 import edu.anu.retrogame2018s2_frogger.frogger.player.Player;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.Preferences;
+
+/*
+    Author: JinWei Zhang
+ */
 
 public class WelcomeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String currentName;

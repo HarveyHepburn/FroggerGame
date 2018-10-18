@@ -23,7 +23,7 @@ public class ItemsTest {
         gameSetting.setSoundControl(new SoundControl() {
             @Override
             public void playMusic(String musicName) {
-                
+
             }
 
             @Override

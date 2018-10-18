@@ -1,6 +1,8 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
-
+/*
+    Author: Yang Yu
+ */
 public interface FrogCanvas {
     void drawRect(float left, float top, float right, float bottom, FrogPaint frogPaint);
 

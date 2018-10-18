@@ -12,7 +12,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
-
+/*
+    Author: Yang Yu
+ */
 public class LevelScene implements Scene {
     List<LevelButton> levelButtons;
     GameSetting gameSetting;

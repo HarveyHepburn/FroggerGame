@@ -5,7 +5,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
-
+/*
+    Author: Yang Yu
+ */
 public abstract class MovingItem extends Collision implements Drawable {
     int width;
     int height;

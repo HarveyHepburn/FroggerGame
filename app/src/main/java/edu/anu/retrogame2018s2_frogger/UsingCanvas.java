@@ -15,7 +15,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.Path;
-
+/*
+    Author: Yang Yu
+ */
 public class UsingCanvas implements FrogCanvas {
     Canvas canvas;
     Resources res;

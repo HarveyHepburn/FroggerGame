@@ -96,7 +96,7 @@ public class RankingScene implements Scene {
             if (recordInfos.get(i).getLevel() == -1 || recordInfos.get(i).getTime() == -1)
                 continue;//-1 means there is no player records
             if (i == 0) {
-                frogCanvas.drawText("Name" + "  " + "Level" + "   " + "Time" + "                  RANKING", (int) x - 70, y - 100, frogPaint);
+                frogCanvas.drawText("Name" + "  " + "Level" + "   " + "Time", (int) x - 70, y - 100, frogPaint);
                 frogCanvas.drawText(recordInfos.get(i).getName() + "      " + recordInfos.get(i).getLevel() + "       " + recordInfos.get(i).getTime() + "s", (int) x, y, frogPaintGold);
                 y += 100;
             } else if (i == 1) {

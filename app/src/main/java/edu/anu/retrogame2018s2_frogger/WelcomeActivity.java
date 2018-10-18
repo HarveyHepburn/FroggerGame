@@ -52,9 +52,9 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
         String name = editText.getText().toString();
         RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
         if (rankDatabaseHelper.playerExist(name)) {
-            Toast.makeText(getApplicationContext(), "Player Name already exits!Please change another name!", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Player Name already exits!Please change another name!", Toast.LENGTH_SHORT).show();
         } else if (name.equals("")) {
-            Toast.makeText(getApplicationContext(), "You haven't type your account name to sign up", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "You haven't type your account name to sign up", Toast.LENGTH_SHORT).show();
         } else {
 
             //add to database
@@ -66,7 +66,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
 
             addItemsOnSpinner2();
 
-            Toast.makeText(getApplicationContext(), "Successfully signed up, you are ready to login", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Successfully signed up, you are ready to login", Toast.LENGTH_SHORT).show();
         }
 
     }
@@ -76,11 +76,11 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
         spinner2 = (Spinner) findViewById(R.id.spinner2);
         if (spinner2.getSelectedItem() != null) name = spinner2.getSelectedItem().toString();
         if (name.equals("")) {
-            Toast.makeText(getApplicationContext(), "Please sign up or choose an account to login", Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), "Please sign up or choose an account to login", Toast.LENGTH_SHORT).show();
             return;
         }
         currentName = name;
-        Toast.makeText(getApplicationContext(), "Welcome back, " + name, Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Welcome back, " + name, Toast.LENGTH_SHORT).show();
 
         PlayerStore.save(name);
         Intent intent = new Intent(getApplicationContext(), GameActivity.class);

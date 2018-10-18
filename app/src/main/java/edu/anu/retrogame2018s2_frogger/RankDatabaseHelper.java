@@ -31,7 +31,7 @@ public class RankDatabaseHelper extends SQLiteOpenHelper implements DBManager {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(CREATE_RANK);
-        Toast.makeText(mContext, "Create database succeeded", Toast.LENGTH_SHORT).show();
+        //create database
     }
 
     @Override

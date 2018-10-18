@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
+import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
 
 import static org.junit.Assert.*;
 
@@ -13,6 +14,37 @@ public class LaneTest {
     public void getSpeed() {
         GameSetting gameSetting = new GameSetting(500, 500);
         gameSetting.put("holeNumber",3);
+        gameSetting.setSoundControl(new SoundControl() {
+            @Override
+            public void playMusic(String musicName) {
+
+            }
+
+            @Override
+            public void playSound(String musicName) {
+
+            }
+
+            @Override
+            public void stopMusic() {
+
+            }
+
+            @Override
+            public void stopSound() {
+
+            }
+
+            @Override
+            public boolean isSoundPlaying() {
+                return false;
+            }
+
+            @Override
+            public boolean isMusicPlaying() {
+                return false;
+            }
+        });
         Scene scene = new ClassicFroggerScene(gameSetting);
         Lane lane = new Lane(true, 50, 100, new Cars(scene), 200, scene);
 
@@ -23,6 +55,37 @@ public class LaneTest {
     public void getDir() {
         GameSetting gameSetting = new GameSetting(500, 500);
         gameSetting.put("holeNumber",3);
+        gameSetting.setSoundControl(new SoundControl() {
+            @Override
+            public void playMusic(String musicName) {
+
+            }
+
+            @Override
+            public void playSound(String musicName) {
+
+            }
+
+            @Override
+            public void stopMusic() {
+
+            }
+
+            @Override
+            public void stopSound() {
+
+            }
+
+            @Override
+            public boolean isSoundPlaying() {
+                return false;
+            }
+
+            @Override
+            public boolean isMusicPlaying() {
+                return false;
+            }
+        });
 
         Scene scene = new ClassicFroggerScene(gameSetting);
         Lane lane = new Lane(true, 50, 100, new Cars(scene), 200, scene);
@@ -34,7 +97,37 @@ public class LaneTest {
     public void getY() {
         GameSetting gameSetting = new GameSetting(500, 500);
         gameSetting.put("holeNumber",3);
+        gameSetting.setSoundControl(new SoundControl() {
+            @Override
+            public void playMusic(String musicName) {
 
+            }
+
+            @Override
+            public void playSound(String musicName) {
+
+            }
+
+            @Override
+            public void stopMusic() {
+
+            }
+
+            @Override
+            public void stopSound() {
+
+            }
+
+            @Override
+            public boolean isSoundPlaying() {
+                return false;
+            }
+
+            @Override
+            public boolean isMusicPlaying() {
+                return false;
+            }
+        });
         Scene scene = new ClassicFroggerScene(gameSetting);
         Lane lane = new Lane(true, 50, 100, new Cars(scene), 200, scene);
 
@@ -45,6 +138,37 @@ public class LaneTest {
     public void calX() {
         GameSetting gameSetting = new GameSetting(500, 500);
         gameSetting.put("holeNumber",3);
+        gameSetting.setSoundControl(new SoundControl() {
+            @Override
+            public void playMusic(String musicName) {
+
+            }
+
+            @Override
+            public void playSound(String musicName) {
+
+            }
+
+            @Override
+            public void stopMusic() {
+
+            }
+
+            @Override
+            public void stopSound() {
+
+            }
+
+            @Override
+            public boolean isSoundPlaying() {
+                return false;
+            }
+
+            @Override
+            public boolean isMusicPlaying() {
+                return false;
+            }
+        });
         Scene scene = new ClassicFroggerScene(gameSetting);
         Lane lane = new Lane(true, 50, 100, new Cars(scene), 200, scene);
 

@@ -1,7 +1,9 @@
 package edu.anu.retrogame2018s2_frogger.frogger.animation;
 
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
-
+/*
+    Author: Yang Yu
+ */
 public class FadeInAndOutAnimation extends Animation {
 
     boolean fadeIn = true;

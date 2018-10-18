@@ -59,6 +59,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     public void submit(View view) {
         EditText editText = (EditText) findViewById(R.id.name);
         String name = editText.getText().toString();
+        name=name.trim();//to reduce the meaningless thing
         RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
         if (rankDatabaseHelper.playerExist(name)) {
             Toast.makeText(getApplicationContext(), "Already exits!Please change another one!", Toast.LENGTH_LONG).show();

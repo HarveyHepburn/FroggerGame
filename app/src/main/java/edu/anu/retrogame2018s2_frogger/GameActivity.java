@@ -27,6 +27,7 @@ public class GameActivity extends AppCompatActivity {
         gameView = findViewById(R.id.gamer);
     }
 
+
     @Override
     public void onStop() {
         super.onStop();

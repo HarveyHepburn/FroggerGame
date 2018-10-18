@@ -27,6 +27,7 @@ import java.util.List;
  */
 
 public class WelcomeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+   DataProcess dataProcess=new DataProcess();
     String currentName;
     private Spinner spinner2;
     private Button btnSubmit;
@@ -60,10 +61,11 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     public void submit(View view) {
         EditText editText = (EditText) findViewById(R.id.name);
         String name = editText.getText().toString();
+        name=name.trim();//to reduce the meaningless thing
         RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
         if (rankDatabaseHelper.playerExist(name)) {
             Toast.makeText(getApplicationContext(), "Already exits!Please change another one!", Toast.LENGTH_LONG).show();
-        } else if (name.equals("") ) {
+        } else if (name.equals("")) {
             Toast.makeText(getApplicationContext(), "Can't sign up! Please change another one!", Toast.LENGTH_LONG).show();
         } else {
 
@@ -71,12 +73,10 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
             rankDatabaseHelper.addData(new RecordInfo(name, -1, -1));//-1 means no record
             //give to player the current player name
             currentName = name;
-            currentPlayer=new Player(currentName);
-            list.add(0,currentName);
-
-
+            currentPlayer = new Player(currentName);
+            list.add(0, currentName);
             addItemsOnSpinner2();
-
+            editText.setText("");
             Toast.makeText(getApplicationContext(), "successful sign up!Log in please!", Toast.LENGTH_LONG).show();
         }
 
@@ -85,52 +85,21 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     public void login(View view) {
         EditText editText = (EditText) findViewById(R.id.name);
         String name = editText.getText().toString();
-        if(name.equals("")){
+        if (name.equals("")) {
+            Intent intent = new Intent(getApplicationContext(), GameActivity.class);
+            currentPlayer = new Player(String.valueOf(spinner2.getSelectedItem()));
+            dataProcess.save(currentPlayer.getName());
+            startActivity(intent);
 
+        } else {
+            Toast.makeText(getApplicationContext(), "Please sign up!", Toast.LENGTH_LONG).show();
         }
-        Intent intent = new Intent(getApplicationContext(), GameActivity.class);
-        startActivity(intent);
-        currentPlayer=new Player(currentName);
 
-//        String res = dataProcess.load();
-//        TextView textView = (TextView) findViewById(R.id.toast);
-//        textView.setText("Welcome " + res);
-
-    }
-    // get the selected dropdown list value
-    public void addListenerOnButton() {
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
-        btnSubmit = (Button) findViewById(R.id.login);
-
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                String name = String.valueOf(spinner2.getSelectedItem());
-                currentName = name;
-                Toast.makeText(WelcomeActivity.this,
-                        "OnClickListener : " +
-                                "\nSpinner 2 : " + String.valueOf(spinner2.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
-            }
-
-//
-//    public void logout(View view) {
-//        Intent intent = new Intent(this, SignUpActivity.class);
-//        startActivity(intent);
-//        DataProcess dataProcess = new DataProcess();
-//        dataProcess.save("");
-//    }
-//        }
-        });
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-//        Toast.makeText(parent.getContext(),
-//                "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
-//                Toast.LENGTH_SHORT).show();
     }
 
     @Override

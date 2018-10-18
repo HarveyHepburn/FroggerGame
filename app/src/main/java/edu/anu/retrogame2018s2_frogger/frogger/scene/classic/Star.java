@@ -15,11 +15,13 @@ public class Star extends Collision implements Spirit, Drawable {
     boolean display = true;
     Timer timer;
 
-
+    Random random;
     Star(Scene scene,Timer timer) {
-        Random random = new Random();
+        random = new Random();
+
         this.x = random.nextInt(scene.getGameSetting().getWidth());
-        this.y = random.nextInt(scene.getGameSetting().getHeight());
+        this.y = random.nextInt( scene.getGameSetting().getHeight()- scene.getGameSetting().get("riverTop"));
+        this.y+= scene.getGameSetting().get("riverTop");
         this.radius = 30;
         this.scene = scene;
         this.timer=timer;
@@ -47,15 +49,14 @@ public class Star extends Collision implements Spirit, Drawable {
 
     @Override
     public void draw(FrogCanvas frogCanvas) {
-        if (display)
-            frogCanvas.drawImage("star", x - radius, y - radius, x + radius, y + radius, null);
+        frogCanvas.drawImage("star", x - radius, y - radius, x + radius, y + radius, null);
     }
 
     @Override
     public void step() {
-
-        if (display&&this.collision(scene.getGameSetting().getFrog(), x, y, radius, radius)) {
-            display = false;
+        if (this.collision(scene.getGameSetting().getFrog(), x, y, radius, radius)) {
+            this.x = random.nextInt(scene.getGameSetting().getWidth());
+            this.y = random.nextInt(scene.getGameSetting().getHeight());
             timer.addTime(10);
         }
     }

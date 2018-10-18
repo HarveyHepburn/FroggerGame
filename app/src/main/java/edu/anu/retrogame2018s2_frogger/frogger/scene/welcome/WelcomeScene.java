@@ -1,8 +1,11 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.welcome;
 
 
+import android.graphics.Color;
+
 import java.util.HashMap;
 import java.util.Map;
+
 
 import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
@@ -10,11 +13,15 @@ import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
+import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.FrogButton;
 
 public class WelcomeScene implements Scene {
+    DataProcess dataProcess=new DataProcess();
     GameSetting gameSetting;
+    FrogPaint frogPaint=new FrogPaint();
+
     Map<String, FrogButton> buttons = new HashMap<>();
 
     public WelcomeScene(GameSetting gameSetting) {
@@ -25,6 +32,8 @@ public class WelcomeScene implements Scene {
         if (!gameSetting.getSoundControl().isMusicPlaying()) {
             gameSetting.getSoundControl().playMusic("welcome_music.mp3");
         }
+        frogPaint.setColor("#000000");
+        frogPaint.setTextSize(50);
     }
 
     @Override
@@ -96,6 +105,7 @@ public class WelcomeScene implements Scene {
         for (Drawable drawable : buttons.values()) {
             drawable.draw(frogCanvas);
         }
+        frogCanvas.drawText("Welcome "+dataProcess.load(),gameSetting.getWidth()*0.8f,gameSetting.getHeight()*0.1f,frogPaint);
     }
 
     @Override

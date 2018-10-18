@@ -1,16 +1,21 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
+
 import edu.anu.retrogame2018s2_frogger.frogger.ControlPanel;
 import edu.anu.retrogame2018s2_frogger.frogger.Dialog;
 import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
+import edu.anu.retrogame2018s2_frogger.frogger.FroggerGame;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
-import edu.anu.retrogame2018s2_frogger.frogger.player.PlayerStore;
+import edu.anu.retrogame2018s2_frogger.frogger.SceneFactory;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
+/**
+ * @Author: Yu Yang (Harvey), Boyuan Zheng(Joe)
+ */
 public class ClassicFroggerScene implements Scene {
     private GameSetting gameSetting;
     private Frog frog;
@@ -128,7 +133,7 @@ public class ClassicFroggerScene implements Scene {
 
     @Override
     public boolean isMoveble(int x, int y) {
-        if (x <= 0 || x >= gameSetting.getWidth() || y <= 0 || y >= gameSetting.getHeight()) {
+        if(x<=0||x>=gameSetting.getWidth()||y<=0||y>=gameSetting.getHeight()){
             return false;
         }
         return this.frogHole.isOkToMove(x, y);

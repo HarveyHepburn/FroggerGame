@@ -8,19 +8,22 @@ import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
-
+/*
+    Author: Yang Yu
+ */
 public class Car extends MovingItem implements ActiveItem {
     static Random random = new Random();
+
     public Car(MovingParameters movingParameters, Scene scene) {
-        super(movingParameters, scene.getGameSetting(),(int) ((calHeight(scene.getGameSetting()))*2));
+        super(movingParameters, scene.getGameSetting(), (int) ((calHeight(scene.getGameSetting())) * 2));
         frogPaint.setColor("#ff5252");
         this.scene = scene;
         this.color = random.nextInt(4);
-        height = ((gameSetting.get("roadBottom")-gameSetting.get("roadTop"))/5);
+        height = ((gameSetting.get("roadBottom") - gameSetting.get("roadTop")) / 5);
     }
 
-    private static int calHeight(GameSetting gameSetting){
-        return ((gameSetting.get("roadBottom")-gameSetting.get("roadTop"))/5);
+    private static int calHeight(GameSetting gameSetting) {
+        return ((gameSetting.get("roadBottom") - gameSetting.get("roadTop")) / 5);
     }
 
 
@@ -50,8 +53,8 @@ public class Car extends MovingItem implements ActiveItem {
                 pic = "car_yellow";
                 break;
         }
-        if(!mp.getDir()){
-            pic+="_reverse";
+        if (!mp.getDir()) {
+            pic += "_reverse";
         }
         frogCanvas.drawImage(pic, x, mp.getY(), x + getWidth(), mp.getY() + height, frogPaint);
     }

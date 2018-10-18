@@ -44,6 +44,11 @@ public class GameSettingTest {
             public boolean isSoundPlaying() {
                 return false;
             }
+
+            @Override
+            public boolean isMusicPlaying() {
+                return false;
+            }
         };
         gameSetting.setSoundControl(s);
         Scene scene = new WelcomeScene(gameSetting);

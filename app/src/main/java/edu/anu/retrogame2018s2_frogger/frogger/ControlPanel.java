@@ -1,7 +1,9 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
-
+/*
+    Author: Yang Yu
+ */
 public class ControlPanel {
     FrogPaint frogPaint1 = new FrogPaint();
     FrogPaint frogPaint2 = new FrogPaint();

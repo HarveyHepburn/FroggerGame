@@ -13,11 +13,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+import android.view.View.OnClickListener;
 
+import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
-import edu.anu.retrogame2018s2_frogger.frogger.player.PlayerStore;
+import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
+import edu.anu.retrogame2018s2_frogger.frogger.player.Player;
 
+import java.util.ArrayList;
 import java.util.List;
+
+/*
+    Author: JinWei Zhang
+ */
 
 public class WelcomeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String currentName;
@@ -41,6 +49,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     public void addItemsOnSpinner2() {
 
         spinner2 = (Spinner) findViewById(R.id.spinner2);
+
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -50,6 +59,7 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     public void submit(View view) {
         EditText editText = (EditText) findViewById(R.id.name);
         String name = editText.getText().toString();
+        name=name.trim();//to reduce the meaningless thing
         RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
         if (rankDatabaseHelper.playerExist(name)) {
             Toast.makeText(getApplicationContext(), "Player Name already exits!Please change another name!", Toast.LENGTH_SHORT).show();
@@ -108,23 +118,11 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
                         Toast.LENGTH_SHORT).show();
             }
 
-//
-//    public void logout(View view) {
-//        Intent intent = new Intent(this, SignUpActivity.class);
-//        startActivity(intent);
-//        PlayerStore dataProcess = new PlayerStore();
-//        dataProcess.save("");
-//    }
-//        }
-        });
     }
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
-//        Toast.makeText(parent.getContext(),
-//                "OnItemSelectedListener : " + parent.getItemAtPosition(pos).toString(),
-//                Toast.LENGTH_SHORT).show();
     }
 
     @Override

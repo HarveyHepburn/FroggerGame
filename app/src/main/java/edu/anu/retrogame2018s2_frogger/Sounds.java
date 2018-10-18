@@ -7,7 +7,9 @@ import android.media.MediaPlayer;
 import java.io.IOException;
 
 import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
-
+/*
+    Author: Yang Yu
+ */
 public class Sounds extends SoundControl {
     Context context;
     static MediaPlayer mediaPlayer;

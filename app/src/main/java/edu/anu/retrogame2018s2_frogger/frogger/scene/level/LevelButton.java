@@ -5,7 +5,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.animation.ScalingAnimation;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.FrogButton;
-
+/**
+ * @Author: Yu Yang (Harvey), Boyuan Zheng(Joe)
+ */
 public class LevelButton extends FrogButton {
     int level;
     GameSetting gameSetting;

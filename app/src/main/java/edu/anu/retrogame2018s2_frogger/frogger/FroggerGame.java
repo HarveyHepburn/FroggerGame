@@ -12,7 +12,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.RankingScene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.DBManager;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.welcome.WelcomeScene;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
-
+/**
+ * @Author: Yu Yang (Harvey), Boyuan Zheng(Joe)
+ */
 public class FroggerGame implements Drawable {
     DataProcess dataProcess=new DataProcess();
     GameSetting gameSetting;
@@ -41,6 +43,8 @@ public class FroggerGame implements Drawable {
     }
 
     HashMap<String, Class> scenes;
+
+
 
     public GameSetting getGameSetting() {
         return gameSetting;

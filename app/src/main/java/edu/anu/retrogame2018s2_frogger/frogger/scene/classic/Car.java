@@ -56,7 +56,6 @@ public class Car extends MovingItem implements ActiveItem {
         frogCanvas.drawImage(pic, x, mp.getY(), x + getWidth(), mp.getY() + height, frogPaint);
     }
 
-
     @Override
     public boolean activity(Frog frog) {
         if (this.Collision(frog)) {

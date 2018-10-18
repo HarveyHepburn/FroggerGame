@@ -24,7 +24,7 @@ public class Timer implements Drawable {
     @Override
     public void draw(FrogCanvas frogCanvas) {
         if (time < 10) frogPaint.setColor("#FF0000");
-        frogCanvas.drawText("Time Left: " + time + "s", scene.getGameSetting().getWidth() * 0.9f, scene.getGameSetting().getHeight() * 0.05f, frogPaint);
+        frogCanvas.drawText( time + "s", scene.getGameSetting().getWidth() * 0.9f, scene.getGameSetting().getHeight() * 0.05f, frogPaint);
     }
 
     @Override

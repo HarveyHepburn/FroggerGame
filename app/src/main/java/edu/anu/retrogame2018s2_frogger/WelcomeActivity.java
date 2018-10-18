@@ -9,28 +9,23 @@ import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-import android.view.View.OnClickListener;
 
-import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
-import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
-import edu.anu.retrogame2018s2_frogger.frogger.player.Player;
+import edu.anu.retrogame2018s2_frogger.frogger.player.PlayerStore;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /*
-    Author: JinWei Zhang
+    Author: JinWei Zhang, (improve)Danny Feng
  */
 
+//The Activity for login
 public class WelcomeActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
     String currentName;
     private Spinner spinner2;
-    private Button btnSubmit;
     RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
     List<String> list = rankDatabaseHelper.getPlayer();
 
@@ -43,11 +38,9 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         setContentView(R.layout.activity_welcome);
         addItemsOnSpinner2();
-
     }
 
     public void addItemsOnSpinner2() {
-
         spinner2 = (Spinner) findViewById(R.id.spinner2);
 
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -59,26 +52,24 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
     public void submit(View view) {
         EditText editText = (EditText) findViewById(R.id.name);
         String name = editText.getText().toString();
-        name=name.trim();//to reduce the meaningless thing
+        name = name.trim();//to reduce the meaningless thing
         RankDatabaseHelper rankDatabaseHelper = new RankDatabaseHelper();
         if (rankDatabaseHelper.playerExist(name)) {
             Toast.makeText(getApplicationContext(), "Player Name already exits!Please change another name!", Toast.LENGTH_SHORT).show();
         } else if (name.equals("")) {
             Toast.makeText(getApplicationContext(), "You haven't type your account name to sign up", Toast.LENGTH_SHORT).show();
         } else {
-
             //add to database
             rankDatabaseHelper.addData(new RecordInfo(name, -1, -1));//-1 means no record
             //give to player the current player name
             currentName = name;
             list.add(0, currentName);
 
-
             addItemsOnSpinner2();
 
             Toast.makeText(getApplicationContext(), "Successfully signed up, you are ready to login", Toast.LENGTH_SHORT).show();
+            editText.setText("");
         }
-
     }
 
     public void login(View view) {
@@ -95,29 +86,6 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
         PlayerStore.save(name);
         Intent intent = new Intent(getApplicationContext(), GameActivity.class);
         startActivity(intent);
-//        String res = playerStore.load();
-//        TextView textView = (TextView) findViewById(R.id.toast);
-//        textView.setText("Welcome " + res);
-
-    }
-
-    // get the selected dropdown list value
-    public void addListenerOnButton() {
-        spinner2 = (Spinner) findViewById(R.id.spinner2);
-        btnSubmit = (Button) findViewById(R.id.login);
-
-        btnSubmit.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                String name = String.valueOf(spinner2.getSelectedItem());
-                currentName = name;
-                Toast.makeText(WelcomeActivity.this,
-                        "OnClickListener : " +
-                                "\nSpinner 2 : " + String.valueOf(spinner2.getSelectedItem()),
-                        Toast.LENGTH_SHORT).show();
-            }
-
     }
 
     @Override

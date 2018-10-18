@@ -10,7 +10,7 @@ public class Cars extends Items implements ItemManager {
         int roadHeight = scene.getGameSetting().get("roadBottom") - scene.getGameSetting().get("roadTop");
         int verticalGap = (int) (roadHeight * 0.025);
         int carHeight = ((scene.getGameSetting().get("roadBottom") - scene.getGameSetting().get("roadTop")) / 5);
-
+        //calculate the position to fit different device
         int firstLane = scene.getGameSetting().get("roadTop") + verticalGap;
         int secondLane = firstLane + verticalGap * 2 + carHeight;
         int thirdLane = secondLane + verticalGap * 3 + carHeight;

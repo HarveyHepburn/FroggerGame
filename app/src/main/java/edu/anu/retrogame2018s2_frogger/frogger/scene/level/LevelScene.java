@@ -9,6 +9,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
+
 /*
     Author: Yang Yu
  */
@@ -16,6 +17,7 @@ public class LevelScene implements Scene {
     List<LevelButton> levelButtons;
     GameSetting gameSetting;
 
+    //add all levelButton in the scene
     public LevelScene(GameSetting gameSetting) {
         this.gameSetting = gameSetting;
         levelButtons = new ArrayList<>();
@@ -23,7 +25,7 @@ public class LevelScene implements Scene {
         int gap = gameSetting.getWidth() / (gameSetting.get("levels") + 1);
         for (int i = 0; i < gameSetting.get("levels"); i++) {
             int y = i % 2 == 0 ? 300 : 700;
-            y += random.nextBoolean() ? 60 : 0;
+            y += random.nextBoolean() ? 60 : 0;//make the scene look different each time
             levelButtons.add(new LevelButton(gap * (i + 1), y, i + 1, gameSetting));
         }
     }

@@ -4,7 +4,11 @@ import java.util.HashMap;
 
 import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.DBManager;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
+/*
+    Author: Danny Feng, Yu Yang
+ */
 
+//GameSetting creates and manages all the game control system include sound, database
 public class GameSetting extends HashMap<String, Integer> {
 
     private Frog frog;

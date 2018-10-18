@@ -1,6 +1,5 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.welcome;
 
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,9 +9,13 @@ import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
+import edu.anu.retrogame2018s2_frogger.frogger.player.PlayerStore;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.FrogButton;
 
+/*
+    Author: Yang Yu, Danny Feng
+ */
 public class WelcomeScene implements Scene {
     GameSetting gameSetting;
 

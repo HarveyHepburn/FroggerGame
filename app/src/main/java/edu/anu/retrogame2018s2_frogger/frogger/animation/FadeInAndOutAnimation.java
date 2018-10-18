@@ -1,11 +1,13 @@
 package edu.anu.retrogame2018s2_frogger.frogger.animation;
 
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
-/*
-    Author: Yang Yu
- */
-public class FadeInAndOutAnimation extends Animation {
 
+/*
+    Author: Yang Yu, Danny Feng
+ */
+
+public class FadeInAndOutAnimation extends Animation {
+    //Mostly used for the dialog pop-up
     boolean fadeIn = true;
 
     public FadeInAndOutAnimation(int speed) {
@@ -18,6 +20,7 @@ public class FadeInAndOutAnimation extends Animation {
 
     }
 
+    //fade in and out by changing color
     public FrogPaint makePaint(FrogPaint frogPaint) {
         if (frogPaint.getColor() == null) return frogPaint;
         String color = frogPaint.getColor();

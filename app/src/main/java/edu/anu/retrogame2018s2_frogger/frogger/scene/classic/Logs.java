@@ -2,6 +2,9 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
+/*
+    Author: Danny Feng, Yang Yu
+ */
 public class Logs extends Items implements ItemManager {
     private Scene scene;
 
@@ -15,6 +18,7 @@ public class Logs extends Items implements ItemManager {
         this.add(new Lane(true, 2, logHeight * 7, this, scene.getGameSetting().get("riverTop") + logHeight * 3, scene));
     }
 
+    //added all the logs
     @Override
     public ActiveItem getNewItem(MovingParameters movingParameters) {
         return new Log(movingParameters, scene.getGameSetting());

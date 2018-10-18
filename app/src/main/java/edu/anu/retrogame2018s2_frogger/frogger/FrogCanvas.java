@@ -3,6 +3,8 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 /*
     Author: Yang Yu
  */
+
+//Frog canvas is to decoupling from Android Canvas so that it can easily move to different platform
 public interface FrogCanvas {
     void drawRect(float left, float top, float right, float bottom, FrogPaint frogPaint);
 

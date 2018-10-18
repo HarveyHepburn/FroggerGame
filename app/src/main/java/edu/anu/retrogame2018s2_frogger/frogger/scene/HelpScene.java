@@ -5,8 +5,14 @@ import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 
-public class HelpScene implements Scene  {
+/*
+    Author: Danny Feng
+ */
+
+//Show the game instruction by a image
+public class HelpScene implements Scene {
     GameSetting gameSetting;
+
     public HelpScene(GameSetting gameSetting) {
         this.gameSetting = gameSetting;
     }

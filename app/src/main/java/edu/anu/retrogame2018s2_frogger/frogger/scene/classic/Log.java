@@ -4,6 +4,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 
+/*
+    Author: Danny Feng, Yang Yu
+ */
 public class Log extends MovingItem implements MoveAlong, ActiveItem {
     public Log(MovingParameters movingParameters, GameSetting gameSetting) {
         super(movingParameters, gameSetting, (int) (calHeight(gameSetting) * 2));
@@ -28,7 +31,7 @@ public class Log extends MovingItem implements MoveAlong, ActiveItem {
     @Override
     public boolean activity(Frog frog) {
         if (this.Collision(frog)) {
-            frog.logOn(this);
+            frog.logOn(this);//frog move with the log
         }
         return false;
     }

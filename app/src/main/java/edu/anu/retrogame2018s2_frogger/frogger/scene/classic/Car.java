@@ -8,6 +8,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
+
 /*
     Author: Yang Yu
  */
@@ -18,7 +19,7 @@ public class Car extends MovingItem implements ActiveItem {
         super(movingParameters, scene.getGameSetting(), (int) ((calHeight(scene.getGameSetting())) * 2));
         frogPaint.setColor("#ff5252");
         this.scene = scene;
-        this.color = random.nextInt(4);
+        this.color = random.nextInt(4);// random generate the color
         height = ((gameSetting.get("roadBottom") - gameSetting.get("roadTop")) / 5);
     }
 

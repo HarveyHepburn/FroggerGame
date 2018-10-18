@@ -6,6 +6,7 @@ import java.util.List;
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 
+//Item means game elements like car, log
 public class Items extends ArrayList<Lane> implements Drawable {
     private List<ActiveItem> itemPool = new ArrayList<>();
     private static int MAX_POOL_SIZE = 30;

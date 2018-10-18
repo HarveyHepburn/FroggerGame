@@ -1,8 +1,9 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
+
 /*
-    Author: Yang Yu
+    Author: Yang Yu, Danny Feng
  */
 public class ControlPanel {
     FrogPaint frogPaint1 = new FrogPaint();
@@ -34,7 +35,7 @@ public class ControlPanel {
         Path p3 = getTriangle(new int[]{x - 50, y + 50}, 100, Direction.SOUTH);
         Path p4 = getTriangle(new int[]{x + 50, y - 50}, 100, Direction.WEST);
 
-
+        //each button has a all paint
         frogPaint1.setColor("#4db6ac");
         frogPaint1.setStyleFill(true);
         frogPaint2.setColor("#4db6ac");
@@ -68,7 +69,7 @@ public class ControlPanel {
 
     public static Path getTriangle(int[] p1, int width, Direction direction) {
         int[] p2 = null, p3 = null;
-
+        //the Path (three points) for each triangle
         if (direction == Direction.NORTH) {
             p2 = new int[]{p1[0] + width, p1[1]};
             p3 = new int[]{p1[0] + (width / 2), p1[1] - width};
@@ -115,7 +116,7 @@ public class ControlPanel {
             double angle = calculateAngle(0, 0, x, y);
             if (angle > 45 && angle < 135) {
                 scene.move(Direction.EAST);
-                onTouchE = true;
+                onTouchE = true;//if touched, change colour
             } else if (angle > 135 && angle < 225) {
                 scene.move(Direction.SOUTH);
                 onTouchS = true;

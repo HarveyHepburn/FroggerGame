@@ -1,22 +1,21 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
-
 import edu.anu.retrogame2018s2_frogger.frogger.ControlPanel;
 import edu.anu.retrogame2018s2_frogger.frogger.Dialog;
 import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
-import edu.anu.retrogame2018s2_frogger.frogger.FroggerGame;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
-import edu.anu.retrogame2018s2_frogger.frogger.SceneFactory;
+import edu.anu.retrogame2018s2_frogger.frogger.player.PlayerStore;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 /**
  * @Author: Yu Yang (Harvey), Boyuan Zheng(Joe)
  */
 public class ClassicFroggerScene implements Scene {
+    //this is the main scene for the game
     private GameSetting gameSetting;
     private Frog frog;
     private Logs logs;
@@ -55,6 +54,7 @@ public class ClassicFroggerScene implements Scene {
 
     @Override
     public void draw(FrogCanvas frogCanvas) {
+        //all the game elements are drawn here
         frogHole.draw(frogCanvas);
         background.draw(frogCanvas);
         logs.draw(frogCanvas);
@@ -64,10 +64,10 @@ public class ClassicFroggerScene implements Scene {
         timer.draw(frogCanvas);
         star.draw(frogCanvas);
         if (isActive && this.frogHole.inHole(frog)) {
-            if (this.frogHole.isFinished()) {
+            if (this.frogHole.isFinished()) {//if all holes have been visited, game finished
                 sceneOver(new DialogInformation("Mission Accomplished !"));
             } else {
-                this.frog.resetFrog();
+                this.frog.resetFrog();//if some holes are still left, reset frog to start point
             }
         }
     }
@@ -79,7 +79,7 @@ public class ClassicFroggerScene implements Scene {
             if (this.frog.getLog() == null && this.frog.getY() >= gameSetting.get("riverTop") && frog.getY() < gameSetting.get("riverBottom")) {
                 sceneOver(new DialogInformation("You dropped into the river !"));
             }
-
+            //move the elements
             frog.step();
             logs.step();
             timer.step();
@@ -108,6 +108,7 @@ public class ClassicFroggerScene implements Scene {
     public void sceneOver(DialogInformation sceneEndInformation) {
         isActive = false;
         this.dialog = new Dialog(sceneEndInformation, gameSetting);
+        //for game ending dialog
     }
 
     @Override
@@ -125,7 +126,7 @@ public class ClassicFroggerScene implements Scene {
             isActive = false;
             this.dialog = new Dialog(new DialogInformation("Paused, press back again to quit"), gameSetting);
         } else {
-            return "levels";
+            return "levels"; //return to levels scene when user quit
         }
 
         return null;
@@ -133,9 +134,9 @@ public class ClassicFroggerScene implements Scene {
 
     @Override
     public boolean isMoveble(int x, int y) {
-        if(x<=0||x>=gameSetting.getWidth()||y<=0||y>=gameSetting.getHeight()){
+        if (x <= 0 || x >= gameSetting.getWidth() || y <= 0 || y >= gameSetting.getHeight()) {
             return false;
-        }
+        }//if it is out of map, set to false to block the move
         return this.frogHole.isOkToMove(x, y);
     }
 
@@ -146,12 +147,12 @@ public class ClassicFroggerScene implements Scene {
         } else if (this.dialog != null) {
             if (this.dialog.gotClick(x, y)) {
                 if (this.dialog.dialogInformation.getInformation().equals("Paused, press back again to quit")) {
-                    this.isActive = true;
+                    this.isActive = true;//double check if the user really want to quit
                     return null;
                 } else if (this.dialog.dialogInformation.getInformation().equals("Mission Accomplished !")) {
-                    String name = PlayerStore.load();
+                    String name = PlayerStore.load();//load current player data
                     RecordInfo record = new RecordInfo(name, frogHole.holeNumber, timer.getTime());
-                    gameSetting.getDbManager().addData(record);
+                    gameSetting.getDbManager().addData(record);//record name level and time to database
                     return "ranking";
                 }
                 return "levels";

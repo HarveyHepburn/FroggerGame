@@ -9,10 +9,10 @@ import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
-public class Lane extends ArrayList<ActiveItem> implements MovingParameters,Drawable {
+//Lane for the cars
+public class Lane extends ArrayList<ActiveItem> implements MovingParameters, Drawable {
     private int speed;
     private int gap;
     private ItemManager itemManager;
@@ -20,13 +20,13 @@ public class Lane extends ArrayList<ActiveItem> implements MovingParameters,Draw
     private int y;
     private Scene scene;
 
-    Lane(boolean dir, int speed, int gap, ItemManager itemManager, int y,Scene scene) {
+    Lane(boolean dir, int speed, int gap, ItemManager itemManager, int y, Scene scene) {
         this.speed = speed;
         this.gap = gap;
         this.itemManager = itemManager;
         this.y = y;
-        this.dir=dir;
-        this.scene=scene;
+        this.dir = dir;
+        this.scene = scene;
     }
 
     @Override
@@ -49,7 +49,7 @@ public class Lane extends ArrayList<ActiveItem> implements MovingParameters,Draw
     @Override
     public void step() {
         Iterator<ActiveItem> iter = this.iterator();
-        int oldSize=this.size();
+        int oldSize = this.size();
         while (iter.hasNext()) {
             ActiveItem activeItem = iter.next();
             if (dir && activeItem.getX() > scene.getGameSetting().getWidth()) {
@@ -72,7 +72,6 @@ public class Lane extends ArrayList<ActiveItem> implements MovingParameters,Draw
                 return;
             }
         }
-
         if (dir) {
             if (this.size() > 0) {
                 if (this.get(this.size() - 1).getX() > gap) {
@@ -87,7 +86,7 @@ public class Lane extends ArrayList<ActiveItem> implements MovingParameters,Draw
                 if (this.get(this.size() - 1).getX() < scene.getGameSetting().getWidth() - gap) {
                     this.add(getNewItem());
                 }
-            }else {
+            } else {
                 this.add(getNewItem());
             }
         }
@@ -110,6 +109,6 @@ public class Lane extends ArrayList<ActiveItem> implements MovingParameters,Draw
 
     @Override
     public int calX(int width) {
-        return dir ? (-1*width) : scene.getGameSetting().getWidth() + width;
+        return dir ? (-1 * width) : scene.getGameSetting().getWidth() + width;
     }
 }

@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -13,6 +12,7 @@ import java.util.Collections;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.DBManager;
 
+//this is the main code for game data base (used SQL)
 public class RankDatabaseHelper extends SQLiteOpenHelper implements DBManager {
 
     public static final String CREATE_RANK = "create table Rank ("
@@ -85,7 +85,7 @@ public class RankDatabaseHelper extends SQLiteOpenHelper implements DBManager {
         return false;
     }
 
-//    @Override
+    @Override
     public ArrayList<String> getPlayer() {
         ArrayList<RecordInfo> playerData = getData();
         ArrayList<String> playerName = new ArrayList<>();

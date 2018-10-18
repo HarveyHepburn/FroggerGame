@@ -1,7 +1,9 @@
 package edu.anu.retrogame2018s2_frogger.frogger.animation;
+
 /*
     Author: Yang Yu
  */
+
 public class ScalingAnimation extends Animation {
 
     public ScalingAnimation(float speed, float max, float min) {

@@ -9,13 +9,14 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import edu.anu.retrogame2018s2_frogger.frogger.FroggerGame;
+
 /**
  * @Author: Yu Yang (Harvey), Boyuan Zheng(Joe)
  */
 public class GameView extends View implements View.OnTouchListener, Runnable {
     Handler timer = new Handler();
     FroggerGame froggerGame;
-
+    //Game view is the highest level class that control the view layout
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.setOnTouchListener(this);
@@ -49,7 +50,7 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
     public void run() {
         froggerGame.step();
         invalidate();
-        timer.postDelayed(this, 1000/30);
+        timer.postDelayed(this, 1000 / 30);
     }
 
 }

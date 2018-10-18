@@ -3,10 +3,10 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 import java.util.Random;
 
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
-import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
-
+//draw and manage the star in the game. It randomly created, if frog eat it, add time,
+//and another start will be create.
 public class Star extends Collision implements Spirit, Drawable {
     int x;
     int y;
@@ -16,15 +16,16 @@ public class Star extends Collision implements Spirit, Drawable {
     Timer timer;
 
     Random random;
-    Star(Scene scene,Timer timer) {
+
+    Star(Scene scene, Timer timer) {
         random = new Random();
 
         this.x = random.nextInt(scene.getGameSetting().getWidth());
-        this.y = random.nextInt( scene.getGameSetting().getHeight()- scene.getGameSetting().get("riverTop"));
-        this.y+= scene.getGameSetting().get("riverTop");
+        this.y = random.nextInt(scene.getGameSetting().getHeight() - scene.getGameSetting().get("riverTop"));
+        this.y += scene.getGameSetting().get("riverTop");
         this.radius = 30;
         this.scene = scene;
-        this.timer=timer;
+        this.timer = timer;
     }
 
     @Override
@@ -57,7 +58,7 @@ public class Star extends Collision implements Spirit, Drawable {
         if (this.collision(scene.getGameSetting().getFrog(), x, y, radius, radius)) {
             this.x = random.nextInt(scene.getGameSetting().getWidth());
             this.y = random.nextInt(scene.getGameSetting().getHeight());
-            timer.addTime(10);
+            timer.addTime(10);//add 10s
         }
     }
 }

@@ -3,21 +3,21 @@ package edu.anu.retrogame2018s2_frogger;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.RotateDrawable;
 
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.Path;
+
 /*
     Author: Yang Yu
  */
+
+//we don't want to rely on android Canvas because that makes us hard to move the game across
+//different patten. this is the class that connects our canvas to android canvas
 public class UsingCanvas implements FrogCanvas {
     Canvas canvas;
     Resources res;

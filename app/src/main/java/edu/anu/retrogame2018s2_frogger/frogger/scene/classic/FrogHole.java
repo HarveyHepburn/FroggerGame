@@ -9,6 +9,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
+/*
+    Author: Danny Feng
+ */
 public class FrogHole implements Drawable {
 
     FrogPaint frogPaintBg;
@@ -45,7 +48,7 @@ public class FrogHole implements Drawable {
                 frogCanvas.drawCircle(mid, wallHeight, holeWidth, frogPaintHoleIn);
             } else {
                 frogCanvas.drawCircle(mid, wallHeight, holeWidth, frogPaintHole);
-            }
+            }//frog holes are a half circle
         }
     }
 
@@ -54,7 +57,7 @@ public class FrogHole implements Drawable {
             for (int i = 0; i < holeNumber; i++) {
                 int mid = (scene.getGameSetting().getWidth() / (holeNumber + 1)) * (i + 1);
                 if (frog.getX() < mid + holeWidth / 2 && frog.getX() > mid - holeWidth / 2) {
-                    inHoleNum.add(i);
+                    inHoleNum.add(i);//store all the hole that users successfully get in
                     return true;
                 }
             }
@@ -65,7 +68,7 @@ public class FrogHole implements Drawable {
     public boolean isFinished() {
         if (this.inHoleNum.size() >= holeNumber) {
             return true;
-        }
+        }//if all the holes have been get in, end the game
         return false;
     }
 
@@ -76,7 +79,7 @@ public class FrogHole implements Drawable {
             for (int i = 0; i < holeNumber; i++) {
                 int mid = (scene.getGameSetting().getWidth() / (holeNumber + 1)) * (i + 1);
                 if (x < mid + holeWidth / 2 && x > mid - holeWidth / 2) {
-                    return true;
+                    return true;//set a upper wall for blocking the frog
                 }
             }
         }

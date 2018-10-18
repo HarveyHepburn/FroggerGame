@@ -1,10 +1,10 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
-import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
+
 /*
     Author: Yang Yu
  */
@@ -21,7 +21,7 @@ public abstract class MovingItem extends Collision implements Drawable {
     }
 
     MovingItem(MovingParameters mp, GameSetting gameSetting, int width) {
-        this.width=width;
+        this.width = width;
         this.mp = mp;
         this.x = mp.calX(width);
         frogPaint = new FrogPaint();
@@ -47,12 +47,6 @@ public abstract class MovingItem extends Collision implements Drawable {
     }
 
     public boolean Collision(Spirit spirit) {
-//        if (spirit.getY() < mp.getY() + this.height && spirit.getY() >= mp.getY()) {
-//            if (spirit.getX() + spirit.getRadius() >= this.x && spirit.getX() - spirit.getRadius() <= this.x + this.width) {
-//                return true;
-//            }
-//        }
-//        return false;
         return collision(spirit, this.x, mp.getY(), this.height, width);
     }
 

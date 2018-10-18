@@ -29,7 +29,7 @@ public class Frog implements Spirit {
     private int currentStatusTimeLeft = 5;
 
     public void draw(FrogCanvas frogCanvas) {
-        frogPaint.setDirection(direction);
+        frogPaint.setDirection(direction);//change image for different frog state when moving
         switch (FrogStatus) {
             case 0:
                 frogCanvas.drawImage("frog_static", x - radius / 2, y - radius / 2, x + radius / 2, y + radius / 2, frogPaint);

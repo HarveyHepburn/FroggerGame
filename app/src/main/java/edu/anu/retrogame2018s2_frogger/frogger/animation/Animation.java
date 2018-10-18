@@ -1,4 +1,5 @@
 package edu.anu.retrogame2018s2_frogger.frogger.animation;
+
 /*
     Author: Yang Yu
  */
@@ -8,7 +9,7 @@ public class Animation {
     float min;
     boolean increasing = true;
     float current = 0;
-
+//Over all control of the drawing Animation
     public Animation(float speed, float max, float min) {
         this.speed = speed;
         this.max = max;

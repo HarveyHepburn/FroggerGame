@@ -3,9 +3,12 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 import java.lang.reflect.Constructor;
 
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
+
 /*
     Author: Yang Yu
  */
+
+//Factory design patten helper function
 public class SceneFactory {
     public static Scene getScene(Class c, GameSetting gameSetting) {
         try {

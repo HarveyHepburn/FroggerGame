@@ -5,7 +5,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.animation.ScalingAnimation;
 import edu.anu.retrogame2018s2_frogger.frogger.widget.FrogButton;
-
+/*
+    Author: Danny Feng
+ */
 public class WelcomeButton extends FrogButton {
     String fileName;
 

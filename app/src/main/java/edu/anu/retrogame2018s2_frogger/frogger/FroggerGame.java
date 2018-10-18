@@ -2,8 +2,6 @@ package edu.anu.retrogame2018s2_frogger.frogger;
 
 import java.util.HashMap;
 
-import edu.anu.retrogame2018s2_frogger.frogger.player.DataProcess;
-import edu.anu.retrogame2018s2_frogger.frogger.player.Player;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.HelpScene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.classic.ClassicFroggerScene;
@@ -16,10 +14,10 @@ import edu.anu.retrogame2018s2_frogger.frogger.widget.SoundControl;
  * @Author: Yu Yang (Harvey), Boyuan Zheng(Joe)
  */
 public class FroggerGame implements Drawable {
-    DataProcess dataProcess=new DataProcess();
     GameSetting gameSetting;
     Scene currentScene;
 
+    //Frogger game is mainly for scene switch and create sounds, scene, and game setting
     public FroggerGame(int width, int height, SoundControl soundControl, DBManager dbManager) {
         scenes = new HashMap<>();
         scenes.put("welcome", WelcomeScene.class);
@@ -32,8 +30,6 @@ public class FroggerGame implements Drawable {
         scenes.put("ranking", RankingScene.class);
         scenes.put("help", HelpScene.class);
         gameSetting = new GameSetting(width, height);
-
-        gameSetting.setPlayer(new Player(dataProcess.load()));
 
         gameSetting.setSoundControl(soundControl);
         gameSetting.put("levels", 5);

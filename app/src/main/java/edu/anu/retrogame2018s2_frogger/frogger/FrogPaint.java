@@ -1,5 +1,6 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
 
+//Frog paint is to decoupling from Android Paint so that it can easily move to different platform
 public class FrogPaint {
     private String Color = null;
     private Boolean StyleFill = null;

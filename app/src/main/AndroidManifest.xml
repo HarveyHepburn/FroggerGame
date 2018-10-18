@@ -20,8 +20,6 @@
         <activity
             android:name=".GameActivity"
             android:screenOrientation="landscape" />
-        <!--<activity android:name=".RankActivity" android:screenOrientation="landscape" />-->
-        <activity android:name=".SignUpActivity" android:screenOrientation="landscape"></activity>
     </application>
 
 </manifest>

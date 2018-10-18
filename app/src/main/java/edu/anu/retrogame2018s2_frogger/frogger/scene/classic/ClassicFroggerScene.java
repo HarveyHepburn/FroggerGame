@@ -1,6 +1,5 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
-
 import edu.anu.retrogame2018s2_frogger.frogger.ControlPanel;
 import edu.anu.retrogame2018s2_frogger.frogger.Dialog;
 import edu.anu.retrogame2018s2_frogger.frogger.DialogInformation;
@@ -11,6 +10,9 @@ import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
+/**
+ * @Author: Yu Yang (Harvey), Boyuan Zheng(Joe)
+ */
 public class ClassicFroggerScene implements Scene {
     private GameSetting gameSetting;
     private Frog frog;

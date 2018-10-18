@@ -1,5 +1,7 @@
 package edu.anu.retrogame2018s2_frogger.frogger;
-
+/**
+ * @Author: Yu Yang (Harvey), Boyuan Zheng(Joe)
+ */
 public class DialogInformation {
   String info;
 

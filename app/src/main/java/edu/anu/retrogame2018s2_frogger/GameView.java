@@ -9,7 +9,9 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import edu.anu.retrogame2018s2_frogger.frogger.FroggerGame;
-
+/**
+ * @Author: Yu Yang (Harvey), Boyuan Zheng(Joe)
+ */
 public class GameView extends View implements View.OnTouchListener, Runnable {
     Handler timer = new Handler();
     FroggerGame froggerGame;

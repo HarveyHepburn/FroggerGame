@@ -41,6 +41,8 @@ public class FroggerGame implements Drawable {
 
     HashMap<String, Class> scenes;
 
+
+
     public GameSetting getGameSetting() {
         return gameSetting;
     }

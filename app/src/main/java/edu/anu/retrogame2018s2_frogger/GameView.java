@@ -17,7 +17,6 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.setOnTouchListener(this);
-
     }
 
     @Override
@@ -48,7 +47,7 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
     public void run() {
         froggerGame.step();
         invalidate();
-        timer.postDelayed(this, 10);
+        timer.postDelayed(this, 1000/30);
     }
 
 }

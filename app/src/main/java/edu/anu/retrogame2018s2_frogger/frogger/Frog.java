@@ -30,21 +30,35 @@ public class Frog implements Spirit {
 
     public void draw(FrogCanvas frogCanvas) {
         frogPaint.setDirection(direction);//change image for different frog state when moving
+        String image="frog_static";
         switch (FrogStatus) {
             case 0:
-                frogCanvas.drawImage("frog_static", x - radius / 2, y - radius / 2, x + radius / 2, y + radius / 2, frogPaint);
+                image="frog_static";
                 break;
             case 1:
-                frogCanvas.drawImage("frog_jump_1", x - radius / 2, y - radius / 2, x + radius / 2, y + radius / 2, frogPaint);
+                image="frog_jump_1";
                 break;
             case 2:
-                frogCanvas.drawImage("frog_jump_2", x - radius / 2, y - radius / 2, x + radius / 2, y + radius / 2, frogPaint);
+                image="frog_jump_2";
                 break;
             case 3:
-                frogCanvas.drawImage("frog_jump_3", x - radius / 2, y - radius / 2, x + radius / 2, y + radius / 2, frogPaint);
+                image="frog_jump_3";
+                break;
+        }
+        if(direction!=null)
+        switch (direction){
+            case EAST:
+                image+="_right";
+                break;
+            case WEST:
+                image+="_left";
+                break;
+            case NORTH:
+                image+="_down";
                 break;
         }
 
+        frogCanvas.drawImage(image, x - radius / 2, y - radius / 2, x + radius / 2, y + radius / 2, frogPaint);
     }
 
     public void step() {

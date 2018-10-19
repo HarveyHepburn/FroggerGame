@@ -71,11 +71,11 @@ public class UsingCanvas implements FrogCanvas {
         d.draw(canvas);
     }
 
-    private android.graphics.drawable.Drawable createImageDrawble(String image) {
-        int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
-        android.graphics.drawable.Drawable d = res.getDrawable(drawableResourceId);
-        return d;
-    }
+//    private android.graphics.drawable.Drawable createImageDrawble(String image) {
+//        int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
+//        android.graphics.drawable.Drawable d = res.getDrawable(drawableResourceId);
+//        return d;
+//    }
 
     private android.graphics.drawable.Drawable getFrogDrawable(String image, Direction direction) {
         String s = "";
@@ -91,8 +91,13 @@ public class UsingCanvas implements FrogCanvas {
                     s = "_right";
                     break;
             }
-        int drawableResourceId = res.getIdentifier(image + s, "drawable", thePackage);
-        android.graphics.drawable.Drawable d = res.getDrawable(drawableResourceId);
+
+
+        android.graphics.drawable.Drawable d = imagesHash.get(image + s);
+        if(d==null){
+            int drawableResourceId = res.getIdentifier(image + s, "drawable", thePackage);
+            d = res.getDrawable(drawableResourceId);
+        }
         return d;
     }
 

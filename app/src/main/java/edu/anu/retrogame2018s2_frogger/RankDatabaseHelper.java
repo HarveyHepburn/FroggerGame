@@ -12,6 +12,9 @@ import java.util.Collections;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.ranking.DBManager;
 
+/*
+    Author: Danny Feng
+ */
 //this is the main code for game data base (used SQL)
 public class RankDatabaseHelper extends SQLiteOpenHelper implements DBManager {
 

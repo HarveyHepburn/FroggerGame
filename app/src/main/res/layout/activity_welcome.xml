@@ -51,7 +51,7 @@
         android:layout_centerHorizontal="true"
 
         android:layout_gravity="center_vertical|center_horizontal"
-        android:hint="input your name"
+        android:hint="Enter your name for sign up"
         android:textColorHint="#99000000"
         tools:layout_editor_absoluteX="108dp"
         tools:layout_editor_absoluteY="115dp" />

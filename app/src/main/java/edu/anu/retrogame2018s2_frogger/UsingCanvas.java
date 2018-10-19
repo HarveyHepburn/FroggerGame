@@ -67,55 +67,6 @@ public class UsingCanvas implements FrogCanvas {
             this.imagesHash.put(image,d);
         }
 
-//        switch (image) {
-//            case "car_blue":
-//                d = this.car_blue;
-//                break;
-//            case "car_red":
-//                d = this.car_red;
-//                break;
-//            case "car_yellow":
-//                d = this.car_yellow;
-//                break;
-//            case "car_green":
-//                d = this.car_green;
-//                break;
-//            case "car_blue_reverse":
-//                d = this.car_blue_reverse;
-//                break;
-//            case "car_red_reverse":
-//                d = this.car_red_reverse;
-//                break;
-//            case "car_yellow_reverse":
-//                d = this.car_yellow_reverse;
-//                break;
-//            case "car_green_reverse":
-//                d = this.car_green_reverse;
-//                break;
-//            case "frog_static":
-//                d = getFrogDrawable(image, frogPaint.getDirection());
-//                break;
-//            case "frog_jump_1":
-//                d = getFrogDrawable(image, frogPaint.getDirection());
-//                break;
-//            case "frog_jump_2":
-//                d = getFrogDrawable(image, frogPaint.getDirection());
-//                break;
-//            case "frog_jump_3":
-//                d = getFrogDrawable(image, frogPaint.getDirection());
-//                break;
-//            case "log":
-//                d = this.log;
-//                break;
-//            default:
-//                if (image.endsWith(".***")) {
-//                    image = image.substring(0, image.length() - 4);
-//                }
-//                int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
-//                d = res.getDrawable(drawableResourceId);
-//                break;
-//
-//        }
         d.setBounds(left, top, right, bottom);
         d.draw(canvas);
     }

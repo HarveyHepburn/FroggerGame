@@ -9,8 +9,8 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
-/*
-    Author: Yang Yu
+/**
+ * @Author: Yu Yang
  */
 public class Car extends MovingItem implements ActiveItem {
     static Random random = new Random();

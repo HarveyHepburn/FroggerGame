@@ -2,7 +2,9 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/*
+    @Author: Yang Yu, JinWei Zhang
+ */
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 

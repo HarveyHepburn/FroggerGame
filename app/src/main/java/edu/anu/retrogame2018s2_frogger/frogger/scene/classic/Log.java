@@ -5,7 +5,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.GameSetting;
 
 /*
-    Author: Danny Feng, Yang Yu
+    @Author: Danny Feng, Yang Yu
  */
 public class Log extends MovingItem implements MoveAlong, ActiveItem {
     public Log(MovingParameters movingParameters, GameSetting gameSetting) {

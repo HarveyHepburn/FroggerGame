@@ -1,5 +1,5 @@
 /*
-    Author: JinWei Zhang
+    @Author: JinWei Zhang
  */
 package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 

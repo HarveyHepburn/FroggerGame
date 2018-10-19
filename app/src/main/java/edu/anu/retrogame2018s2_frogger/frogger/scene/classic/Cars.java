@@ -1,7 +1,9 @@
 package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
-
+/**
+ * @Author: Yu Yang, JinWei Zhang
+ */
 public class Cars extends Items implements ItemManager {
     private Scene scene;
 

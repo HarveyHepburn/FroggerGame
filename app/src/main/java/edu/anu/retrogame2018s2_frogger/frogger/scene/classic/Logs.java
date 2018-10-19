@@ -3,7 +3,7 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 /*
-    Author: Danny Feng, Yang Yu
+    @Author: Danny Feng, Yang Yu
  */
 public class Logs extends Items implements ItemManager {
     private Scene scene;

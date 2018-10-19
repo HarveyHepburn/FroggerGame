@@ -10,7 +10,7 @@ import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
 
 /*
-    Author: Danny Feng
+    @Author: Danny Feng
  */
 public class FrogHole implements Drawable {
 

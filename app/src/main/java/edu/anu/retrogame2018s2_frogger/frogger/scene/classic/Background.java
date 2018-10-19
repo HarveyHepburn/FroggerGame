@@ -3,9 +3,8 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogPaint;
 import edu.anu.retrogame2018s2_frogger.frogger.scene.Scene;
-
-/*
-    Author: Yang Yu
+/**
+ * @Author: Yu Yang, JinWei Zhang
  */
 public class Background {
     private Scene scene;

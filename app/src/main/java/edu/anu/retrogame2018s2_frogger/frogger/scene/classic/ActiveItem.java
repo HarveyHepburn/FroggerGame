@@ -3,8 +3,8 @@ package edu.anu.retrogame2018s2_frogger.frogger.scene.classic;
 import edu.anu.retrogame2018s2_frogger.frogger.Drawable;
 import edu.anu.retrogame2018s2_frogger.frogger.Frog;
 
-/*
-    Author: Yang Yu
+/**
+ * @Author: Yu Yang, JinWei Zhang
  */
 interface ActiveItem extends Drawable {
     int getX();

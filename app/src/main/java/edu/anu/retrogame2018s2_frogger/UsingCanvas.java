@@ -6,6 +6,9 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.drawable.Drawable;
+
+import java.util.HashMap;
 
 import edu.anu.retrogame2018s2_frogger.frogger.Direction;
 import edu.anu.retrogame2018s2_frogger.frogger.FrogCanvas;
@@ -22,22 +25,12 @@ public class UsingCanvas implements FrogCanvas {
     Canvas canvas;
     Resources res;
     String thePackage;
-    android.graphics.drawable.Drawable car_blue;
-    android.graphics.drawable.Drawable car_red;
-    android.graphics.drawable.Drawable car_yellow;
-    android.graphics.drawable.Drawable car_green;
-    android.graphics.drawable.Drawable log;
 
-    public UsingCanvas(Canvas canvas, Resources res, String thePackage) {
-        this.canvas = canvas;
+    HashMap<String, Drawable> imagesHash = new HashMap<>();
+
+    public UsingCanvas(Resources res, String thePackage) {
         this.res = res;
         this.thePackage = thePackage;
-        this.car_blue = createImageDrawble("car_blue");
-        this.car_red = createImageDrawble("car_red");
-        this.car_yellow = createImageDrawble("car_yellow");
-        this.car_green = createImageDrawble("car_green");
-        this.log = createImageDrawble("log");
-
     }
 
     Bitmap bitmap;
@@ -64,44 +57,65 @@ public class UsingCanvas implements FrogCanvas {
 
     @Override
     public void drawImage(String image, int left, int top, int right, int bottom, FrogPaint frogPaint) {
-        android.graphics.drawable.Drawable d;
-        switch (image) {
-            case "car_blue":
-                d = this.car_blue;
-                break;
-            case "car_red":
-                d = this.car_red;
-                break;
-            case "car_yellow":
-                d = this.car_yellow;
-                break;
-            case "car_green":
-                d = this.car_green;
-                break;
-            case "frog_static":
-                d = getFrogDrawable(image, frogPaint.getDirection());
-                break;
-            case "frog_jump_1":
-                d = getFrogDrawable(image, frogPaint.getDirection());
-                break;
-            case "frog_jump_2":
-                d = getFrogDrawable(image, frogPaint.getDirection());
-                break;
-            case "frog_jump_3":
-                d = getFrogDrawable(image, frogPaint.getDirection());
-                break;
-            case "log":
-                d = this.log;
-                break;
-            default:
-                if (image.endsWith(".***")) {
-                    image = image.substring(0, image.length() - 4);
-                }
-                int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
-                d = res.getDrawable(drawableResourceId);
-                break;
-
+        android.graphics.drawable.Drawable d = imagesHash.get(image);
+        if (d == null) {
+            if (image.endsWith(".***")) {
+                image = image.substring(0, image.length() - 4);
+            }
+            int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
+            d = res.getDrawable(drawableResourceId);
+            this.imagesHash.put(image,d);
         }
+
+//        switch (image) {
+//            case "car_blue":
+//                d = this.car_blue;
+//                break;
+//            case "car_red":
+//                d = this.car_red;
+//                break;
+//            case "car_yellow":
+//                d = this.car_yellow;
+//                break;
+//            case "car_green":
+//                d = this.car_green;
+//                break;
+//            case "car_blue_reverse":
+//                d = this.car_blue_reverse;
+//                break;
+//            case "car_red_reverse":
+//                d = this.car_red_reverse;
+//                break;
+//            case "car_yellow_reverse":
+//                d = this.car_yellow_reverse;
+//                break;
+//            case "car_green_reverse":
+//                d = this.car_green_reverse;
+//                break;
+//            case "frog_static":
+//                d = getFrogDrawable(image, frogPaint.getDirection());
+//                break;
+//            case "frog_jump_1":
+//                d = getFrogDrawable(image, frogPaint.getDirection());
+//                break;
+//            case "frog_jump_2":
+//                d = getFrogDrawable(image, frogPaint.getDirection());
+//                break;
+//            case "frog_jump_3":
+//                d = getFrogDrawable(image, frogPaint.getDirection());
+//                break;
+//            case "log":
+//                d = this.log;
+//                break;
+//            default:
+//                if (image.endsWith(".***")) {
+//                    image = image.substring(0, image.length() - 4);
+//                }
+//                int drawableResourceId = res.getIdentifier(image, "drawable", thePackage);
+//                d = res.getDrawable(drawableResourceId);
+//                break;
+//
+//        }
         d.setBounds(left, top, right, bottom);
         d.draw(canvas);
     }

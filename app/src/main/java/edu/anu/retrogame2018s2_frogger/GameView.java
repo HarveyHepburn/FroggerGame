@@ -16,12 +16,10 @@ import edu.anu.retrogame2018s2_frogger.frogger.FroggerGame;
 public class GameView extends View implements View.OnTouchListener, Runnable {
     Handler timer = new Handler();
     FroggerGame froggerGame;
-    //Game view is the highest level class that control the view layout
     public GameView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
         this.setOnTouchListener(this);
     }
-
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {
         super.onLayout(changed, left, top, right, bottom);
@@ -29,11 +27,12 @@ public class GameView extends View implements View.OnTouchListener, Runnable {
                 new RankDatabaseHelper());
         timer.postDelayed(this, 30);
     }
-
+    UsingCanvas usingCanvas=new UsingCanvas(getResources(), BuildConfig.APPLICATION_ID);
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        froggerGame.draw(new UsingCanvas(canvas, getResources(), BuildConfig.APPLICATION_ID));
+        usingCanvas.canvas=canvas;
+        froggerGame.draw(usingCanvas);
     }
 
     @Override

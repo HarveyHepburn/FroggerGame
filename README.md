@@ -7,20 +7,20 @@
 + Boyuan Zheng u6522433 - Lead artist, code developer, GUI designer, game graphics rendering
 
 ## Design Documentation 
-+ [Design Summary](Design summary)
-+ [UML Diagram](UML diagram)
-+ [Testing Summary](Testing summary)
-+ [Game reflection](Game reflection)
-+ [Game summary](Game summary)
++ [Design Summary]
++ [UML Diagram]
++ [Testing Summary]
++ [Game reflection]
++ [Game summary]
 
 ## Minuted Meetings
-+ [Meeting 1 - 2018.09.18 - decide game topic and contents](meeting1)
++ [Meeting 1 - 2018.09.18 - decide game topic and contents]
 
-+ [Meeting 2 - 2018.09.25 - decide UI design](meeting2)
++ [Meeting 2 - 2018.09.25 - decide UI design]
 
-+ [Meeting 3 - 2018.10.08 - decide the higher level function](meeting3)
++ [Meeting 3 - 2018.10.08 - decide the higher level function]
 
-+ [Meeting 4 - 2018.10.14 - Finish the test and additional function as well as the document records](meeting4)
++ [Meeting 4 - 2018.10.14 - Finish the test and additional function as well as the document records]
 
 ## Statement of Originality
 

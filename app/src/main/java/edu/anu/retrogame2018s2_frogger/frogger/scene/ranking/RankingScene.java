@@ -76,6 +76,11 @@ public class RankingScene implements Scene {
 
     //draw all the records out. first three records are shown in different colour
     public void drawReal(FrogCanvas frogCanvas, ArrayList<RecordInfo> recordInfos) {
+        for(int i=1;i<recordInfos.size();i++){
+            if(recordInfos.get(i).compareTo(recordInfos.get(i-1))==0){
+                recordInfos.remove(i);
+            }
+        }
         double x = 0.2 * gameSetting.getWidth();
         int y = 200;
         FrogPaint frogPaintGold = new FrogPaint();
@@ -95,7 +100,7 @@ public class RankingScene implements Scene {
         frogPaint.setColor("#ffffff");
 
         for (int i = 0; i < recordInfos.size(); i++) {
-            if (recordInfos.get(i).getLevel() == -1 || recordInfos.get(i).getTime() == -1)
+            if (recordInfos.get(i).getLevel() < 0 || recordInfos.get(i).getTime() < 0)
                 continue;//-1 means there is no player records
             if (i == 0) {
                 frogCanvas.drawText("Name" + "  " + "Level" + "   " + "Time Left", (int) x - 70, y - 100, frogPaint);

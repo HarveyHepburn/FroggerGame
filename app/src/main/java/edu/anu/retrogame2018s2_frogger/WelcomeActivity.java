@@ -16,6 +16,8 @@ import android.widget.Toast;
 import edu.anu.retrogame2018s2_frogger.frogger.RecordInfo;
 import edu.anu.retrogame2018s2_frogger.frogger.player.PlayerStore;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 /*
@@ -42,7 +44,12 @@ public class WelcomeActivity extends AppCompatActivity implements AdapterView.On
 
     public void addItemsOnSpinner2() {
         spinner2 = (Spinner) findViewById(R.id.spinner2);
-
+        HashSet<String> hashSet=new HashSet<>();
+        for(String name:list){
+            hashSet.add(name);
+        }
+        list=new ArrayList<>();
+        list.addAll(hashSet);
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, list);
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
